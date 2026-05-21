@@ -1,5 +1,4 @@
 import { defineConfig, devices } from '@playwright/test';
-
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -36,6 +35,10 @@ export default defineConfig({
     // proxy: {
     //   server: 'http://127.0.0.1:7890',
     // },
+    extraHTTPHeaders: {
+      'TokenCybersoft': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+      'Accept': 'application/json, text/plain, */*',
+    },
   },
 
   /* Configure projects for major browsers */
@@ -75,7 +78,6 @@ export default defineConfig({
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
   ],
-
   /* Run your local dev server before starting the tests */
   // webServer: {
   //   command: 'npm run start',

@@ -1,18 +1,22 @@
 import { test as base } from '@playwright/test';
-import { HomePage } from '../models/homepage';
+import { HomePage } from '@models/pages/homepage';
+import { ApiServiceManager } from '@models/services/manager';
 
-// Khai báo các Page Objects sẽ dùng như Fixture
 type MyFixtures = {
     homePage: HomePage;
+    api: ApiServiceManager;
 };
 
 export const test = base.extend<MyFixtures>({
     homePage: async ({ page }, use) => {
-        // Khởi tạo homePage trước mỗi bài test
         const homePage = new HomePage(page);
         await homePage.goto();
-        // Pass đối tượng này cho test case sử dụng
         await use(homePage);
+    },
+
+    api: async ({ request }, use) => {
+        const apiManager = new ApiServiceManager(request);
+        await use(apiManager);
     },
 });
 
