@@ -25,7 +25,7 @@ export class HomePage {
     async goto() {
         await this.page.goto('/', {
             waitUntil: 'domcontentloaded',
-            timeout: 45000
+            timeout: 45000,
         });
     }
     async navigateToAvatar() {
