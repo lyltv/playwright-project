@@ -1,5 +1,5 @@
-import { APIRequestContext } from "@playwright/test";
-import { LocationService } from "./location_service";
+import { APIRequestContext } from '@playwright/test';
+import { LocationService } from './location_service';
 
 export class ApiServiceManager {
     readonly location: LocationService;

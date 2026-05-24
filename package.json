@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "description": "This is test automation project for cyberbnb",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "format": "prettier --write \"tests/**/*.spec.{ts,js}\"",
+    "format:check": "prettier --check \"tests/**/*.spec.{ts,js}\\"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.59.1",
-    "@types/node": "^25.6.0"
+    "@types/node": "^25.6.0",
+    "dotenv": "^17.4.2",
+    "prettier": "3.8.3"
   }
 }
