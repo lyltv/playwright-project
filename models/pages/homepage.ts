@@ -4,7 +4,7 @@ export class HomePage {
     readonly page: Page;
     readonly avatarButton: Locator;
     readonly loginButton: Locator;
-    readonly singUpButton: Locator;
+    readonly signUpButton: Locator;
     readonly hcmCard: Locator;
     readonly hanoiCard: Locator;
     readonly emailInput: Locator;
@@ -17,7 +17,7 @@ export class HomePage {
 
         // 2. Tìm nút Đăng nhập bên trong menu (dùng filter để chính xác)
         this.loginButton = page.locator('#user-dropdown').getByText('Đăng nhập');
-        this.singUpButton = page.locator('#user-dropdown').getByText('Đăng ký');
+        this.signUpButton = page.locator('#user-dropdown').getByText('Đăng ký');
 
         // 3. Thẻ địa danh
         this.hcmCard = page.locator('a[href*="ho-chi-minh"]');
@@ -34,10 +34,6 @@ export class HomePage {
             timeout: 45000,
         });
     }
-    async navigateToAvatar() {
-        await this.avatarButton.waitFor({ state: 'attached' });
-        await this.avatarButton.click();
-    }
     async navigateToLogin() {
         await this.avatarButton.waitFor({ state: 'attached' });
         // Open menu then login
@@ -49,7 +45,7 @@ export class HomePage {
         await this.avatarButton.waitFor({ state: 'attached' });
         // Open menu then singUp
         await this.avatarButton.click();
-        await this.singUpButton.click();
+        await this.signUpButton.click();
     }
     async signUp(data: {
         name: string;
