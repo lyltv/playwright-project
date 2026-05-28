@@ -2,7 +2,7 @@ import { test, expect } from '@fixtures/test_hook';
 import { getSearchDateRangeRegex } from 'utils/dateHelper';
 
 test.describe('Search', () => {
-    test('SEARCH_01: Verify search by location functions correctly on homepage', async ({
+    test('SEARCH_01: Tìm kiếm theo địa điểm từ trang chủ → hiển thị kết quả đúng location', async ({
         homePage,
         page,
     }) => {
@@ -17,7 +17,7 @@ test.describe('Search', () => {
         await expect(roomCards).toBeVisible({ timeout: 10000 });
     });
 
-    test('SEARCH_02: Verify search by location functions correctly on search result pages', async ({
+    test('SEARCH_02: Tìm kiếm theo địa điểm khác từ trang kết quả → chuyển sang location mới', async ({
         homePage,
         page,
     }) => {
@@ -44,7 +44,7 @@ test.describe('Search', () => {
         await expect(roomCards).toBeVisible({ timeout: 10000 });
     });
 
-    test('SEARCH_03: Verify UI of location picker is displayed correctly', async ({
+    test('SEARCH_03: Mở location picker → hiển thị đầy đủ tất cả địa điểm từ API', async ({
         page,
         api,
     }) => {
@@ -66,12 +66,13 @@ test.describe('Search', () => {
         }
     });
 
-    test('SEARCH_04: Verify search by dates functions correctly on homepage', async ({ page }) => {
+    test('SEARCH_04: Chọn ngày trên trang chủ → search bar cập nhật đúng ngày đã chọn', async ({
+        page,
+    }) => {
         await page.goto('/');
 
         // Lấy text ngày mặc định trước khi chọn
         const dateTrigger = page.getByText(getSearchDateRangeRegex(1, 7));
-        const defaultText = await dateTrigger.textContent();
         await dateTrigger.click();
 
         const picker = page.locator('.rdrDateRangePickerWrapper');
@@ -95,7 +96,7 @@ test.describe('Search', () => {
         await expect(dateSection).toBeVisible();
     });
 
-    test('SEARCH_05: Verify search by dates functions correctly on search result pages', async ({
+    test('SEARCH_05: Chọn ngày trên trang kết quả → date picker hoạt động bình thường', async ({
         homePage,
         page,
     }) => {
@@ -115,38 +116,42 @@ test.describe('Search', () => {
         await expect(picker).toBeVisible();
     });
 
-    test('SEARCH_06: Verified that pre-selected search criteria are preserved on booking modal', async ({
+    test('SEARCH_06: Vào room detail → booking modal giữ lại ngày, số khách đã chọn trước đó', async ({
         homePage,
         page,
     }) => {
-        // Chọn location HCM → vào trang kết quả
         await homePage.selectLocation('hcm');
         await page.waitForURL('**/rooms/ho-chi-minh**', { timeout: 15000 });
 
-        // Click vào phòng đầu tiên
-        const roomLink = page.locator('a[href*="room-detail"], a[href*="detail"]').first();
-        if (await roomLink.isVisible({ timeout: 5000 }).catch(() => false)) {
-            await roomLink.click();
-            await page.waitForLoadState('domcontentloaded');
+        const roomCard = page.locator('a[href*="room-detail"]').first();
+        await roomCard.waitFor({ state: 'visible', timeout: 10000 });
+        await roomCard.click();
+        await page.waitForURL('**/room-detail/**', { timeout: 15000 });
 
-            // Trang chi tiết phòng phải có booking section với thông tin đã chọn
-            const bookingSection = page
-                .locator('[class*="booking"], [class*="reserve"], [class*="order"]')
-                .first();
-            if (await bookingSection.isVisible({ timeout: 5000 }).catch(() => false)) {
-                await expect(bookingSection).toBeVisible();
-            }
-        } else {
-            const card = page.locator('[class*="card"]').first();
-            await card.click();
-            await page.waitForLoadState('domcontentloaded');
-        }
+        // Ngày checkin được pre-fill (format DD-MM-YYYY)
+        const checkinField = page
+            .locator('div.cursor-pointer')
+            .filter({ hasText: 'Nhận phòng' })
+            .first();
+        await expect(checkinField.getByText(/\d{2}-\d{2}-\d{4}/)).toBeVisible();
 
-        // Trang chi tiết phải load thành công (URL chứa detail hoặc room)
-        expect(page.url()).toMatch(/detail|room/i);
+        // Ngày checkout được pre-fill
+        const checkoutField = page
+            .locator('div.cursor-pointer')
+            .filter({ hasText: 'Trả phòng' })
+            .first();
+        await expect(checkoutField.getByText(/\d{2}-\d{2}-\d{4}/)).toBeVisible();
+
+        // Guest count được pre-fill
+        await expect(page.getByText(/\d+ khách/)).toBeVisible();
+
+        // Nút đặt phòng hiển thị
+        await expect(page.getByRole('button', { name: 'Đặt phòng' })).toBeVisible();
     });
 
-    test('SEARCH_07: Verify search bar expands and collapses properly', async ({ page }) => {
+    test('SEARCH_07: Click vào search bar → mở rộng, click ra ngoài → thu gọn (BUG)', async ({
+        page,
+    }) => {
         // BUG: Search bar không collapse khi click ra ngoài
         test.fail();
 
@@ -164,7 +169,10 @@ test.describe('Search', () => {
         await expect(popup).toBeHidden({ timeout: 3000 });
     });
 
-    test('SEARCH_08: Verify filters functions correctly', async ({ homePage, page }) => {
+    test('SEARCH_08: Áp dụng filter giá → kết quả thay đổi theo filter (BUG)', async ({
+        homePage,
+        page,
+    }) => {
         // BUG: Filters không hoạt động đúng trên trang kết quả
         test.fail();
 
@@ -196,7 +204,7 @@ test.describe('Search', () => {
         expect(countAfter).not.toBe(countBefore);
     });
 
-    test('SEARCH_09: Verify search results page returns correct results', async ({
+    test('SEARCH_09: Trang kết quả hiển thị đủ: banner location, search bar, filters, danh sách phòng', async ({
         homePage,
         page,
     }) => {
