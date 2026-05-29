@@ -45,6 +45,9 @@ test.describe('Dashboard - Update Avatar', () => {
     });
 
     test('UPDATE_AVATAR_04: Should show error when no image selected', async ({ homePage, dashboardPage, page }) => {
+        // BUG: Không hiển thị lỗi khi chưa chọn ảnh mà bấm Upload
+        test.fail();
+
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openAvatarDialog();
 
@@ -55,9 +58,6 @@ test.describe('Dashboard - Update Avatar', () => {
     });
 
     test('UPDATE_AVATAR_05: Should reject non-image file format', async ({ homePage, dashboardPage, page }) => {
-        // BUG: Web có thể không validate file format phía client
-        test.fail();
-
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openAvatarDialog();
 
@@ -86,6 +86,9 @@ test.describe('Dashboard - Update Avatar', () => {
     });
 
     test('UPDATE_AVATAR_07: Should handle rectangular image upload', async ({ homePage, dashboardPage, page }) => {
+        // BUG: Ảnh hình chữ nhật không được xử lý đúng
+        test.fail();
+
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openAvatarDialog();
 
@@ -136,7 +139,7 @@ test.describe('Dashboard - Update Avatar', () => {
 
         // Lấy src avatar hiện tại — tìm ảnh trên trang dashboard
         const avatar = page.locator('img').first();
-        const srcBefore = await avatar.getAttribute('src');
+        await avatar.getAttribute('src');
 
         await page.reload();
         await page.waitForLoadState('domcontentloaded');

@@ -74,9 +74,6 @@ test.describe('CyberBnB Login', () => {
     });
 
     test('Should close login form by clicking outside popup', async ({ homePage, page }) => {
-        // BUG: Web không đóng dialog khi click bên ngoài
-        test.fail();
-
         await homePage.navigateToLogin();
         const loginDialog = page.getByRole('dialog');
         await expect(loginDialog).toBeVisible();

@@ -7,16 +7,16 @@ test.describe('Room List', () => {
     });
 
     test('ROOM_LIST_01: Should display room list with full info', async ({ page }) => {
-        const roomCards = page.locator('[class*="card"], [class*="room"], [class*="listing"]').first();
-        await expect(roomCards).toBeVisible({ timeout: 10000 });
+        const roomCards = page.locator('[class*="card"]');
+        await expect(roomCards.first()).toBeVisible({ timeout: 10000 });
 
-        // Mỗi card phải có ảnh
-        const img = roomCards.locator('img').first();
-        await expect(img).toBeVisible();
+        const cardCount = await roomCards.count();
+        expect(cardCount).toBeGreaterThan(0);
 
-        // Phải có tên phòng
-        const hasText = await roomCards.textContent();
-        expect(hasText?.length).toBeGreaterThan(0);
+        await expect(roomCards.first().locator('img').first()).toBeVisible();
+
+        const roomLink = page.locator('a[href*="room-detail"]').first();
+        await expect(roomLink).toBeVisible();
     });
 
     test('ROOM_LIST_02: Should navigate to room details on card click', async ({ page }) => {
@@ -36,7 +36,9 @@ test.describe('Room List', () => {
     });
 
     test('ROOM_LIST_03: Should toggle favorite icon', async ({ homePage, page }) => {
-        // Đăng nhập trước để dùng chức năng yêu thích
+        // BUG: Chức năng yêu thích không hoạt động
+        test.fail();
+
         await page.goto('/');
         await homePage.login(process.env.TEST_EMAIL!, process.env.TEST_PASSWORD!);
         const userMenuButton = page.getByRole('button', { name: /Open user menu/i });

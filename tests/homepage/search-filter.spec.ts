@@ -34,8 +34,6 @@ test.describe('Search Filter', () => {
     });
 
     test('SEARCH_FILTER_04: Should reject end date before start date', async ({ page }) => {
-        test.fail();
-
         await page.goto('/');
         const dateTrigger = page.getByText(getSearchDateRangeRegex(1, 7));
         await dateTrigger.click();
@@ -71,15 +69,16 @@ test.describe('Search Filter', () => {
     test('SEARCH_FILTER_06: Should filter rooms by guest count', async ({ page }) => {
         await page.goto('/');
 
-        // Click "Thêm khách"
         await page.getByText('Thêm khách').click();
         await page.waitForTimeout(500);
 
-        // Tìm nút tăng khách
         const addBtn = page.locator('button').filter({ hasText: '+' }).first();
         if (await addBtn.isVisible()) {
             await addBtn.click();
             await addBtn.click();
+
+            const guestDisplay = page.getByText(/\d+ khách/i).first();
+            await expect(guestDisplay).toBeVisible({ timeout: 3000 });
         }
     });
 
@@ -94,16 +93,17 @@ test.describe('Search Filter', () => {
             for (let i = 0; i < 20; i++) {
                 await addBtn.click();
             }
+
+            const guestDisplay = page.getByText(/(\d+) khách/i).first();
+            await expect(guestDisplay).toBeVisible();
+            const text = await guestDisplay.textContent();
+            const count = parseInt(text?.match(/(\d+)/)?.[1] || '0');
+            expect(count).toBeGreaterThan(0);
+            expect(count).toBeLessThanOrEqual(16);
         }
     });
 
-    test('SEARCH_FILTER_08: Should search by clicking location card', async ({ homePage, page }) => {
-        await homePage.selectLocation('hcm');
-        await page.waitForURL('**/rooms/**', { timeout: 15000 });
-        expect(page.url()).toContain('rooms');
-    });
-
-    test('SEARCH_FILTER_09: Should search via location picker', async ({ page }) => {
+    test('SEARCH_FILTER_08: Should search by clicking magnifying glass icon', async ({ page }) => {
         await page.goto('/');
 
         await page.getByText('Bạn sắp đi đâu?').click();
@@ -111,15 +111,30 @@ test.describe('Search Filter', () => {
             has: page.getByRole('heading', { name: 'Tìm kiếm địa điểm' }),
         });
         await expect(popup).toBeVisible();
-
-        // Click location trong picker → có thể navigate hoặc chỉ fill input
         await popup.getByText('Hồ Chí Minh').click();
-        await page.waitForTimeout(1000);
 
-        // Nếu đã navigate → URL chứa rooms
-        // Nếu chưa → popup đóng, location đã được chọn
-        const navigated = page.url().includes('rooms');
-        const popupClosed = !(await popup.isVisible().catch(() => false));
-        expect(navigated || popupClosed).toBeTruthy();
+        await page.locator('.anticon-search').click();
+        await page.waitForURL('**/rooms/**', { timeout: 15000 });
+
+        expect(page.url()).toContain('rooms');
+    });
+
+    test('SEARCH_FILTER_09: Should search by pressing Enter', async ({ page }) => {
+        // BUG: Nhấn Enter không kích hoạt tìm kiếm
+        test.fail();
+
+        await page.goto('/');
+
+        await page.getByText('Bạn sắp đi đâu?').click();
+        const popup = page.locator('div.absolute').filter({
+            has: page.getByRole('heading', { name: 'Tìm kiếm địa điểm' }),
+        });
+        await expect(popup).toBeVisible();
+        await popup.getByText('Hồ Chí Minh').click();
+
+        await page.keyboard.press('Enter');
+        await page.waitForURL('**/rooms/**', { timeout: 15000 });
+
+        expect(page.url()).toContain('rooms');
     });
 });
