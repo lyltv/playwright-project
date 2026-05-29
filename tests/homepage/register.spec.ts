@@ -84,9 +84,6 @@ test.describe('CyberBnB Register', () => {
     });
 
     test('Should close register form by clicking outside popup', async ({ homePage, page }) => {
-        // BUG: Web không đóng dialog khi click bên ngoài
-        test.fail();
-
         await homePage.navigateSignUp();
         const dialog = page.getByRole('dialog');
         await expect(dialog.getByRole('heading', { name: 'Đăng ký' })).toBeVisible();
