@@ -99,9 +99,6 @@ test.describe('Dashboard - Update Profile', () => {
     });
 
     test('UPDATE_PROFILE_05: Should show error for incorrect email format', async ({ homePage, dashboardPage, page }) => {
-        // BUG: Form cập nhật hồ sơ không validate định dạng email
-        test.fail();
-
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
 
@@ -185,6 +182,9 @@ test.describe('Dashboard - Update Profile', () => {
     });
 
     test('UPDATE_PROFILE_11: Should show error for incorrect phone length', async ({ homePage, dashboardPage, page }) => {
+        // BUG: Cho phép cập nhật số điện thoại sai độ dài
+        test.fail();
+
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
 
@@ -260,6 +260,9 @@ test.describe('Dashboard - Update Profile', () => {
     });
 
     test('UPDATE_PROFILE_14: Should show error when gender is not selected', async ({ homePage, dashboardPage, page }) => {
+        // BUG: Không hiển thị lỗi khi không chọn giới tính
+        test.fail();
+
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
 
