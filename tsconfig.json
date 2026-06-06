@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "paths": {
+            "@/*": [
+                "src/*"
+            ],
+            "@pages/*": [
+                "pages/*"
+            ],
+            "@fixtures/*": [
+                "fixtures/*"
+            ],
+            "@models/*": [
+                "models/*"
+            ],
+            "@constants/*": [
+                "constants/*"
+            ],
+        }
+    }
+}
