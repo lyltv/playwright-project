@@ -1,6 +1,6 @@
 import { test, expect } from '@fixtures/test_hook';
 
-test.describe.configure({ mode: 'serial' });
+test.describe.configure({ mode: 'default' });
 
 test.describe('CyberBnB Login', () => {
     test('Should open login box', async ({ homePage, page }) => {
@@ -48,9 +48,10 @@ test.describe('CyberBnB Login', () => {
         await expect(userMenuButton).toBeVisible({ timeout: 10000 });
 
         // 3. Tên user hiển thị trên navbar
+        const userNameEnv = new RegExp(process.env.TEST_USER_NAME);
         const userName = page
             .getByRole('navigation')
-            .locator('span', { hasText: /Quyên/i })
+            .locator('span', { hasText: userNameEnv })
             .first();
         await expect(userName).toBeVisible();
 
@@ -80,9 +81,8 @@ test.describe('CyberBnB Login', () => {
         await homePage.navigateToLogin();
         const loginDialog = page.getByRole('dialog');
         await expect(loginDialog).toBeVisible();
-
-        // Click bên ngoài dialog (vùng overlay)
-        await page.mouse.click(10, 10);
+        await page.locator('.ant-modal-wrap').click({ position: { x: 10, y: 10 } });
+        await page.waitForTimeout(500);
 
         // Dialog phải đóng lại
         await expect(loginDialog).toBeHidden();
