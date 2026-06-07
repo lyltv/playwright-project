@@ -1,3 +1,4 @@
+import { HOMEPAGE } from '@constants/homePage.config';
 import { test, expect } from '@fixtures/test_hook';
 
 test.describe.configure({ mode: 'default' });
@@ -8,15 +9,16 @@ test.describe('CyberBnB Login', () => {
         const loginDialog = page.getByRole('dialog');
         await expect(loginDialog).toBeVisible();
 
-        await expect(loginDialog.getByRole('heading', { name: 'Đăng nhập' })).toBeVisible();
-        await expect(loginDialog.getByText('Email', { exact: true }).first()).toBeVisible();
-        await expect(page.getByPlaceholder('Vui lòng nhập tài khoản')).toBeVisible();
+        await expect(loginDialog.getByRole('heading', { name: HOMEPAGE.LOGIN.HEADING })).toBeVisible();
+        await expect(loginDialog.getByText(HOMEPAGE.LOGIN.EMAIL_LABEL, { exact: true }).first()).toBeVisible();
+        await expect(page.getByPlaceholder(HOMEPAGE.LOGIN.EMAIL_PLACEHOLDER)).toBeVisible();
 
-        await expect(loginDialog.getByText('Mật khẩu', { exact: true }).first()).toBeVisible();
-        await expect(page.getByPlaceholder('Vui lòng nhập mật khẩu')).toBeVisible();
+        await expect(loginDialog.getByText(HOMEPAGE.LOGIN.PASSWORD_LABEL, { exact: true }).first()).toBeVisible();
+        await expect(page.getByPlaceholder(HOMEPAGE.LOGIN.PASSWORD_PLACEHOLDER)).toBeVisible();
+        
         // Dialog has 2 buttons
-        const btnRegister = page.getByRole('button', { name: 'Đăng ký' });
-        const btnLogin = page.getByRole('button', { name: 'Đăng nhập' });
+        const btnRegister = page.getByRole('button', { name: HOMEPAGE.LOGIN.BTN_REGISTER });
+        const btnLogin = page.getByRole('button', { name: HOMEPAGE.LOGIN.BTN_LOGIN });
         await expect(btnRegister).toBeVisible();
         await expect(btnLogin).toBeVisible();
 
@@ -40,14 +42,14 @@ test.describe('CyberBnB Login', () => {
         const email = process.env.TEST_EMAIL!;
         const password = process.env.TEST_PASSWORD!;
 
-        // 1. Thực hiện đăng nhập
+        // 1. Perform login
         await homePage.login(email, password);
 
-        // 2. Nút user menu xuất hiện với tên user
+        // 2. User menu button appears with user name
         const userMenuButton = page.getByRole('button', { name: /Open user menu/i });
         await expect(userMenuButton).toBeVisible({ timeout: 10000 });
 
-        // 3. Tên user hiển thị trên navbar
+        // 3. User name displayed on navbar
         const userNameEnv = new RegExp(process.env.TEST_USER_NAME);
         const userName = page
             .getByRole('navigation')
@@ -55,14 +57,14 @@ test.describe('CyberBnB Login', () => {
             .first();
         await expect(userName).toBeVisible();
 
-        // 4. Nút "Đăng ký" (trước login) không còn hiển thị
+        // 4. "Register" button (before login) is no longer visible
         await expect(page.locator('button.bg-main')).toBeHidden();
 
-        // 5. Mở dropdown menu và kiểm tra các option sau khi đã login
+        // 5. Open dropdown menu and check options after login
         await userMenuButton.click();
-        const dropdown = page.locator('#user-dropdown').filter({ hasNotText: 'Đăng nhập' });
+        const dropdown = page.locator('#user-dropdown').filter({ hasNotText: HOMEPAGE.LOGIN.BTN_LOGIN });
         await expect(dropdown).toBeVisible();
-        await expect(dropdown.getByText('Sign out')).toBeVisible();
+        await expect(dropdown.getByText(HOMEPAGE.LOGIN.SIGN_OUT)).toBeVisible();
     });
 
     test('Should close login form with X button', async ({ homePage, page }) => {
@@ -70,10 +72,10 @@ test.describe('CyberBnB Login', () => {
         const loginDialog = page.getByRole('dialog');
         await expect(loginDialog).toBeVisible();
 
-        // Click nút X (Close) để đóng dialog
+        // Click X (Close) button to close dialog
         await loginDialog.getByRole('button', { name: 'Close' }).click();
 
-        // Dialog đăng nhập phải đóng lại
+        // Login dialog must be closed
         await expect(loginDialog).toBeHidden();
     });
 
@@ -84,68 +86,68 @@ test.describe('CyberBnB Login', () => {
         await page.locator('.ant-modal-wrap').click({ position: { x: 10, y: 10 } });
         await page.waitForTimeout(500);
 
-        // Dialog phải đóng lại
+        // Dialog must be closed
         await expect(loginDialog).toBeHidden();
     });
 
     test('Should not login with empty email and password', async ({ homePage, page }) => {
-        // 1. Mở dialog đăng nhập
+        // 1. Open login dialog
         await homePage.navigateToLogin();
         const loginDialog = page.getByRole('dialog');
         await expect(loginDialog).toBeVisible();
 
-        // 2. Không nhập gì, click Đăng nhập luôn
-        await page.getByRole('button', { name: 'Đăng nhập' }).click();
+        // 2. Do not enter anything, click Login directly
+        await page.getByRole('button', { name: HOMEPAGE.LOGIN.BTN_LOGIN }).click();
 
-        // 3. Hiển thị thông báo lỗi "Vui lòng không bỏ trống" cho cả Email và Mật khẩu
-        const errorMessages = loginDialog.getByText('Vui lòng không bỏ trống');
+        // 3. Show error message "Vui lòng không bỏ trống" for both Email and Password
+        const errorMessages = loginDialog.getByText(HOMEPAGE.LOGIN.ERR_EMPTY);
         await expect(errorMessages).toHaveCount(2);
 
-        // 4. Dialog đăng nhập vẫn còn hiển thị (không chuyển trang)
+        // 4. Login dialog is still visible (no redirection)
         await expect(loginDialog).toBeVisible();
 
-        // 5. Không xuất hiện user menu (chưa đăng nhập được)
+        // 5. User menu does not appear (not logged in yet)
         const userMenuButton = page.getByRole('button', { name: /Open user menu/i });
         await expect(userMenuButton).toBeHidden();
     });
 
     test('Should not login with wrong email', async ({ homePage, page }) => {
-        // 1. Mở dialog và nhập email sai + mật khẩu đúng
+        // 1. Open dialog and enter wrong email + correct password
         await homePage.navigateToLogin();
         const loginDialog = page.getByRole('dialog');
         await expect(loginDialog).toBeVisible();
 
         await homePage.emailInput.fill('wrong_email@gmail.com');
         await homePage.passwordInput.fill(process.env.TEST_PASSWORD!);
-        await page.getByRole('button', { name: 'Đăng nhập' }).click();
+        await page.getByRole('button', { name: HOMEPAGE.LOGIN.BTN_LOGIN }).click();
 
-        // 2. Hiển thị toast thông báo lỗi
-        await expect(page.getByText('Email hoặc mật khẩu không đúng !')).toBeVisible({
+        // 2. Show error toast message
+        await expect(page.getByText(HOMEPAGE.LOGIN.ERR_WRONG_CREDENTIALS)).toBeVisible({
             timeout: 5000,
         });
 
-        // 3. Dialog vẫn mở, không đăng nhập được
+        // 3. Dialog is still open, login failed
         await expect(loginDialog).toBeVisible();
         const userMenuButton = page.getByRole('button', { name: /Open user menu/i });
         await expect(userMenuButton).toBeHidden();
     });
 
     test('Should not login with wrong password', async ({ homePage, page }) => {
-        // 1. Mở dialog và nhập email đúng + mật khẩu sai
+        // 1. Open dialog and enter correct email + wrong password
         await homePage.navigateToLogin();
         const loginDialog = page.getByRole('dialog');
         await expect(loginDialog).toBeVisible();
 
         await homePage.emailInput.fill(process.env.TEST_EMAIL!);
         await homePage.passwordInput.fill('sai_mat_khau_123');
-        await page.getByRole('button', { name: 'Đăng nhập' }).click();
+        await page.getByRole('button', { name: HOMEPAGE.LOGIN.BTN_LOGIN }).click();
 
-        // 2. Hiển thị toast thông báo lỗi
-        await expect(page.getByText('Email hoặc mật khẩu không đúng !')).toBeVisible({
+        // 2. Show error toast message
+        await expect(page.getByText(HOMEPAGE.LOGIN.ERR_WRONG_CREDENTIALS)).toBeVisible({
             timeout: 5000,
         });
 
-        // 3. Dialog vẫn mở, không đăng nhập được
+        // 3. Dialog is still open, login failed
         await expect(loginDialog).toBeVisible();
         const userMenuButton = page.getByRole('button', { name: /Open user menu/i });
         await expect(userMenuButton).toBeHidden();
@@ -156,15 +158,15 @@ test.describe('CyberBnB Login', () => {
         const loginDialog = page.getByRole('dialog');
         await expect(loginDialog).toBeVisible();
 
-        // 1. Nhập email sai định dạng (không có @)
+        // 1. Enter invalid email format (no @)
         await homePage.emailInput.fill('emailkhonghople');
         await homePage.passwordInput.fill('123456');
-        await page.getByRole('button', { name: 'Đăng nhập' }).click();
+        await page.getByRole('button', { name: HOMEPAGE.LOGIN.BTN_LOGIN }).click();
 
-        // 2. Hiển thị lỗi validation định dạng email
-        await expect(loginDialog.getByText('Vui lòng nhập đúng định dạng email')).toBeVisible();
+        // 2. Show email validation error
+        await expect(loginDialog.getByText(HOMEPAGE.LOGIN.ERR_INVALID_EMAIL)).toBeVisible();
 
-        // 3. Dialog vẫn mở, không đăng nhập được
+        // 3. Dialog is still open, login failed
         await expect(loginDialog).toBeVisible();
         const userMenuButton = page.getByRole('button', { name: /Open user menu/i });
         await expect(userMenuButton).toBeHidden();
@@ -177,61 +179,61 @@ test.describe('CyberBnB Login', () => {
 
         await homePage.passwordInput.fill('MySecret123');
 
-        // Form đăng nhập không có icon con mắt
+        // Login form has no eye icon
         const eyeIcon = loginDialog.locator('.anticon-eye-invisible, .anticon-eye');
         await expect(eyeIcon).toHaveCount(0);
 
-        // Mật khẩu luôn bị ẩn
+        // Password is always hidden
         await expect(homePage.passwordInput).toHaveAttribute('type', 'password');
     });
 
     test('Should show success toast on login', async ({ homePage, page }) => {
         await homePage.login(process.env.TEST_EMAIL!, process.env.TEST_PASSWORD!);
 
-        // Toast "Đăng nhập thành công" phải xuất hiện
-        await expect(page.getByText('Đăng nhập thành công')).toBeVisible({ timeout: 5000 });
+        // Toast "Đăng nhập thành công" must appear
+        await expect(page.getByText(HOMEPAGE.LOGIN.TOAST_SUCCESS)).toBeVisible({ timeout: 5000 });
     });
 
     test('Should show success toast on logout', async ({ homePage, page }) => {
-        // 1. Đăng nhập trước
+        // 1. Login first
         await homePage.login(process.env.TEST_EMAIL!, process.env.TEST_PASSWORD!);
         const userMenuButton = page.getByRole('button', { name: /Open user menu/i });
         await expect(userMenuButton).toBeVisible({ timeout: 10000 });
 
-        // 2. Mở dropdown và click Sign out
+        // 2. Open dropdown and click Sign out
         await userMenuButton.click();
-        const dropdown = page.locator('#user-dropdown').filter({ hasNotText: 'Đăng nhập' });
+        const dropdown = page.locator('#user-dropdown').filter({ hasNotText: HOMEPAGE.LOGIN.BTN_LOGIN });
         await expect(dropdown).toBeVisible();
-        await dropdown.getByText('Sign out').click();
+        await dropdown.getByText(HOMEPAGE.LOGIN.SIGN_OUT).click();
 
-        // 3. Toast "Đăng xuất thành công" phải xuất hiện
-        await expect(page.getByText('Đăng xuất thành công')).toBeVisible({ timeout: 5000 });
+        // 3. Toast "Đăng xuất thành công" must appear
+        await expect(page.getByText(HOMEPAGE.LOGIN.TOAST_LOGOUT)).toBeVisible({ timeout: 5000 });
 
-        // 4. Sau logout: nút đăng ký hiện lại
+        // 4. After logout: register button is visible again
         await expect(page.locator('button.bg-main')).toBeVisible({ timeout: 10000 });
     });
 
     test('Should logout from another page successfully', async ({ homePage, page }) => {
-        // 1. Đăng nhập
+        // 1. Login
         await homePage.login(process.env.TEST_EMAIL!, process.env.TEST_PASSWORD!);
         const userMenuButton = page.getByRole('button', { name: /Open user menu/i });
         await expect(userMenuButton).toBeVisible({ timeout: 10000 });
 
-        // 2. Chuyển sang trang khác
+        // 2. Go to another page
         await homePage.selectLocation('hcm');
         await page.waitForURL('**/rooms/ho-chi-minh**', { timeout: 30000 });
 
-        // 3. Logout — chờ user menu sẵn sàng trên trang mới
+        // 3. Logout — wait for user menu to be ready on the new page
         await expect(userMenuButton).toBeVisible({ timeout: 15000 });
         await userMenuButton.click();
-        const dropdown = page.locator('#user-dropdown').filter({ hasNotText: 'Đăng nhập' });
+        const dropdown = page.locator('#user-dropdown').filter({ hasNotText: HOMEPAGE.LOGIN.BTN_LOGIN });
         await expect(dropdown).toBeVisible();
-        await dropdown.getByText('Sign out').click();
+        await dropdown.getByText(HOMEPAGE.LOGIN.SIGN_OUT).click();
 
-        // 4. Hiển thị toast đăng xuất thành công
-        await expect(page.getByText('Đăng xuất thành công')).toBeVisible({ timeout: 5000 });
+        // 4. Display toast logout successfully
+        await expect(page.getByText(HOMEPAGE.LOGIN.TOAST_LOGOUT)).toBeVisible({ timeout: 5000 });
 
-        // 5. Trạng thái đã logout
+        // 5. Logged out state
         await expect(page.locator('button.bg-main')).toBeVisible({ timeout: 10000 });
     });
 });

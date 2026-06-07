@@ -5,11 +5,11 @@ test.describe('Prominent Location', () => {
         homePage,
         page,
     }) => {
-        // Click vào card Hồ Chí Minh
+        // Click on Ho Chi Minh card
         await homePage.selectLocation('hcm');
         await page.waitForURL('**/rooms/ho-chi-minh**', { timeout: 15000 });
 
-        // Chỉ hiển thị phòng ở HCM
+        // Only show rooms in HCM
         expect(page.url()).toContain('ho-chi-minh');
         const roomCards = page.locator('[class*="card"], [class*="room"], [class*="listing"]');
         await expect(roomCards.first()).toBeVisible({ timeout: 10000 });
@@ -26,16 +26,16 @@ test.describe('Prominent Location', () => {
     });
 
     test('PROMINENT_LOCATION_03: Should switch between locations', async ({ homePage, page }) => {
-        // Chọn HCM trước
+        // Select HCM first
         await homePage.selectLocation('hcm');
         await page.waitForURL('**/rooms/ho-chi-minh**', { timeout: 15000 });
         expect(page.url()).toContain('ho-chi-minh');
 
-        // Quay lại trang chủ
+        // Go back to Homepage
         await page.goto('/');
         await page.waitForLoadState('domcontentloaded');
 
-        // Chọn Hà Nội
+        // Select Hanoi
         await homePage.selectLocation('hanoi');
         await page.waitForURL('**/rooms/ha-noi**', { timeout: 15000 });
         expect(page.url()).toContain('ha-noi');
@@ -48,24 +48,24 @@ test.describe('Prominent Location', () => {
         await locationCard.scrollIntoViewIfNeeded();
         await expect(locationCard).toBeVisible();
 
-        // Lấy style trước hover
+        // Get style before hover
         const styleBefore = await locationCard.evaluate((el) => {
             const s = window.getComputedStyle(el);
             return `${s.boxShadow}|${s.transform}|${s.opacity}|${s.filter}`;
         });
 
-        // Hover vào card
+        // Hover over card
         await locationCard.hover();
         await page.waitForTimeout(300);
 
-        // Lấy style sau hover — kiểm tra có thay đổi
+        // Get style after hover — check if changed
         const styleAfter = await locationCard.evaluate((el) => {
             const s = window.getComputedStyle(el);
             return `${s.boxShadow}|${s.transform}|${s.opacity}|${s.filter}`;
         });
 
-        // Nếu style thay đổi → có hiệu ứng hover
-        // Nếu không thay đổi → card vẫn phải visible (hover không crash)
+        // If style changed → hover effect is present
+        // If not changed → card must still be visible (hover does not crash)
         expect(locationCard).toBeVisible();
     });
 });

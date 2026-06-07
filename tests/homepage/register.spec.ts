@@ -1,3 +1,4 @@
+import { HOMEPAGE } from '@constants/homePage.config';
 import { test, expect } from '@fixtures/test_hook';
 import { Page, Locator } from '@playwright/test';
 
@@ -23,12 +24,12 @@ async function fillRegistrationForm(
         ...overrides,
     };
 
-    await dialog.getByPlaceholder('Điền tên vào đây...').first().fill(data.name);
-    await dialog.getByPlaceholder('Điền tên vào đây...').last().fill(data.email);
-    await dialog.getByPlaceholder('Điền mật khẩu....').fill(data.password);
-    await dialog.getByPlaceholder('Điền số điện thoại....').fill(data.phone);
+    await dialog.getByPlaceholder(HOMEPAGE.REGISTER.PLACEHOLDER_NAME).first().fill(data.name);
+    await dialog.getByPlaceholder(HOMEPAGE.REGISTER.PLACEHOLDER_NAME).last().fill(data.email);
+    await dialog.getByPlaceholder(HOMEPAGE.REGISTER.PLACEHOLDER_PASSWORD).fill(data.password);
+    await dialog.getByPlaceholder(HOMEPAGE.REGISTER.PLACEHOLDER_PHONE).fill(data.phone);
 
-    const birthdayInput = dialog.getByPlaceholder('Chọn ngày sinh');
+    const birthdayInput = dialog.getByPlaceholder(HOMEPAGE.REGISTER.PLACEHOLDER_BIRTHDAY);
     await birthdayInput.click();
     await birthdayInput.pressSequentially(data.birthday);
     await birthdayInput.press('Enter');
@@ -43,7 +44,7 @@ test.describe('CyberBnB Register', () => {
     test('Should open signup box', async ({ homePage, page }) => {
         await homePage.navigateSignUp();
         const signUpDialog = page.getByRole('dialog');
-        await expect(signUpDialog.getByRole('heading', { name: 'Đăng ký' })).toBeVisible();
+        await expect(signUpDialog.getByRole('heading', { name: HOMEPAGE.REGISTER.HEADING })).toBeVisible();
     });
 
     test('Should register successfully', async ({ homePage, page }) => {
@@ -58,15 +59,15 @@ test.describe('CyberBnB Register', () => {
             gender: 'Nam',
         };
 
-        // 1. Điền form và submit
+        // 1. Fill the form and submit
         await homePage.signUp(signUpData);
 
-        // 2. Toast "Đăng ký thành công" xuất hiện
-        await expect(page.getByText('Đăng ký thành công')).toBeVisible({ timeout: 10000 });
+        // 2. Toast "Đăng ký thành công" appears
+        await expect(page.getByText(HOMEPAGE.REGISTER.TOAST_SUCCESS)).toBeVisible({ timeout: 10000 });
 
-        // 3. Sau đăng ký thành công, web tự mở dialog Đăng nhập
+        // 3. After successful registration, the website automatically opens the Login dialog
         const loginDialog = page.getByRole('dialog').filter({
-            has: page.getByRole('heading', { name: 'Đăng nhập' }),
+            has: page.getByRole('heading', { name: HOMEPAGE.LOGIN.HEADING }),
         });
         await expect(loginDialog).toBeVisible({ timeout: 5000 });
     });
@@ -74,126 +75,126 @@ test.describe('CyberBnB Register', () => {
     test('Should close register form with X button', async ({ homePage, page }) => {
         await homePage.navigateSignUp();
         const dialog = page.getByRole('dialog');
-        await expect(dialog.getByRole('heading', { name: 'Đăng ký' })).toBeVisible();
+        await expect(dialog.getByRole('heading', { name: HOMEPAGE.REGISTER.HEADING })).toBeVisible();
 
-        // Click nút X (Close) để đóng dialog
+        // Click X (Close) button to close the dialog
         await dialog.getByRole('button', { name: 'Close' }).click();
 
-        // Dialog đăng ký phải đóng lại
+        // The signup dialog must be closed
         await expect(dialog).toBeHidden();
     });
 
     test('Should close register form by clicking outside popup', async ({ homePage, page }) => {
         await homePage.navigateSignUp();
         const dialog = page.getByRole('dialog');
-        await expect(dialog.getByRole('heading', { name: 'Đăng ký' })).toBeVisible();
+        await expect(dialog.getByRole('heading', { name: HOMEPAGE.REGISTER.HEADING })).toBeVisible();
         await page.locator('.ant-modal-wrap').click({ position: { x: 10, y: 10 } });
 
-        // Dialog phải đóng lại
+        // The dialog must be closed
         await expect(dialog).toBeHidden();
     });
 
     test('Should not register with all fields empty', async ({ homePage, page }) => {
-        // 1. Mở dialog đăng ký
+        // 1. Open the register dialog
         await homePage.navigateSignUp();
         const dialog = page.getByRole('dialog');
-        await expect(dialog.getByRole('heading', { name: 'Đăng ký tài khoản' })).toBeVisible();
+        await expect(dialog.getByRole('heading', { name: HOMEPAGE.REGISTER.HEADING_ACCOUNT })).toBeVisible();
 
-        // 2. Không nhập gì, click Đăng ký luôn
-        await dialog.getByRole('button', { name: 'Đăng ký' }).click();
+        // 2. Do not fill anything, click Register directly
+        await dialog.getByRole('button', { name: HOMEPAGE.REGISTER.HEADING }).click();
 
-        // 3. Hiển thị lỗi "Vui lòng không bỏ trống" cho Name, Email, Password, Phone
-        const emptyErrors = dialog.getByText('Vui lòng không bỏ trống');
+        // 3. Display error "Vui lòng không bỏ trống" for Name, Email, Password, Phone
+        const emptyErrors = dialog.getByText(HOMEPAGE.LOGIN.ERR_EMPTY);
         await expect(emptyErrors).toHaveCount(4);
 
-        // 4. Hiển thị lỗi riêng cho Birthday
-        await expect(dialog.getByText('Vui lòng chọn ngày sinh')).toBeVisible();
+        // 4. Display specific error for Birthday
+        await expect(dialog.getByText(HOMEPAGE.REGISTER.ERR_BIRTHDAY_EMPTY)).toBeVisible();
 
-        // 5. Dialog vẫn mở, không đăng ký được
-        await expect(dialog.getByRole('heading', { name: 'Đăng ký tài khoản' })).toBeVisible();
+        // 5. Dialog is still visible, registration failed
+        await expect(dialog.getByRole('heading', { name: HOMEPAGE.REGISTER.HEADING_ACCOUNT })).toBeVisible();
 
-        // 6. Không xuất hiện toast thành công
-        await expect(page.getByText('Đăng ký thành công')).toBeHidden();
+        // 6. Success toast is not visible
+        await expect(page.getByText(HOMEPAGE.REGISTER.TOAST_SUCCESS)).toBeHidden();
     });
 
     test('Should show error when only Name is filled', async ({ homePage, page }) => {
         await homePage.navigateSignUp();
         const dialog = page.getByRole('dialog');
 
-        // Chỉ nhập Name, bỏ trống các field khác
-        await dialog.getByPlaceholder('Điền tên vào đây...').first().fill('Test User');
-        await dialog.getByRole('button', { name: 'Đăng ký' }).click();
+        // Only fill Name, leave other fields empty
+        await dialog.getByPlaceholder(HOMEPAGE.REGISTER.PLACEHOLDER_NAME).first().fill('Test User');
+        await dialog.getByRole('button', { name: HOMEPAGE.REGISTER.HEADING }).click();
 
-        // Email, Password, Phone vẫn báo lỗi trống
-        const emptyErrors = dialog.getByText('Vui lòng không bỏ trống');
+        // Email, Password, Phone still report empty errors
+        const emptyErrors = dialog.getByText(HOMEPAGE.LOGIN.ERR_EMPTY);
         await expect(emptyErrors).toHaveCount(3);
 
-        // Birthday vẫn báo lỗi
-        await expect(dialog.getByText('Vui lòng chọn ngày sinh')).toBeVisible();
+        // Birthday still reports error
+        await expect(dialog.getByText(HOMEPAGE.REGISTER.ERR_BIRTHDAY_EMPTY)).toBeVisible();
 
-        // Không đăng ký được
-        await expect(page.getByText('Đăng ký thành công')).toBeHidden();
+        // Registration failed
+        await expect(page.getByText(HOMEPAGE.REGISTER.TOAST_SUCCESS)).toBeHidden();
     });
 
     test('Should show error when only Email is filled', async ({ homePage, page }) => {
         await homePage.navigateSignUp();
         const dialog = page.getByRole('dialog');
 
-        // Chỉ nhập Email
-        await dialog.getByPlaceholder('Điền tên vào đây...').last().fill('test@gmail.com');
-        await dialog.getByRole('button', { name: 'Đăng ký' }).click();
+        // Only fill Email
+        await dialog.getByPlaceholder(HOMEPAGE.REGISTER.PLACEHOLDER_NAME).last().fill('test@gmail.com');
+        await dialog.getByRole('button', { name: HOMEPAGE.REGISTER.HEADING }).click();
 
-        // Name, Password, Phone vẫn báo lỗi trống
-        const emptyErrors = dialog.getByText('Vui lòng không bỏ trống');
+        // Name, Password, Phone still report empty errors
+        const emptyErrors = dialog.getByText(HOMEPAGE.LOGIN.ERR_EMPTY);
         await expect(emptyErrors).toHaveCount(3);
 
-        // Birthday vẫn báo lỗi
-        await expect(dialog.getByText('Vui lòng chọn ngày sinh')).toBeVisible();
+        // Birthday still reports error
+        await expect(dialog.getByText(HOMEPAGE.REGISTER.ERR_BIRTHDAY_EMPTY)).toBeVisible();
 
-        await expect(page.getByText('Đăng ký thành công')).toBeHidden();
+        await expect(page.getByText(HOMEPAGE.REGISTER.TOAST_SUCCESS)).toBeHidden();
     });
 
     test('Should show error when Birthday is missing', async ({ homePage, page }) => {
         await homePage.navigateSignUp();
         const dialog = page.getByRole('dialog');
 
-        // Nhập đủ 4 field text, bỏ trống Birthday
-        await dialog.getByPlaceholder('Điền tên vào đây...').first().fill('Test User');
+        // Fill all 4 text fields, leave Birthday empty
+        await dialog.getByPlaceholder(HOMEPAGE.REGISTER.PLACEHOLDER_NAME).first().fill('Test User');
         await dialog
-            .getByPlaceholder('Điền tên vào đây...')
+            .getByPlaceholder(HOMEPAGE.REGISTER.PLACEHOLDER_NAME)
             .last()
             .fill(`test${Date.now()}@gmail.com`);
-        await dialog.getByPlaceholder('Điền mật khẩu....').fill('Test@12345');
-        await dialog.getByPlaceholder('Điền số điện thoại....').fill('0901234567');
-        await dialog.getByRole('button', { name: 'Đăng ký' }).click();
+        await dialog.getByPlaceholder(HOMEPAGE.REGISTER.PLACEHOLDER_PASSWORD).fill('Test@12345');
+        await dialog.getByPlaceholder(HOMEPAGE.REGISTER.PLACEHOLDER_PHONE).fill('0901234567');
+        await dialog.getByRole('button', { name: HOMEPAGE.REGISTER.HEADING }).click();
 
-        // Không còn lỗi "Vui lòng không bỏ trống"
-        await expect(dialog.getByText('Vui lòng không bỏ trống')).toHaveCount(0);
+        // No more "Vui lòng không bỏ trống" errors
+        await expect(dialog.getByText(HOMEPAGE.LOGIN.ERR_EMPTY)).toHaveCount(0);
 
-        // Chỉ còn lỗi Birthday
-        await expect(dialog.getByText('Vui lòng chọn ngày sinh')).toBeVisible();
+        // Only Birthday error remains
+        await expect(dialog.getByText(HOMEPAGE.REGISTER.ERR_BIRTHDAY_EMPTY)).toBeVisible();
 
-        // Không đăng ký được
-        await expect(page.getByText('Đăng ký thành công')).toBeHidden();
+        // Registration failed
+        await expect(page.getByText(HOMEPAGE.REGISTER.TOAST_SUCCESS)).toBeHidden();
     });
 
     test('Should not register with password under 6 characters', async ({ homePage, page }) => {
-        // BUG: Web cho phép đăng ký với mật khẩu < 6 ký tự (không validate)
+        // BUG: Web allows registration with password < 6 characters (no validation)
         test.fail();
 
         await homePage.navigateSignUp();
         const dialog = page.getByRole('dialog');
-        await expect(dialog.getByRole('heading', { name: 'Đăng ký tài khoản' })).toBeVisible();
+        await expect(dialog.getByRole('heading', { name: HOMEPAGE.REGISTER.HEADING_ACCOUNT })).toBeVisible();
 
         await fillRegistrationForm(dialog, page, { password: '12345' });
 
-        // Bắt API response khi click đăng ký
+        // Capture API response on registration click
         const [response] = await Promise.all([
             page.waitForResponse((res) => res.url().includes('/auth/signup')),
-            dialog.getByRole('button', { name: 'Đăng ký' }).click(),
+            dialog.getByRole('button', { name: HOMEPAGE.REGISTER.HEADING }).click(),
         ]);
 
-        // Server phải từ chối đăng ký với mật khẩu < 6 ký tự
+        // Server should reject registration with password < 6 characters
         expect(response.status()).not.toBe(200);
     });
 
@@ -202,11 +203,11 @@ test.describe('CyberBnB Register', () => {
         const dialog = page.getByRole('dialog');
 
         await fillRegistrationForm(dialog, page, { phone: 'abc7658345' });
-        await dialog.getByRole('button', { name: 'Đăng ký' }).click();
+        await dialog.getByRole('button', { name: HOMEPAGE.REGISTER.HEADING }).click();
 
-        // Hiển thị lỗi "Số điện thoại không hợp lệ"
-        await expect(dialog.getByText('Số điện thoại không hợp lệ')).toBeVisible();
-        await expect(page.getByText('Đăng ký thành công')).toBeHidden();
+        // Show "Số điện thoại không hợp lệ" error
+        await expect(dialog.getByText(HOMEPAGE.REGISTER.ERR_PHONE_INVALID)).toBeVisible();
+        await expect(page.getByText(HOMEPAGE.REGISTER.TOAST_SUCCESS)).toBeHidden();
     });
 
     test('Should not register with incorrect phone number length', async ({ homePage, page }) => {
@@ -214,30 +215,30 @@ test.describe('CyberBnB Register', () => {
         const dialog = page.getByRole('dialog');
 
         await fillRegistrationForm(dialog, page, { phone: '9864' });
-        await dialog.getByRole('button', { name: 'Đăng ký' }).click();
+        await dialog.getByRole('button', { name: HOMEPAGE.REGISTER.HEADING }).click();
 
-        // Hiển thị lỗi "Số điện thoại không hợp lệ"
-        await expect(dialog.getByText('Số điện thoại không hợp lệ')).toBeVisible();
-        await expect(page.getByText('Đăng ký thành công')).toBeHidden();
+        // Show "Số điện thoại không hợp lệ" error
+        await expect(dialog.getByText(HOMEPAGE.REGISTER.ERR_PHONE_INVALID)).toBeVisible();
+        await expect(page.getByText(HOMEPAGE.REGISTER.TOAST_SUCCESS)).toBeHidden();
     });
 
     test('Should not register with future date of birth', async ({ homePage, page }) => {
-        // BUG: Web cho phép chọn ngày sinh ở tương lai và đăng ký thành công
+        // BUG: Web allows future birthday and registers successfully
         test.fail();
 
         await homePage.navigateSignUp();
         const dialog = page.getByRole('dialog');
-        await expect(dialog.getByRole('heading', { name: 'Đăng ký tài khoản' })).toBeVisible();
+        await expect(dialog.getByRole('heading', { name: HOMEPAGE.REGISTER.HEADING_ACCOUNT })).toBeVisible();
 
         await fillRegistrationForm(dialog, page, { birthday: '15/06/2030' });
 
-        // Bắt API response khi click đăng ký
+        // Capture API response on registration click
         const [response] = await Promise.all([
             page.waitForResponse((res) => res.url().includes('/auth/signup')),
-            dialog.getByRole('button', { name: 'Đăng ký' }).click(),
+            dialog.getByRole('button', { name: HOMEPAGE.REGISTER.HEADING }).click(),
         ]);
 
-        // Server phải từ chối đăng ký với ngày sinh tương lai
+        // Server should reject registration with future birthday
         expect(response.status()).not.toBe(200);
     });
 
@@ -246,11 +247,11 @@ test.describe('CyberBnB Register', () => {
         const dialog = page.getByRole('dialog');
 
         await fillRegistrationForm(dialog, page, { email: 'emailsaidinhdang' });
-        await dialog.getByRole('button', { name: 'Đăng ký' }).click();
+        await dialog.getByRole('button', { name: HOMEPAGE.REGISTER.HEADING }).click();
 
-        await expect(dialog.getByText('Vui lòng nhập đúng định dạng email')).toBeVisible();
-        await expect(dialog.getByRole('heading', { name: 'Đăng ký tài khoản' })).toBeVisible();
-        await expect(page.getByText('Đăng ký thành công')).toBeHidden();
+        await expect(dialog.getByText(HOMEPAGE.LOGIN.ERR_INVALID_EMAIL)).toBeVisible();
+        await expect(dialog.getByRole('heading', { name: HOMEPAGE.REGISTER.HEADING_ACCOUNT })).toBeVisible();
+        await expect(page.getByText(HOMEPAGE.REGISTER.TOAST_SUCCESS)).toBeHidden();
     });
 
     test('Should not register with existing email', async ({ homePage, page }) => {
@@ -258,34 +259,34 @@ test.describe('CyberBnB Register', () => {
         const dialog = page.getByRole('dialog');
 
         await fillRegistrationForm(dialog, page, { email: process.env.TEST_EMAIL! });
-        await dialog.getByRole('button', { name: 'Đăng ký' }).click();
+        await dialog.getByRole('button', { name: HOMEPAGE.REGISTER.HEADING }).click();
 
-        // Hiển thị toast lỗi email đã tồn tại
-        await expect(page.getByText('Email đã tồn tại !')).toBeVisible({ timeout: 5000 });
+        // Show error toast for existing email
+        await expect(page.getByText(HOMEPAGE.REGISTER.ERR_EMAIL_EXISTS)).toBeVisible({ timeout: 5000 });
 
-        // Dialog vẫn mở, không đăng ký được
-        await expect(dialog.getByRole('heading', { name: 'Đăng ký tài khoản' })).toBeVisible();
-        await expect(page.getByText('Đăng ký thành công')).toBeHidden();
+        // Dialog remains open, registration failed
+        await expect(dialog.getByRole('heading', { name: HOMEPAGE.REGISTER.HEADING_ACCOUNT })).toBeVisible();
+        await expect(page.getByText(HOMEPAGE.REGISTER.TOAST_SUCCESS)).toBeHidden();
     });
 
     test('Should toggle password visibility with eye icon', async ({ homePage, page }) => {
         await homePage.navigateSignUp();
         const dialog = page.getByRole('dialog');
-        await expect(dialog.getByRole('heading', { name: 'Đăng ký tài khoản' })).toBeVisible();
+        await expect(dialog.getByRole('heading', { name: HOMEPAGE.REGISTER.HEADING_ACCOUNT })).toBeVisible();
 
-        // Nhập mật khẩu
-        const passwordInput = dialog.getByPlaceholder('Điền mật khẩu....');
+        // Fill password
+        const passwordInput = dialog.getByPlaceholder(HOMEPAGE.REGISTER.PLACEHOLDER_PASSWORD);
         await passwordInput.fill('MySecret123');
 
-        // 1. Mặc định: type="password" → mật khẩu bị ẩn (hiện dạng ••••)
+        // 1. Default: type="password" → password is hidden
         await expect(passwordInput).toHaveAttribute('type', 'password');
 
-        // 2. Click icon con mắt → type chuyển thành "text" → hiện mật khẩu
+        // 2. Click eye icon → type is "text" → show password
         const eyeIcon = dialog.locator('.ant-input-password-icon');
         await eyeIcon.click();
         await expect(passwordInput).toHaveAttribute('type', 'text');
 
-        // 3. Click lần nữa → type trở về "password" → ẩn mật khẩu lại
+        // 3. Click again → type back to "password" → hide password again
         await eyeIcon.click();
         await expect(passwordInput).toHaveAttribute('type', 'password');
     });
@@ -304,8 +305,8 @@ test.describe('CyberBnB Register', () => {
             email: dupEmail,
         });
 
-        // Click nút Đăng ký nhiều lần liên tục (spam click)
-        const registerBtn = dialog.getByRole('button', { name: 'Đăng ký' });
+        // Click Register button multiple times (spam click)
+        const registerBtn = dialog.getByRole('button', { name: HOMEPAGE.REGISTER.HEADING });
         await Promise.all([
             registerBtn.click(),
             registerBtn.click({ delay: 50 }),
@@ -314,14 +315,14 @@ test.describe('CyberBnB Register', () => {
 
         await page.waitForTimeout(3000);
 
-        const successToasts = page.getByText('Đăng ký thành công');
+        const successToasts = page.getByText(HOMEPAGE.REGISTER.TOAST_SUCCESS);
         const successCount = await successToasts.count();
         expect(successCount).toBe(1);
 
-        const duplicateToast = page.getByText('Email đã tồn tại !');
+        const duplicateToast = page.getByText(HOMEPAGE.REGISTER.ERR_EMAIL_EXISTS);
         await expect(duplicateToast).toBeHidden();
 
-        // Thử đăng ký lại cùng email → phải báo trùng
+        // Retry registering with the same email → must show duplicate error
         await page.reload();
         await homePage.navigateSignUp();
         const dialog2 = page.getByRole('dialog');
@@ -330,8 +331,8 @@ test.describe('CyberBnB Register', () => {
             name: `Dup User ${randomId}`,
             email: dupEmail,
         });
-        await dialog2.getByRole('button', { name: 'Đăng ký' }).click();
+        await dialog2.getByRole('button', { name: HOMEPAGE.REGISTER.HEADING }).click();
 
-        await expect(page.getByText('Email đã tồn tại !')).toBeVisible({ timeout: 5000 });
+        await expect(page.getByText(HOMEPAGE.REGISTER.ERR_EMAIL_EXISTS)).toBeVisible({ timeout: 5000 });
     });
 });
