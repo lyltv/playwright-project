@@ -1,0 +1,347 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: homepage/search-filter.spec.ts >> Search Filter >> SEARCH_FILTER_07: Should handle excessive guest count
+- Location: tests/homepage/search-filter.spec.ts:85:9
+
+# Error details
+
+```
+Error: expect(locator).toBeVisible() failed
+
+Locator: getByText(/(\d+) khách/i).first()
+Expected: visible
+Timeout: 10000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeVisible" with timeout 10000ms
+  - waiting for getByText(/(\d+) khách/i).first()
+
+```
+
+```yaml
+- navigation:
+  - link "Cyber Logo CyberSoft":
+    - /url: /
+    - img "Cyber Logo"
+    - text: CyberSoft
+  - button:
+    - img
+  - list:
+    - listitem:
+      - link "Home":
+        - /url: /
+    - listitem:
+      - link "About":
+        - /url: /
+    - listitem:
+      - link "Services":
+        - /url: /
+    - listitem:
+      - link "Pricing":
+        - /url: "#"
+    - listitem:
+      - link "Contact":
+        - /url: "#"
+- text: Your browser does not support the video tag.
+- heading "Cyberbnb" [level=2]
+- paragraph: Belong anywhere
+- paragraph: Địa điểm
+- paragraph: Bạn sắp đi đâu?
+- paragraph: 07/06/2026 – 14/06/2026
+- paragraph: Thêm khách
+- img "search"
+- text: Khách
+- button "-"
+- text: "21"
+- button "+"
+- button "Loại nơi ở"
+- button "Giá"
+- button "Đặt ngay"
+- button "Phòng và phòng ngủ"
+- button "Bộ lọc khác"
+- link "Hồ Chí Minh 15 phút lái xe":
+  - /url: /rooms/ho-chi-minh
+  - heading "Hồ Chí Minh" [level=2]
+  - paragraph: 15 phút lái xe
+- link "Cần Thơ 3 giờ lái xe":
+  - /url: /rooms/can-tho
+  - heading "Cần Thơ" [level=2]
+  - paragraph: 3 giờ lái xe
+- link "Nha Trang 6.5 giờ lái xe":
+  - /url: /rooms/nha-trang
+  - heading "Nha Trang" [level=2]
+  - paragraph: 6.5 giờ lái xe
+- link "Hà Nội 15 phút lái xe":
+  - /url: /rooms/ha-noi
+  - heading "Hà Nội" [level=2]
+  - paragraph: 15 phút lái xe
+- link "Phú Quốc 7.5 giờ lái xe":
+  - /url: /rooms/phu-quoc
+  - heading "Phú Quốc" [level=2]
+  - paragraph: 7.5 giờ lái xe
+- link "Đà Nẵng 45 phút lái xe":
+  - /url: /rooms/da-nang
+  - heading "Đà Nẵng" [level=2]
+  - paragraph: 45 phút lái xe
+- link "Đà Lạt 30 phút lái xe":
+  - /url: /rooms/da-lat
+  - heading "Đà Lạt" [level=2]
+  - paragraph: 30 phút lái xe
+- link "Phan Thiết 5 giờ lái xe":
+  - /url: /rooms/phan-thiet
+  - heading "Phan Thiết" [level=2]
+  - paragraph: 5 giờ lái xe
+- heading "Ở bất cứ đâu" [level=1]
+- link "Toàn bộ nhà":
+  - /url: /rooms/ho-chi-minh
+- link "Chỗ ở độc đáo":
+  - /url: /rooms/nha-trang
+- link "Trang trại và thiên nhiên":
+  - /url: /rooms/da-lat
+- link "Cho phép mang theo thú cưng":
+  - /url: /rooms/da-nang
+- heading "Giới thiệu" [level=2]
+- list:
+  - listitem:
+    - link "Phương thức hoạt động của Cyber":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Trang tin tức":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Nhà đầu tư":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Cyber Plus":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Cyber Luxe":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "HotelTonight":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Cyber for Work":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Nhờ có Host, mọi điều đều có thể":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Cơ hội nghề nghiệp":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Thư của nhà sáng lập":
+      - /url: https://cybersoft.edu.vn
+- heading "Cộng đồng" [level=2]
+- list:
+  - listitem:
+    - link "Sự đa đạng và Cảm giác thân thuộc":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Tiện nghi phù hợp cho người khuyết tật":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Đối tác liên kết Cyber":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Chỗ ở cho tuyến đầu":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Lượt giới thiệu của khách":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "CyberSoft.edu.vn":
+      - /url: https://cybersoft.edu.vn
+- heading "Đón tiếp khách" [level=2]
+- list:
+  - listitem:
+    - link "Cho thuê nhà":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Tổ chức Trải nghiệm trực tuyến":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Tổ chức Trải nghiệm":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Đón tiếp khách có trách nhiệm":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Trung tâm tài nguyên":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Trung tâm cộng đồng":
+      - /url: https://cybersoft.edu.vn
+- heading "Hỗ trợ" [level=2]
+- list:
+  - listitem:
+    - link "Biện pháp ứng phó đại dịch COVID-19":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Trung tâm trợ giúp":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Các tùy chọn hủy":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Hỗ trợ khu dân cư":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Tin cây và an toàn":
+      - /url: https://cybersoft.edu.vn
+- text: © 2022 Nguyễn Nhật Sang, Inc.Quyền riêng tư.Điều khoản.Sơ đồ trang web. Tiếng Việt (VN)USDHỗ trợ tài nguyên
+```
+
+# Test source
+
+```ts
+  1   | import { test, expect } from '@fixtures/test_hook';
+  2   | import { getSearchDateRangeRegex } from 'utils/dateHelper';
+  3   | 
+  4   | test.describe('Search Filter', () => {
+  5   |     test('SEARCH_FILTER_01: Should show all locations when location is blank', async ({ page }) => {
+  6   |         await page.goto('/');
+  7   | 
+  8   |         // Click vào khu vực location trên search bar
+  9   |         await page.getByText('Địa điểm').click();
+  10  |         const popup = page.locator('div.absolute').filter({
+  11  |             has: page.getByRole('heading', { name: 'Tìm kiếm địa điểm' }),
+  12  |         });
+  13  |         await expect(popup).toBeVisible();
+  14  |     });
+  15  | 
+  16  |     test('SEARCH_FILTER_02: Should search rooms by valid location', async ({ homePage, page }) => {
+  17  |         await homePage.selectLocation('hcm');
+  18  |         await page.waitForURL('**/rooms/ho-chi-minh**', { timeout: 15000 });
+  19  |         expect(page.url()).toContain('ho-chi-minh');
+  20  |     });
+  21  | 
+  22  |     test('SEARCH_FILTER_03: Should open date range picker', async ({ page }) => {
+  23  |         await page.goto('/');
+  24  | 
+  25  |         const dateTrigger = page.getByText(getSearchDateRangeRegex(1, 7));
+  26  |         await dateTrigger.click();
+  27  | 
+  28  |         const picker = page.locator('.rdrDateRangePickerWrapper');
+  29  |         await expect(picker).toBeVisible();
+  30  | 
+  31  |         // Kiểm tra có thể chọn "This Week"
+  32  |         const thisWeek = picker.locator('button.rdrStaticRange').filter({ hasText: 'This Week' });
+  33  |         await expect(thisWeek).toBeVisible();
+  34  |     });
+  35  | 
+  36  |     test('SEARCH_FILTER_04: Should reject end date before start date', async ({ page }) => {
+  37  |         await page.goto('/');
+  38  |         const dateTrigger = page.getByText(getSearchDateRangeRegex(1, 7));
+  39  |         await dateTrigger.click();
+  40  | 
+  41  |         const picker = page.locator('.rdrDateRangePickerWrapper');
+  42  |         await expect(picker).toBeVisible();
+  43  | 
+  44  |         // Chọn ngày bắt đầu ở cuối tháng
+  45  |         const days = picker.locator('.rdrDay:not(.rdrDayPassive):not(.rdrDayDisabled)');
+  46  |         const dayCount = await days.count();
+  47  |         if (dayCount > 10) {
+  48  |             await days.nth(dayCount - 3).click();
+  49  |             await days.nth(2).click();
+  50  |         }
+  51  | 
+  52  |         await expect(page.getByText(/không hợp lệ|invalid/i)).toBeVisible();
+  53  |     });
+  54  | 
+  55  |     test('SEARCH_FILTER_05: Should have disabled past dates', async ({ page }) => {
+  56  |         await page.goto('/');
+  57  |         const dateTrigger = page.getByText(getSearchDateRangeRegex(1, 7));
+  58  |         await dateTrigger.click();
+  59  | 
+  60  |         const picker = page.locator('.rdrDateRangePickerWrapper');
+  61  |         await expect(picker).toBeVisible();
+  62  | 
+  63  |         // Các ngày quá khứ phải bị disabled hoặc passive
+  64  |         const disabledDays = picker.locator('.rdrDayDisabled, .rdrDayPassive');
+  65  |         const count = await disabledDays.count();
+  66  |         expect(count).toBeGreaterThan(0);
+  67  |     });
+  68  | 
+  69  |     test('SEARCH_FILTER_06: Should filter rooms by guest count', async ({ page }) => {
+  70  |         await page.goto('/');
+  71  | 
+  72  |         await page.getByText('Thêm khách').click();
+  73  |         await page.waitForTimeout(500);
+  74  | 
+  75  |         const addBtn = page.locator('button').filter({ hasText: '+' }).first();
+  76  |         if (await addBtn.isVisible()) {
+  77  |             await addBtn.click();
+  78  |             await addBtn.click();
+  79  | 
+  80  |             const guestDisplay = page.getByText(/\d+ khách/i).first();
+  81  |             await expect(guestDisplay).toBeVisible({ timeout: 3000 });
+  82  |         }
+  83  |     });
+  84  | 
+  85  |     test('SEARCH_FILTER_07: Should handle excessive guest count', async ({ page }) => {
+  86  |         await page.goto('/');
+  87  | 
+  88  |         await page.getByText('Thêm khách').click();
+  89  |         await page.waitForTimeout(500);
+  90  | 
+  91  |         const addBtn = page.locator('button').filter({ hasText: '+' }).first();
+  92  |         if (await addBtn.isVisible()) {
+  93  |             for (let i = 0; i < 20; i++) {
+  94  |                 await addBtn.click();
+  95  |             }
+  96  | 
+  97  |             const guestDisplay = page.getByText(/(\d+) khách/i).first();
+> 98  |             await expect(guestDisplay).toBeVisible();
+      |                                        ^ Error: expect(locator).toBeVisible() failed
+  99  |             const text = await guestDisplay.textContent();
+  100 |             const count = parseInt(text?.match(/(\d+)/)?.[1] || '0');
+  101 |             expect(count).toBeGreaterThan(0);
+  102 |             expect(count).toBeLessThanOrEqual(16);
+  103 |         }
+  104 |     });
+  105 | 
+  106 |     test('SEARCH_FILTER_08: Should search by clicking magnifying glass icon', async ({ page }) => {
+  107 |         await page.goto('/');
+  108 | 
+  109 |         await page.getByText('Bạn sắp đi đâu?').click();
+  110 |         const popup = page.locator('div.absolute').filter({
+  111 |             has: page.getByRole('heading', { name: 'Tìm kiếm địa điểm' }),
+  112 |         });
+  113 |         await expect(popup).toBeVisible();
+  114 |         await popup.getByText('Hồ Chí Minh').click();
+  115 | 
+  116 |         await page.locator('.anticon-search').click();
+  117 |         await page.waitForURL('**/rooms/**', { timeout: 15000 });
+  118 | 
+  119 |         expect(page.url()).toContain('rooms');
+  120 |     });
+  121 | 
+  122 |     test('SEARCH_FILTER_09: Should search by pressing Enter', async ({ page }) => {
+  123 |         // BUG: Nhấn Enter không kích hoạt tìm kiếm
+  124 |         test.fail();
+  125 | 
+  126 |         await page.goto('/');
+  127 | 
+  128 |         await page.getByText('Bạn sắp đi đâu?').click();
+  129 |         const popup = page.locator('div.absolute').filter({
+  130 |             has: page.getByRole('heading', { name: 'Tìm kiếm địa điểm' }),
+  131 |         });
+  132 |         await expect(popup).toBeVisible();
+  133 |         await popup.getByText('Hồ Chí Minh').click();
+  134 | 
+  135 |         await page.keyboard.press('Enter');
+  136 |         await page.waitForURL('**/rooms/**', { timeout: 15000 });
+  137 | 
+  138 |         expect(page.url()).toContain('rooms');
+  139 |     });
+  140 | });
+  141 | 
+```

@@ -1,0 +1,3875 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: booking/room-detail.spec.ts >> Room Detail >> ROOM_03: Click "Dịch sang tiếng Anh" → nội dung được dịch (BUG)
+- Location: tests/booking/room-detail.spec.ts:112:9
+
+# Error details
+
+```
+Error: expect(received).not.toBe(expected) // Object.is equality
+
+Expected: not "Chủ nhà siêu cấp là những chủ nhà có kinh nghiệm, được đánh giá cao và là những người cam kết mang lại quãng thời gian ở tuyệt vời cho khách."
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "Cyber Logo CyberSoft" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "Cyber Logo" [ref=e6]
+          - generic [ref=e7]: CyberSoft
+        - button [ref=e9] [cursor=pointer]:
+          - img [ref=e10]
+        - list [ref=e12]:
+          - listitem [ref=e13]:
+            - link "Home" [ref=e14] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e15]:
+            - link "About" [ref=e16] [cursor=pointer]:
+              - /url: /room-detail/1
+          - listitem [ref=e17]:
+            - link "Services" [ref=e18] [cursor=pointer]:
+              - /url: /room-detail/1
+          - listitem [ref=e19]:
+            - link "Pricing" [ref=e20] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e21]:
+            - link "Contact" [ref=e22] [cursor=pointer]:
+              - /url: "#"
+    - generic [ref=e24]:
+      - heading "NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!" [level=2] [ref=e25]
+      - generic [ref=e28]:
+        - generic [ref=e30]:
+          - img [ref=e31]
+          - text: Chủ nhà siêu cấp
+        - link "Hồ Chí Minh, Việt Nam" [ref=e33] [cursor=pointer]:
+          - /url: /rooms/ho-chi-minh
+      - generic [ref=e36]:
+        - generic [ref=e40] [cursor=pointer]:
+          - img "eye" [ref=e41]:
+            - img [ref=e42]
+          - text: Xem trước
+        - generic [ref=e47] [cursor=pointer]:
+          - img "eye" [ref=e48]:
+            - img [ref=e49]
+          - text: Xem trước
+        - generic [ref=e54] [cursor=pointer]:
+          - img "eye" [ref=e55]:
+            - img [ref=e56]
+          - text: Xem trước
+        - generic [ref=e61] [cursor=pointer]:
+          - img "eye" [ref=e62]:
+            - img [ref=e63]
+          - text: Xem trước
+        - generic [ref=e68] [cursor=pointer]:
+          - img "eye" [ref=e69]:
+            - img [ref=e70]
+          - text: Xem trước
+      - generic [ref=e78]:
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - generic [ref=e81]:
+              - heading "Toàn bộ căn hộ. Chủ nhà nnhatsang" [level=3] [ref=e82]
+              - paragraph [ref=e83]: 3 Khách • Phòng Studio • 1 Phòng ngủ • 1 giường • 1 Phòng tắm
+            - img [ref=e86]
+          - generic [ref=e92]:
+            - generic [ref=e93]:
+              - img [ref=e94]
+              - generic [ref=e97]:
+                - heading "Toàn bộ nhà" [level=4] [ref=e98]
+                - paragraph [ref=e99]: Bạn sẽ có chung cư cao cấp cho riêng mình.
+            - generic [ref=e100]:
+              - img [ref=e101]
+              - generic [ref=e104]:
+                - heading "Vệ sinh tăng cường" [level=4] [ref=e105]
+                - paragraph [ref=e106]: Chủ nhà này đã cam kết thực hiện quy trình vệ sinh tăng cường 5 bước của Airbnb. Hiển thị thêm
+            - generic [ref=e107]:
+              - img [ref=e108]
+              - generic [ref=e110]:
+                - heading "Phong là Chủ nhà siêu cấp" [level=4] [ref=e111]
+                - paragraph [ref=e112]: Chủ nhà siêu cấp là những chủ nhà có kinh nghiệm, được đánh giá cao và là những người cam kết mang lại quãng thời gian ở tuyệt vời cho khách.
+            - generic [ref=e113]:
+              - img [ref=e114]
+              - heading "Miễn phí hủy trong 48 giờ" [level=4] [ref=e118]
+          - generic [ref=e120]:
+            - button "Dịch sang tiếng Anh" [active] [ref=e122] [cursor=pointer]:
+              - generic [ref=e123]: Dịch sang tiếng Anh
+              - img [ref=e124]
+            - paragraph [ref=e126]: Tự nhận phòng Tự nhận phòng bằng khóa thông minh. Dinh Long là Chủ nhà siêu cấp Chủ nhà siêu cấp là những chủ nhà có kinh nghiệm, được đánh giá cao và là những người cam kết mang lại quãng thời gian ở tuyệt vời cho khách.
+            - text: Hiển thị thêm
+        - generic [ref=e130]:
+          - generic [ref=e131]:
+            - generic [ref=e132]:
+              - generic [ref=e133]: $28
+              - text: / night
+            - generic [ref=e135]:
+              - img "star" [ref=e136]:
+                - img [ref=e137]
+              - generic [ref=e139]: "2.07"
+              - generic [ref=e140] [cursor=pointer]: (308) đánh giá
+          - generic [ref=e141]:
+            - generic [ref=e142]:
+              - generic [ref=e143] [cursor=pointer]:
+                - generic [ref=e144]: Nhận phòng
+                - generic [ref=e145]: 07-06-2026
+              - generic [ref=e146] [cursor=pointer]:
+                - generic [ref=e147]: Trả phòng
+                - generic [ref=e148]: 14-06-2026
+            - generic [ref=e149]:
+              - generic [ref=e150]: Khách
+              - generic [ref=e151]:
+                - button "–" [ref=e153] [cursor=pointer]:
+                  - generic [ref=e154]: –
+                - generic [ref=e155]: 1 khách
+                - button "+" [ref=e157] [cursor=pointer]:
+                  - generic [ref=e158]: +
+          - button "Đặt phòng" [ref=e159] [cursor=pointer]
+          - paragraph [ref=e160]: Bạn vẫn chưa bị trừ tiền
+          - generic [ref=e161]:
+            - paragraph [ref=e162]: $28 X 7 nights
+            - paragraph [ref=e163]: $ 196
+          - generic [ref=e164]:
+            - paragraph [ref=e165]: Cleaning fee
+            - paragraph [ref=e166]: $ 8
+          - generic [ref=e168]:
+            - paragraph [ref=e169]: Total before taxes
+            - paragraph [ref=e170]: "204"
+      - generic [ref=e171]:
+        - heading "Các tiện ích đi kèm" [level=3] [ref=e172]
+        - generic [ref=e173]:
+          - generic [ref=e174]:
+            - img [ref=e176]
+            - text: Wifi
+          - generic [ref=e178]:
+            - img [ref=e180]
+            - text: Tivi
+          - generic [ref=e182]:
+            - img [ref=e184]
+            - text: Bãi đỗ xe
+          - generic [ref=e186]:
+            - img [ref=e188]
+            - text: Bàn ủi
+          - generic [ref=e190]:
+            - img [ref=e192]
+            - text: Hồ bơi
+          - generic [ref=e194]:
+            - img [ref=e196]
+            - text: Máy giặt
+        - button "Ẩn bớt tiện nghi" [ref=e198] [cursor=pointer]
+      - alert [ref=e201]:
+        - generic [ref=e203]: Cần đăng nhập để bình luận
+      - heading "Bình luận" [level=3] [ref=e205]
+      - generic [ref=e206]:
+        - generic [ref=e207]:
+          - generic [ref=e210]:
+            - paragraph [ref=e211]: Ly Le Thi Van
+            - paragraph [ref=e212]:
+              - time [ref=e214]: vài giây trước
+          - generic [ref=e216]: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        - generic [ref=e220]:
+          - paragraph [ref=e221]: Ly Le Thi Van
+          - paragraph [ref=e222]:
+            - time [ref=e224]: vài giây trước
+        - generic [ref=e228]:
+          - paragraph [ref=e229]: Ly Le Thi Van
+          - paragraph [ref=e230]:
+            - time [ref=e232]: 3 phút trước
+        - generic [ref=e233]:
+          - generic [ref=e236]:
+            - paragraph [ref=e237]: Ly Le Thi Van
+            - paragraph [ref=e238]:
+              - time [ref=e240]: 3 phút trước
+          - generic [ref=e242]: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        - generic [ref=e246]:
+          - paragraph [ref=e247]: Ly Le Thi Van
+          - paragraph [ref=e248]:
+            - time [ref=e250]: 5 phút trước
+        - generic [ref=e251]:
+          - generic [ref=e254]:
+            - paragraph [ref=e255]: Ly Le Thi Van
+            - paragraph [ref=e256]:
+              - time [ref=e258]: 5 phút trước
+          - generic [ref=e260]: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        - generic [ref=e264]:
+          - paragraph [ref=e265]: Ly Le Thi Van
+          - paragraph [ref=e266]:
+            - time [ref=e268]: 22 phút trước
+        - generic [ref=e269]:
+          - generic [ref=e272]:
+            - paragraph [ref=e273]: Ly Le Thi Van
+            - paragraph [ref=e274]:
+              - time [ref=e276]: 22 phút trước
+          - generic [ref=e278]: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        - generic [ref=e282]:
+          - paragraph [ref=e283]: Ly Le Thi Van
+          - paragraph [ref=e284]:
+            - time [ref=e286]: 29 phút trước
+        - generic [ref=e287]:
+          - generic [ref=e290]:
+            - paragraph [ref=e291]: Ly Le Thi Van
+            - paragraph [ref=e292]:
+              - time [ref=e294]: 29 phút trước
+          - generic [ref=e296]: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        - generic [ref=e300]:
+          - paragraph [ref=e301]: Ly Le Thi Van
+          - paragraph [ref=e302]:
+            - time [ref=e304]: một giờ trước
+        - generic [ref=e305]:
+          - generic [ref=e308]:
+            - paragraph [ref=e309]: Ly Le Thi Van
+            - paragraph [ref=e310]:
+              - time [ref=e312]: một giờ trước
+          - generic [ref=e314]: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        - generic [ref=e315]:
+          - generic [ref=e318]:
+            - paragraph [ref=e319]: h
+            - paragraph [ref=e320]:
+              - time [ref=e322]: 3 ngày trước
+          - generic [ref=e324]: TEST
+        - generic [ref=e325]:
+          - generic [ref=e328]:
+            - paragraph [ref=e329]:
+              - text: beba
+              - generic [ref=e331]:
+                - img "star" [ref=e332]:
+                  - img [ref=e333]
+                - img "star" [ref=e335]:
+                  - img [ref=e336]
+                - img "star" [ref=e338]:
+                  - img [ref=e339]
+                - img "star" [ref=e341]:
+                  - img [ref=e342]
+                - img "star" [ref=e344]:
+                  - img [ref=e345]
+            - paragraph [ref=e347]:
+              - time [ref=e349]: 8 tháng trước
+          - generic [ref=e351]: Phòng sạch sẽ, nhân viên thân thiện! test 16/03
+        - generic [ref=e352]:
+          - generic [ref=e355]:
+            - paragraph [ref=e356]:
+              - text: h
+              - generic [ref=e358]:
+                - img "star" [ref=e359]:
+                  - img [ref=e360]
+                - img "star" [ref=e362]:
+                  - img [ref=e363]
+                - img "star" [ref=e365]:
+                  - img [ref=e366]
+                - img "star" [ref=e368]:
+                  - img [ref=e369]
+                - img "star" [ref=e371]:
+                  - img [ref=e372]
+            - paragraph [ref=e374]:
+              - time [ref=e376]: 5 ngày trước
+          - generic [ref=e378]: a
+        - generic [ref=e379]:
+          - generic [ref=e382]:
+            - paragraph [ref=e383]: Quyên Cập Nhật
+            - paragraph [ref=e384]:
+              - time [ref=e386]: 9 ngày trước
+          - generic [ref=e388]: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        - generic [ref=e392]:
+          - paragraph [ref=e393]: Quyên Cập Nhật
+          - paragraph [ref=e394]:
+            - time [ref=e396]: 9 ngày trước
+        - generic [ref=e397]:
+          - generic [ref=e400]:
+            - paragraph [ref=e401]: Quyên Cập Nhật
+            - paragraph [ref=e402]:
+              - time [ref=e404]: 10 ngày trước
+          - generic [ref=e406]: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        - generic [ref=e410]:
+          - paragraph [ref=e411]: Quyên Cập Nhật
+          - paragraph [ref=e412]:
+            - time [ref=e414]: 10 ngày trước
+        - generic [ref=e418]:
+          - paragraph [ref=e419]: Quyên Cập Nhật
+          - paragraph [ref=e420]:
+            - time [ref=e422]: 10 ngày trước
+        - generic [ref=e423]:
+          - generic [ref=e426]:
+            - paragraph [ref=e427]: Quyên Cập Nhật
+            - paragraph [ref=e428]:
+              - time [ref=e430]: 10 ngày trước
+          - generic [ref=e432]: Special chars test @#$%^& 😀🎉 1779897937539
+        - generic [ref=e433]:
+          - generic [ref=e436]:
+            - paragraph [ref=e437]: Quyên Cập Nhật
+            - paragraph [ref=e438]:
+              - time [ref=e440]: 10 ngày trước
+          - generic [ref=e442]: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        - generic [ref=e443]:
+          - generic [ref=e446]:
+            - paragraph [ref=e447]: Quyên Cập Nhật
+            - paragraph [ref=e448]:
+              - time [ref=e450]: 10 ngày trước
+          - generic [ref=e452]: No star review 1779897932388
+        - generic [ref=e453]:
+          - generic [ref=e456]:
+            - paragraph [ref=e457]:
+              - text: trong
+              - generic [ref=e459]:
+                - img "star" [ref=e460]:
+                  - img [ref=e461]
+                - img "star" [ref=e463]:
+                  - img [ref=e464]
+                - img "star" [ref=e466]:
+                  - img [ref=e467]
+                - img "star" [ref=e469]:
+                  - img [ref=e470]
+                - img "star" [ref=e472]:
+                  - img [ref=e473]
+            - paragraph [ref=e475]:
+              - time [ref=e477]: 12 ngày trước
+          - generic [ref=e479]: "123123"
+        - generic [ref=e480]:
+          - generic [ref=e483]:
+            - paragraph [ref=e484]:
+              - text: trong
+              - generic [ref=e486]:
+                - img "star" [ref=e487]:
+                  - img [ref=e488]
+                - img "star" [ref=e490]:
+                  - img [ref=e491]
+                - img "star" [ref=e493]:
+                  - img [ref=e494]
+                - img "star" [ref=e496]:
+                  - img [ref=e497]
+                - img "star" [ref=e499]:
+                  - img [ref=e500]
+            - paragraph [ref=e502]:
+              - time [ref=e504]: 12 ngày trước
+          - generic [ref=e506]: ádf
+        - generic [ref=e507]:
+          - generic [ref=e510]:
+            - paragraph [ref=e511]:
+              - text: Nguyen Tan Toan
+              - generic [ref=e513]:
+                - img "star" [ref=e514]:
+                  - img [ref=e515]
+                - img "star" [ref=e517]:
+                  - img [ref=e518]
+                - img "star" [ref=e520]:
+                  - img [ref=e521]
+                - img "star" [ref=e523]:
+                  - img [ref=e524]
+            - paragraph [ref=e526]:
+              - time [ref=e528]: 20 ngày trước
+          - generic [ref=e530]: phong dep
+        - generic [ref=e531]:
+          - generic [ref=e534]:
+            - paragraph [ref=e535]:
+              - text: khadev
+              - generic [ref=e537]:
+                - img "star" [ref=e538]:
+                  - img [ref=e539]
+                - img "star" [ref=e541]:
+                  - img [ref=e542]
+                - img "star" [ref=e544]:
+                  - img [ref=e545]
+                - img "star" [ref=e547]:
+                  - img [ref=e548]
+                - img "star" [ref=e550]:
+                  - img [ref=e551]
+            - paragraph [ref=e553]:
+              - time [ref=e555]: một tháng trước
+          - generic [ref=e557]: oke lắm
+        - generic [ref=e558]:
+          - generic [ref=e561]:
+            - paragraph [ref=e562]:
+              - text: khadev
+              - generic [ref=e564]:
+                - img "star" [ref=e565]:
+                  - img [ref=e566]
+                - img "star" [ref=e568]:
+                  - img [ref=e569]
+            - paragraph [ref=e571]:
+              - time [ref=e573]: một tháng trước
+          - generic [ref=e575]: sdfsdfdsf
+        - generic [ref=e576]:
+          - generic [ref=e579]:
+            - paragraph [ref=e580]:
+              - text: khadev
+              - generic [ref=e582]:
+                - img "star" [ref=e583]:
+                  - img [ref=e584]
+                - img "star" [ref=e586]:
+                  - img [ref=e587]
+            - paragraph [ref=e589]:
+              - time [ref=e591]: một tháng trước
+          - generic [ref=e593]: adasdsadad
+        - generic [ref=e594]:
+          - generic [ref=e597]:
+            - paragraph [ref=e598]:
+              - text: khadev
+              - generic [ref=e600]:
+                - img "star" [ref=e601]:
+                  - img [ref=e602]
+                - img "star" [ref=e604]:
+                  - img [ref=e605]
+            - paragraph [ref=e607]:
+              - time [ref=e609]: một tháng trước
+          - generic [ref=e611]: test
+        - generic [ref=e612]:
+          - generic [ref=e615]:
+            - paragraph [ref=e616]:
+              - text: khadev
+              - generic [ref=e618]:
+                - img "star" [ref=e619]:
+                  - img [ref=e620]
+                - img "star" [ref=e622]:
+                  - img [ref=e623]
+                - img "star" [ref=e625]:
+                  - img [ref=e626]
+                - img "star" [ref=e628]:
+                  - img [ref=e629]
+                - img "star" [ref=e631]:
+                  - img [ref=e632]
+            - paragraph [ref=e634]:
+              - time [ref=e636]: một tháng trước
+          - generic [ref=e638]: get 3
+        - generic [ref=e639]:
+          - generic [ref=e642]:
+            - paragraph [ref=e643]:
+              - text: khadev
+              - generic [ref=e645]:
+                - img "star" [ref=e646]:
+                  - img [ref=e647]
+                - img "star" [ref=e649]:
+                  - img [ref=e650]
+            - paragraph [ref=e652]:
+              - time [ref=e654]: một tháng trước
+          - generic [ref=e656]: get 2
+        - generic [ref=e657]:
+          - generic [ref=e660]:
+            - paragraph [ref=e661]:
+              - text: khadev
+              - generic [ref=e663]:
+                - img "star" [ref=e664]:
+                  - img [ref=e665]
+                - img "star" [ref=e667]:
+                  - img [ref=e668]
+            - paragraph [ref=e670]:
+              - time [ref=e672]: một tháng trước
+          - generic [ref=e674]: test
+        - generic [ref=e675]:
+          - generic [ref=e678]:
+            - paragraph [ref=e679]:
+              - text: khadev
+              - generic [ref=e681]:
+                - img "star" [ref=e682]:
+                  - img [ref=e683]
+                - img "star" [ref=e685]:
+                  - img [ref=e686]
+            - paragraph [ref=e688]:
+              - time [ref=e690]: một tháng trước
+          - generic [ref=e692]: test
+        - generic [ref=e693]:
+          - generic [ref=e696]:
+            - paragraph [ref=e697]:
+              - text: khadev
+              - generic [ref=e699]:
+                - img "star" [ref=e700]:
+                  - img [ref=e701]
+                - img "star" [ref=e703]:
+                  - img [ref=e704]
+            - paragraph [ref=e706]:
+              - time [ref=e708]: một tháng trước
+          - generic [ref=e710]: test
+        - generic [ref=e711]:
+          - generic [ref=e714]:
+            - paragraph [ref=e715]:
+              - text: khadev
+              - generic [ref=e717]:
+                - img "star" [ref=e718]:
+                  - img [ref=e719]
+                - img "star" [ref=e721]:
+                  - img [ref=e722]
+            - paragraph [ref=e724]:
+              - time [ref=e726]: một tháng trước
+          - generic [ref=e728]: test
+        - generic [ref=e729]:
+          - generic [ref=e732]:
+            - paragraph [ref=e733]:
+              - text: nguyen thanh tuan
+              - generic [ref=e735]:
+                - img "star" [ref=e736]:
+                  - img [ref=e737]
+                - img "star" [ref=e739]:
+                  - img [ref=e740]
+                - img "star" [ref=e742]:
+                  - img [ref=e743]
+                - img "star" [ref=e745]:
+                  - img [ref=e746]
+                - img "star" [ref=e748]:
+                  - img [ref=e749]
+            - paragraph [ref=e751]:
+              - time [ref=e753]: một tháng trước
+          - generic [ref=e755]: a
+        - generic [ref=e756]:
+          - generic [ref=e759]:
+            - paragraph [ref=e760]:
+              - text: nguyen thanh tuan
+              - generic [ref=e762]:
+                - img "star" [ref=e763]:
+                  - img [ref=e764]
+                - img "star" [ref=e766]:
+                  - img [ref=e767]
+                - img "star" [ref=e769]:
+                  - img [ref=e770]
+                - img "star" [ref=e772]:
+                  - img [ref=e773]
+                - img "star" [ref=e775]:
+                  - img [ref=e776]
+            - paragraph [ref=e778]:
+              - time [ref=e780]: một tháng trước
+          - generic [ref=e782]: a
+        - generic [ref=e783]:
+          - generic [ref=e786]:
+            - paragraph [ref=e787]:
+              - text: nguyen thanh tuan
+              - generic [ref=e789]:
+                - img "star" [ref=e790]:
+                  - img [ref=e791]
+                - img "star" [ref=e793]:
+                  - img [ref=e794]
+                - img "star" [ref=e796]:
+                  - img [ref=e797]
+                - img "star" [ref=e799]:
+                  - img [ref=e800]
+                - img "star" [ref=e802]:
+                  - img [ref=e803]
+            - paragraph [ref=e805]:
+              - time [ref=e807]: một tháng trước
+          - generic [ref=e809]: s
+        - generic [ref=e810]:
+          - generic [ref=e813]:
+            - paragraph [ref=e814]: Trucvy
+            - paragraph [ref=e815]:
+              - time [ref=e817]: 2 tháng trước
+          - generic [ref=e819]: Phòng rộng rãi, view đẹp, nhân viên hỗ trợ nhiệt tình!
+        - generic [ref=e820]:
+          - generic [ref=e823]:
+            - paragraph [ref=e824]: Trucvy
+            - paragraph [ref=e825]:
+              - time [ref=e827]: 2 tháng trước
+          - generic [ref=e829]: Phòng rộng rãi, view đẹp, nhân viên hỗ trợ nhiệt tình!
+        - generic [ref=e830]:
+          - generic [ref=e833]:
+            - paragraph [ref=e834]: Trucvy
+            - paragraph [ref=e835]:
+              - time [ref=e837]: 2 tháng trước
+          - generic [ref=e839]: Phòng rộng rãi, view đẹp, nhân viên hỗ trợ nhiệt tình!
+        - generic [ref=e840]:
+          - generic [ref=e843]:
+            - paragraph [ref=e844]: Trucvy
+            - paragraph [ref=e845]:
+              - time [ref=e847]: 2 tháng trước
+          - generic [ref=e849]: Rất hài lòng, sẽ quay lại lần sau!
+        - generic [ref=e850]:
+          - generic [ref=e853]:
+            - paragraph [ref=e854]: Trucvy
+            - paragraph [ref=e855]:
+              - time [ref=e857]: 2 tháng trước
+          - generic [ref=e859]: Không gian thoáng mát, rất đáng trải nghiệm!
+        - generic [ref=e860]:
+          - generic [ref=e863]:
+            - paragraph [ref=e864]: Trucvy
+            - paragraph [ref=e865]:
+              - time [ref=e867]: 2 tháng trước
+          - generic [ref=e869]: Rất hài lòng, sẽ quay lại lần sau!
+        - generic [ref=e870]:
+          - generic [ref=e873]:
+            - paragraph [ref=e874]: Trucvy
+            - paragraph [ref=e875]:
+              - time [ref=e877]: 2 tháng trước
+          - generic [ref=e879]: Dịch vụ ổn, phòng sạch sẽ và tiện nghi!
+        - generic [ref=e880]:
+          - generic [ref=e883]:
+            - paragraph [ref=e884]: Trucvy
+            - paragraph [ref=e885]:
+              - time [ref=e887]: 2 tháng trước
+          - generic [ref=e889]: Phòng rộng rãi, view đẹp, nhân viên hỗ trợ nhiệt tình!
+        - generic [ref=e890]:
+          - generic [ref=e893]:
+            - paragraph [ref=e894]: Trucvy
+            - paragraph [ref=e895]:
+              - time [ref=e897]: 2 tháng trước
+          - generic [ref=e899]: Auto review 1776073324306
+        - generic [ref=e900]:
+          - generic [ref=e903]:
+            - paragraph [ref=e904]: Trucvy
+            - paragraph [ref=e905]:
+              - time [ref=e907]: 2 tháng trước
+          - generic [ref=e909]: Auto test review 1776073246160
+        - generic [ref=e910]:
+          - generic [ref=e913]:
+            - paragraph [ref=e914]: Trucvy
+            - paragraph [ref=e915]:
+              - time [ref=e917]: 2 tháng trước
+          - generic [ref=e919]: Auto test review 1776073222641
+        - generic [ref=e920]:
+          - generic [ref=e923]:
+            - paragraph [ref=e924]: Trucvy
+            - paragraph [ref=e925]:
+              - time [ref=e927]: 2 tháng trước
+          - generic [ref=e929]: Phòng rất sạch sẽ, dịch vụ tốt!
+        - generic [ref=e930]:
+          - generic [ref=e933]:
+            - paragraph [ref=e934]: Trucvy
+            - paragraph [ref=e935]:
+              - time [ref=e937]: 2 tháng trước
+          - generic [ref=e939]: Phòng rất sạch sẽ, dịch vụ tốt!
+        - generic [ref=e940]:
+          - generic [ref=e943]:
+            - paragraph [ref=e944]: Trucvy
+            - paragraph [ref=e945]:
+              - time [ref=e947]: 2 tháng trước
+          - generic [ref=e949]: Phòng rất sạch sẽ, dịch vụ tốt!
+        - generic [ref=e950]:
+          - generic [ref=e953]:
+            - paragraph [ref=e954]: Trucvy
+            - paragraph [ref=e955]:
+              - time [ref=e957]: 2 tháng trước
+          - generic [ref=e959]: Phòng rất sạch sẽ, dịch vụ tốt!
+        - generic [ref=e960]:
+          - generic [ref=e963]:
+            - paragraph [ref=e964]: Trucvy
+            - paragraph [ref=e965]:
+              - time [ref=e967]: 2 tháng trước
+          - generic [ref=e969]: Phòng rất sạch sẽ, dịch vụ tốt!
+        - generic [ref=e970]:
+          - generic [ref=e973]:
+            - paragraph [ref=e974]: Trucvy
+            - paragraph [ref=e975]:
+              - time [ref=e977]: 2 tháng trước
+          - generic [ref=e979]: Phòng rất sạch sẽ, dịch vụ tốt!
+        - generic [ref=e980]:
+          - generic [ref=e983]:
+            - paragraph [ref=e984]: Trucvy
+            - paragraph [ref=e985]:
+              - time [ref=e987]: 2 tháng trước
+          - generic [ref=e989]: Phòng rất sạch sẽ, dịch vụ tốt!
+        - generic [ref=e990]:
+          - generic [ref=e993]:
+            - paragraph [ref=e994]: Alan
+            - paragraph [ref=e995]:
+              - time [ref=e997]: 2 tháng trước
+          - generic [ref=e999]: ddd
+        - generic [ref=e1000]:
+          - generic [ref=e1003]:
+            - paragraph [ref=e1004]: Alan
+            - paragraph [ref=e1005]:
+              - time [ref=e1007]: 2 tháng trước
+          - generic [ref=e1009]: e
+        - generic [ref=e1010]:
+          - generic [ref=e1013]:
+            - paragraph [ref=e1014]: Alan
+            - paragraph [ref=e1015]:
+              - time [ref=e1017]: 2 tháng trước
+          - generic [ref=e1019]: fdfdfd ádasdsad sadasdas ádasdas ádasdas
+        - generic [ref=e1020]:
+          - generic [ref=e1023]:
+            - paragraph [ref=e1024]: Alan
+            - paragraph [ref=e1025]:
+              - time [ref=e1027]: 2 tháng trước
+          - generic [ref=e1029]: 🤣🤣🤣
+        - generic [ref=e1030]:
+          - generic [ref=e1033]:
+            - paragraph [ref=e1034]: Alan
+            - paragraph [ref=e1035]:
+              - time [ref=e1037]: 2 tháng trước
+          - generic [ref=e1039]: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate arcu. Phasellus accumsan cursus velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac placerat dolor lectus quis orci. Phasellus consectetuer vestibulum elit. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc. Vestibulum fringilla pede sit amet augue. In turpis. Pellentesque posuere. Praesent turpis. Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis. Nullam sagittis. Suspendisse pulvinar, augue ac venenatis condimentum, sem libero volutpat nibh, nec pellentesque velit pede quis nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce id purus. Ut varius tincidunt libero. Phasellus dolor. Maecenas vestibulum mollis
+        - generic [ref=e1040]:
+          - generic [ref=e1043]:
+            - paragraph [ref=e1044]:
+              - text: Alan
+              - img "star" [ref=e1047]:
+                - img [ref=e1048]
+            - paragraph [ref=e1050]:
+              - time [ref=e1052]: 2 tháng trước
+          - generic [ref=e1054]: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et
+        - generic [ref=e1055]:
+          - generic [ref=e1058]:
+            - paragraph [ref=e1059]: Alan
+            - paragraph [ref=e1060]:
+              - time [ref=e1062]: 2 tháng trước
+          - generic [ref=e1064]: e
+        - generic [ref=e1065]:
+          - generic [ref=e1068]:
+            - paragraph [ref=e1069]: Alan
+            - paragraph [ref=e1070]:
+              - time [ref=e1072]: 2 tháng trước
+          - generic [ref=e1074]: eee
+        - generic [ref=e1075]:
+          - generic [ref=e1078]:
+            - paragraph [ref=e1079]:
+              - text: Alan
+              - generic [ref=e1081]:
+                - img "star" [ref=e1082]:
+                  - img [ref=e1083]
+                - img "star" [ref=e1085]:
+                  - img [ref=e1086]
+                - img "star" [ref=e1088]:
+                  - img [ref=e1089]
+                - img "star" [ref=e1091]:
+                  - img [ref=e1092]
+                - img "star" [ref=e1094]:
+                  - img [ref=e1095]
+            - paragraph [ref=e1097]:
+              - time [ref=e1099]: 2 tháng trước
+          - generic [ref=e1101]: eeeeeeeeeeeeeeeeeee
+        - generic [ref=e1102]:
+          - generic [ref=e1105]:
+            - paragraph [ref=e1106]:
+              - text: Alan
+              - generic [ref=e1108]:
+                - img "star" [ref=e1109]:
+                  - img [ref=e1110]
+                - img "star" [ref=e1112]:
+                  - img [ref=e1113]
+                - img "star" [ref=e1115]:
+                  - img [ref=e1116]
+                - img "star" [ref=e1118]:
+                  - img [ref=e1119]
+                - img "star" [ref=e1121]:
+                  - img [ref=e1122]
+            - paragraph [ref=e1124]:
+              - time [ref=e1126]: 2 tháng trước
+          - generic [ref=e1128]: eee
+        - generic [ref=e1129]:
+          - generic [ref=e1132]:
+            - paragraph [ref=e1133]:
+              - text: Alan
+              - img "star" [ref=e1136]:
+                - img [ref=e1137]
+            - paragraph [ref=e1139]:
+              - time [ref=e1141]: 2 tháng trước
+          - generic [ref=e1143]: rrr
+        - generic [ref=e1144]:
+          - generic [ref=e1147]:
+            - paragraph [ref=e1148]:
+              - text: Alan
+              - img "star" [ref=e1151]:
+                - img [ref=e1152]
+            - paragraph [ref=e1154]:
+              - time [ref=e1156]: 2 tháng trước
+          - generic [ref=e1158]: êw
+        - generic [ref=e1159]:
+          - generic [ref=e1162]:
+            - paragraph [ref=e1163]:
+              - text: tran
+              - generic [ref=e1165]:
+                - img "star" [ref=e1166]:
+                  - img [ref=e1167]
+                - img "star" [ref=e1169]:
+                  - img [ref=e1170]
+                - img "star" [ref=e1172]:
+                  - img [ref=e1173]
+                - img "star" [ref=e1175]:
+                  - img [ref=e1176]
+            - paragraph [ref=e1178]:
+              - time [ref=e1180]: 2 tháng trước
+          - generic [ref=e1182]: j
+        - generic [ref=e1183]:
+          - generic [ref=e1186]:
+            - paragraph [ref=e1187]: admin
+            - paragraph [ref=e1188]:
+              - time [ref=e1190]: 3 tháng trước
+          - generic [ref=e1192]: cảm ơn bạn
+        - generic [ref=e1193]:
+          - generic [ref=e1196]:
+            - paragraph [ref=e1197]:
+              - text: Nguyễn Tùng Dương
+              - generic [ref=e1199]:
+                - img "star" [ref=e1200]:
+                  - img [ref=e1201]
+                - img "star" [ref=e1203]:
+                  - img [ref=e1204]
+                - img "star" [ref=e1206]:
+                  - img [ref=e1207]
+                - img "star" [ref=e1209]:
+                  - img [ref=e1210]
+            - paragraph [ref=e1212]:
+              - time [ref=e1214]: 3 tháng trước
+          - generic [ref=e1216]: Phòng rất tốt !
+        - generic [ref=e1217]:
+          - generic [ref=e1220]:
+            - paragraph [ref=e1221]:
+              - text: admin
+              - generic [ref=e1223]:
+                - img "star" [ref=e1224]:
+                  - img [ref=e1225]
+                - img "star" [ref=e1227]:
+                  - img [ref=e1228]
+                - img "star" [ref=e1230]:
+                  - img [ref=e1231]
+                - img "star" [ref=e1233]:
+                  - img [ref=e1234]
+                - img "star" [ref=e1236]:
+                  - img [ref=e1237]
+            - paragraph [ref=e1239]:
+              - time [ref=e1241]: 3 tháng trước
+          - generic [ref=e1243]: ok
+        - generic [ref=e1244]:
+          - generic [ref=e1247]:
+            - paragraph [ref=e1248]:
+              - text: admin
+              - generic [ref=e1250]:
+                - img "star" [ref=e1251]:
+                  - img [ref=e1252]
+                - img "star" [ref=e1254]:
+                  - img [ref=e1255]
+                - img "star" [ref=e1257]:
+                  - img [ref=e1258]
+                - img "star" [ref=e1260]:
+                  - img [ref=e1261]
+                - img "star" [ref=e1263]:
+                  - img [ref=e1264]
+            - paragraph [ref=e1266]:
+              - time [ref=e1268]: 3 tháng trước
+          - generic [ref=e1270]: rất tốt phòng đẹp
+        - generic [ref=e1271]:
+          - generic [ref=e1274]:
+            - paragraph [ref=e1275]: admin
+            - paragraph [ref=e1276]:
+              - time [ref=e1278]: 3 tháng trước
+          - generic [ref=e1280]: cảm ơn bạn
+        - generic [ref=e1281]:
+          - generic [ref=e1284]:
+            - paragraph [ref=e1285]: admin
+            - paragraph [ref=e1286]:
+              - time [ref=e1288]: 3 tháng trước
+          - generic [ref=e1290]: cảm ơn bạn
+        - generic [ref=e1291]:
+          - generic [ref=e1294]:
+            - paragraph [ref=e1295]: admin
+            - paragraph [ref=e1296]:
+              - time [ref=e1298]: 3 tháng trước
+          - generic [ref=e1300]: Cảm ơn bạn nhiều nha
+        - generic [ref=e1301]:
+          - generic [ref=e1304]:
+            - paragraph [ref=e1305]:
+              - text: Tester motq
+              - generic [ref=e1307]:
+                - img "star" [ref=e1308]:
+                  - img [ref=e1309]
+                - img "star" [ref=e1311]:
+                  - img [ref=e1312]
+                - img "star" [ref=e1314]:
+                  - img [ref=e1315]
+                - img "star" [ref=e1317]:
+                  - img [ref=e1318]
+            - paragraph [ref=e1320]:
+              - time [ref=e1322]: 3 tháng trước
+          - generic [ref=e1324]: qqqqq
+        - generic [ref=e1325]:
+          - generic [ref=e1328]:
+            - paragraph [ref=e1329]:
+              - text: Tester motq
+              - generic [ref=e1331]:
+                - img "star" [ref=e1332]:
+                  - img [ref=e1333]
+                - img "star" [ref=e1335]:
+                  - img [ref=e1336]
+                - img "star" [ref=e1338]:
+                  - img [ref=e1339]
+                - img "star" [ref=e1341]:
+                  - img [ref=e1342]
+            - paragraph [ref=e1344]:
+              - time [ref=e1346]: 3 tháng trước
+          - generic [ref=e1348]: qqqqq
+        - generic [ref=e1349]:
+          - generic [ref=e1352]:
+            - paragraph [ref=e1353]:
+              - text: Tester motq
+              - generic [ref=e1355]:
+                - img "star" [ref=e1356]:
+                  - img [ref=e1357]
+                - img "star" [ref=e1359]:
+                  - img [ref=e1360]
+                - img "star" [ref=e1362]:
+                  - img [ref=e1363]
+                - img "star" [ref=e1365]:
+                  - img [ref=e1366]
+            - paragraph [ref=e1368]:
+              - time [ref=e1370]: 3 tháng trước
+          - generic [ref=e1372]: qqqqq
+        - generic [ref=e1373]:
+          - generic [ref=e1376]:
+            - paragraph [ref=e1377]:
+              - text: Fix123
+              - generic [ref=e1379]:
+                - img "star" [ref=e1380]:
+                  - img [ref=e1381]
+                - img "star" [ref=e1383]:
+                  - img [ref=e1384]
+                - img "star" [ref=e1386]:
+                  - img [ref=e1387]
+                - img "star" [ref=e1389]:
+                  - img [ref=e1390]
+            - paragraph [ref=e1392]:
+              - time [ref=e1394]: 4 tháng trước
+          - generic [ref=e1396]: abcdef
+        - generic [ref=e1397]:
+          - generic [ref=e1400]:
+            - paragraph [ref=e1401]:
+              - text: Nguyễn Minh Phước
+              - generic [ref=e1403]:
+                - img "star" [ref=e1404]:
+                  - img [ref=e1405]
+                - img "star" [ref=e1407]:
+                  - img [ref=e1408]
+                - img "star" [ref=e1410]:
+                  - img [ref=e1411]
+                - img "star" [ref=e1413]:
+                  - img [ref=e1414]
+            - paragraph [ref=e1416]:
+              - time [ref=e1418]: Invalid date
+          - generic [ref=e1420]: Phòng đẹp lắm
+        - generic [ref=e1421]:
+          - generic [ref=e1424]:
+            - paragraph [ref=e1425]:
+              - text: miengan
+              - generic [ref=e1427]:
+                - img "star" [ref=e1428]:
+                  - img [ref=e1429]
+                - img "star" [ref=e1431]:
+                  - img [ref=e1432]
+                - img "star" [ref=e1434]:
+                  - img [ref=e1435]
+                - img "star" [ref=e1437]:
+                  - img [ref=e1438]
+                - img "star" [ref=e1440]:
+                  - img [ref=e1441]
+            - paragraph [ref=e1443]:
+              - time [ref=e1445]: 4 tháng trước
+          - generic [ref=e1447]: test
+        - generic [ref=e1448]:
+          - generic [ref=e1451]:
+            - paragraph [ref=e1452]:
+              - text: nguyen quang
+              - generic [ref=e1454]:
+                - img "star" [ref=e1455]:
+                  - img [ref=e1456]
+                - img "star" [ref=e1458]:
+                  - img [ref=e1459]
+                - img "star" [ref=e1461]:
+                  - img [ref=e1462]
+                - img "star" [ref=e1464]:
+                  - img [ref=e1465]
+                - img "star" [ref=e1467]:
+                  - img [ref=e1468]
+            - paragraph [ref=e1470]:
+              - time [ref=e1472]: 4 tháng trước
+          - generic [ref=e1474]: Ugh
+        - generic [ref=e1475]:
+          - generic [ref=e1478]:
+            - paragraph [ref=e1479]:
+              - text: nguyen quang
+              - generic [ref=e1481]:
+                - img "star" [ref=e1482]:
+                  - img [ref=e1483]
+                - img "star" [ref=e1485]:
+                  - img [ref=e1486]
+                - img "star" [ref=e1488]:
+                  - img [ref=e1489]
+                - img "star" [ref=e1491]:
+                  - img [ref=e1492]
+                - img "star" [ref=e1494]:
+                  - img [ref=e1495]
+            - paragraph [ref=e1497]:
+              - time [ref=e1499]: 4 tháng trước
+          - generic [ref=e1501]: Ok
+        - generic [ref=e1502]:
+          - generic [ref=e1505]:
+            - paragraph [ref=e1506]:
+              - text: nguyen quang
+              - generic [ref=e1508]:
+                - img "star" [ref=e1509]:
+                  - img [ref=e1510]
+                - img "star" [ref=e1512]:
+                  - img [ref=e1513]
+                - img "star" [ref=e1515]:
+                  - img [ref=e1516]
+                - img "star" [ref=e1518]:
+                  - img [ref=e1519]
+                - img "star" [ref=e1521]:
+                  - img [ref=e1522]
+            - paragraph [ref=e1524]:
+              - time [ref=e1526]: 4 tháng trước
+          - generic [ref=e1528]: Ăn cơm
+        - generic [ref=e1529]:
+          - generic [ref=e1532]:
+            - paragraph [ref=e1533]:
+              - text: nguyen quang
+              - generic [ref=e1535]:
+                - img "star" [ref=e1536]:
+                  - img [ref=e1537]
+                - img "star" [ref=e1539]:
+                  - img [ref=e1540]
+                - img "star" [ref=e1542]:
+                  - img [ref=e1543]
+                - img "star" [ref=e1545]:
+                  - img [ref=e1546]
+                - img "star" [ref=e1548]:
+                  - img [ref=e1549]
+            - paragraph [ref=e1551]:
+              - time [ref=e1553]: 4 tháng trước
+          - generic [ref=e1555]: Vih
+        - generic [ref=e1556]:
+          - generic [ref=e1559]:
+            - paragraph [ref=e1560]:
+              - text: nguyen quang
+              - generic [ref=e1562]:
+                - img "star" [ref=e1563]:
+                  - img [ref=e1564]
+                - img "star" [ref=e1566]:
+                  - img [ref=e1567]
+                - img "star" [ref=e1569]:
+                  - img [ref=e1570]
+                - img "star" [ref=e1572]:
+                  - img [ref=e1573]
+                - img "star" [ref=e1575]:
+                  - img [ref=e1576]
+            - paragraph [ref=e1578]:
+              - time [ref=e1580]: 4 tháng trước
+          - generic [ref=e1582]: Ok
+        - generic [ref=e1583]:
+          - generic [ref=e1586]:
+            - paragraph [ref=e1587]:
+              - text: nguyen quang
+              - generic [ref=e1589]:
+                - img "star" [ref=e1590]:
+                  - img [ref=e1591]
+                - img "star" [ref=e1593]:
+                  - img [ref=e1594]
+                - img "star" [ref=e1596]:
+                  - img [ref=e1597]
+                - img "star" [ref=e1599]:
+                  - img [ref=e1600]
+                - img "star" [ref=e1602]:
+                  - img [ref=e1603]
+            - paragraph [ref=e1605]:
+              - time [ref=e1607]: 4 tháng trước
+          - generic [ref=e1609]: Ok
+        - generic [ref=e1610]:
+          - generic [ref=e1613]:
+            - paragraph [ref=e1614]:
+              - text: nguyen quang
+              - generic [ref=e1616]:
+                - img "star" [ref=e1617]:
+                  - img [ref=e1618]
+                - img "star" [ref=e1620]:
+                  - img [ref=e1621]
+                - img "star" [ref=e1623]:
+                  - img [ref=e1624]
+                - img "star" [ref=e1626]:
+                  - img [ref=e1627]
+                - img "star" [ref=e1629]:
+                  - img [ref=e1630]
+            - paragraph [ref=e1632]:
+              - time [ref=e1634]: 4 tháng trước
+          - generic [ref=e1636]: Tệ
+        - generic [ref=e1637]:
+          - generic [ref=e1640]:
+            - paragraph [ref=e1641]:
+              - text: nguyen quang
+              - generic [ref=e1643]:
+                - img "star" [ref=e1644]:
+                  - img [ref=e1645]
+                - img "star" [ref=e1647]:
+                  - img [ref=e1648]
+                - img "star" [ref=e1650]:
+                  - img [ref=e1651]
+                - img "star" [ref=e1653]:
+                  - img [ref=e1654]
+                - img "star" [ref=e1656]:
+                  - img [ref=e1657]
+            - paragraph [ref=e1659]:
+              - time [ref=e1661]: 4 tháng trước
+          - generic [ref=e1663]: Tốt
+        - generic [ref=e1664]:
+          - generic [ref=e1667]:
+            - paragraph [ref=e1668]:
+              - text: admin
+              - generic [ref=e1670]:
+                - img "star" [ref=e1671]:
+                  - img [ref=e1672]
+                - img "star" [ref=e1674]:
+                  - img [ref=e1675]
+                - img "star" [ref=e1677]:
+                  - img [ref=e1678]
+                - img "star" [ref=e1680]:
+                  - img [ref=e1681]
+                - img "star" [ref=e1683]:
+                  - img [ref=e1684]
+            - paragraph [ref=e1686]:
+              - time [ref=e1688]: 4 tháng trước
+          - generic [ref=e1690]: Hello World
+        - generic [ref=e1691]:
+          - generic [ref=e1694]:
+            - paragraph [ref=e1695]: Guest1
+            - paragraph [ref=e1696]:
+              - time [ref=e1698]: 4 tháng trước
+          - generic [ref=e1700]: sfsdf
+        - generic [ref=e1701]:
+          - generic [ref=e1704]:
+            - paragraph [ref=e1705]: Guest1
+            - paragraph [ref=e1706]:
+              - time [ref=e1708]: 4 tháng trước
+          - generic [ref=e1710]: =)))@#$&#^* ㋡😅
+        - generic [ref=e1711]:
+          - generic [ref=e1714]:
+            - paragraph [ref=e1715]: Guest1
+            - paragraph [ref=e1716]:
+              - time [ref=e1718]: 4 tháng trước
+          - generic [ref=e1720]: fas
+        - generic [ref=e1721]:
+          - generic [ref=e1724]:
+            - paragraph [ref=e1725]:
+              - text: Thành Phát
+              - generic [ref=e1727]:
+                - img "star" [ref=e1728]:
+                  - img [ref=e1729]
+                - img "star" [ref=e1731]:
+                  - img [ref=e1732]
+                - img "star" [ref=e1734]:
+                  - img [ref=e1735]
+                - img "star" [ref=e1737]:
+                  - img [ref=e1738]
+            - paragraph [ref=e1740]:
+              - time [ref=e1742]: 5 tháng trước
+          - generic [ref=e1744]: Phòng đẹp
+        - generic [ref=e1745]:
+          - generic [ref=e1748]:
+            - paragraph [ref=e1749]: Vo Minh Nghia
+            - paragraph [ref=e1750]:
+              - time [ref=e1752]: 5 tháng trước
+          - generic [ref=e1754]: Test
+        - generic [ref=e1755]:
+          - generic [ref=e1758]:
+            - paragraph [ref=e1759]:
+              - text: thanh0923@gmail.com
+              - generic [ref=e1761]:
+                - img "star" [ref=e1762]:
+                  - img [ref=e1763]
+                - img "star" [ref=e1765]:
+                  - img [ref=e1766]
+                - img "star" [ref=e1768]:
+                  - img [ref=e1769]
+                - img "star" [ref=e1771]:
+                  - img [ref=e1772]
+                - img "star" [ref=e1774]:
+                  - img [ref=e1775]
+            - paragraph [ref=e1777]:
+              - time [ref=e1779]: 5 tháng trước
+          - generic [ref=e1781]: ok
+        - generic [ref=e1782]:
+          - generic [ref=e1785]:
+            - paragraph [ref=e1786]:
+              - text: thanh0923@gmail.com
+              - generic [ref=e1788]:
+                - img "star" [ref=e1789]:
+                  - img [ref=e1790]
+                - img "star" [ref=e1792]:
+                  - img [ref=e1793]
+                - img "star" [ref=e1795]:
+                  - img [ref=e1796]
+                - img "star" [ref=e1798]:
+                  - img [ref=e1799]
+                - img "star" [ref=e1801]:
+                  - img [ref=e1802]
+            - paragraph [ref=e1804]:
+              - time [ref=e1806]: 5 tháng trước
+          - generic [ref=e1808]: phòng ok
+        - generic [ref=e1809]:
+          - generic [ref=e1812]:
+            - paragraph [ref=e1813]:
+              - text: Thành Phát Thạch
+              - generic [ref=e1815]:
+                - img "star" [ref=e1816]:
+                  - img [ref=e1817]
+                - img "star" [ref=e1819]:
+                  - img [ref=e1820]
+                - img "star" [ref=e1822]:
+                  - img [ref=e1823]
+                - img "star" [ref=e1825]:
+                  - img [ref=e1826]
+            - paragraph [ref=e1828]:
+              - time [ref=e1830]: 5 tháng trước
+          - generic [ref=e1832]: Không nhận xét.
+        - generic [ref=e1833]:
+          - generic [ref=e1836]:
+            - paragraph [ref=e1837]:
+              - text: Thành Phát Thạch
+              - generic [ref=e1839]:
+                - img "star" [ref=e1840]:
+                  - img [ref=e1841]
+                - img "star" [ref=e1843]:
+                  - img [ref=e1844]
+                - img "star" [ref=e1846]:
+                  - img [ref=e1847]
+            - paragraph [ref=e1849]:
+              - time [ref=e1851]: 5 tháng trước
+          - generic [ref=e1853]: phòng đẹp
+        - generic [ref=e1854]:
+          - generic [ref=e1857]:
+            - paragraph [ref=e1858]:
+              - text: Thành Phát Thạch
+              - generic [ref=e1860]:
+                - img "star" [ref=e1861]:
+                  - img [ref=e1862]
+                - img "star" [ref=e1864]:
+                  - img [ref=e1865]
+                - img "star" [ref=e1867]:
+                  - img [ref=e1868]
+            - paragraph [ref=e1870]:
+              - time [ref=e1872]: 5 tháng trước
+          - generic [ref=e1874]: Phòng đẹp
+        - generic [ref=e1875]:
+          - generic [ref=e1878]:
+            - paragraph [ref=e1879]:
+              - text: thanh0923@gmail.com
+              - img "star" [ref=e1882]:
+                - img [ref=e1883]
+            - paragraph [ref=e1885]:
+              - time [ref=e1887]: 5 tháng trước
+          - generic [ref=e1889]: aaaaa
+        - generic [ref=e1890]:
+          - generic [ref=e1893]:
+            - paragraph [ref=e1894]:
+              - text: Ngo Quang Vu
+              - generic [ref=e1896]:
+                - img "star" [ref=e1897]:
+                  - img [ref=e1898]
+                - img "star" [ref=e1900]:
+                  - img [ref=e1901]
+                - img "star" [ref=e1903]:
+                  - img [ref=e1904]
+                - img "star" [ref=e1906]:
+                  - img [ref=e1907]
+                - img "star" [ref=e1909]:
+                  - img [ref=e1910]
+            - paragraph [ref=e1912]:
+              - time [ref=e1914]: 5 tháng trước
+          - generic [ref=e1916]: adsdas
+        - generic [ref=e1917]:
+          - generic [ref=e1920]:
+            - paragraph [ref=e1921]:
+              - text: Trần Minh Anh
+              - generic [ref=e1923]:
+                - img "star" [ref=e1924]:
+                  - img [ref=e1925]
+                - img "star" [ref=e1927]:
+                  - img [ref=e1928]
+                - img "star" [ref=e1930]:
+                  - img [ref=e1931]
+            - paragraph [ref=e1933]:
+              - time [ref=e1935]: 5 tháng trước
+          - generic [ref=e1937]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e1938]:
+          - generic [ref=e1941]:
+            - paragraph [ref=e1942]:
+              - text: Trần Minh Anh
+              - generic [ref=e1944]:
+                - img "star" [ref=e1945]:
+                  - img [ref=e1946]
+                - img "star" [ref=e1948]:
+                  - img [ref=e1949]
+                - img "star" [ref=e1951]:
+                  - img [ref=e1952]
+            - paragraph [ref=e1954]:
+              - time [ref=e1956]: 5 tháng trước
+          - generic [ref=e1958]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e1959]:
+          - generic [ref=e1962]:
+            - paragraph [ref=e1963]:
+              - text: Trần Minh Anh
+              - generic [ref=e1965]:
+                - img "star" [ref=e1966]:
+                  - img [ref=e1967]
+                - img "star" [ref=e1969]:
+                  - img [ref=e1970]
+                - img "star" [ref=e1972]:
+                  - img [ref=e1973]
+            - paragraph [ref=e1975]:
+              - time [ref=e1977]: 5 tháng trước
+          - generic [ref=e1979]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e1980]:
+          - generic [ref=e1983]:
+            - paragraph [ref=e1984]:
+              - text: Trần Minh Anh
+              - generic [ref=e1986]:
+                - img "star" [ref=e1987]:
+                  - img [ref=e1988]
+                - img "star" [ref=e1990]:
+                  - img [ref=e1991]
+                - img "star" [ref=e1993]:
+                  - img [ref=e1994]
+            - paragraph [ref=e1996]:
+              - time [ref=e1998]: 5 tháng trước
+          - generic [ref=e2000]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e2001]:
+          - generic [ref=e2004]:
+            - paragraph [ref=e2005]:
+              - text: Trần Minh Anh
+              - generic [ref=e2007]:
+                - img "star" [ref=e2008]:
+                  - img [ref=e2009]
+                - img "star" [ref=e2011]:
+                  - img [ref=e2012]
+                - img "star" [ref=e2014]:
+                  - img [ref=e2015]
+            - paragraph [ref=e2017]:
+              - time [ref=e2019]: 5 tháng trước
+          - generic [ref=e2021]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e2022]:
+          - generic [ref=e2025]:
+            - paragraph [ref=e2026]:
+              - text: Trần Minh Anh
+              - generic [ref=e2028]:
+                - img "star" [ref=e2029]:
+                  - img [ref=e2030]
+                - img "star" [ref=e2032]:
+                  - img [ref=e2033]
+                - img "star" [ref=e2035]:
+                  - img [ref=e2036]
+            - paragraph [ref=e2038]:
+              - time [ref=e2040]: 5 tháng trước
+          - generic [ref=e2042]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e2043]:
+          - generic [ref=e2046]:
+            - paragraph [ref=e2047]:
+              - text: Trần Minh Anh
+              - generic [ref=e2049]:
+                - img "star" [ref=e2050]:
+                  - img [ref=e2051]
+                - img "star" [ref=e2053]:
+                  - img [ref=e2054]
+                - img "star" [ref=e2056]:
+                  - img [ref=e2057]
+            - paragraph [ref=e2059]:
+              - time [ref=e2061]: 5 tháng trước
+          - generic [ref=e2063]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e2064]:
+          - generic [ref=e2067]:
+            - paragraph [ref=e2068]:
+              - text: Trần Minh Anh
+              - generic [ref=e2070]:
+                - img "star" [ref=e2071]:
+                  - img [ref=e2072]
+                - img "star" [ref=e2074]:
+                  - img [ref=e2075]
+                - img "star" [ref=e2077]:
+                  - img [ref=e2078]
+            - paragraph [ref=e2080]:
+              - time [ref=e2082]: 5 tháng trước
+          - generic [ref=e2084]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e2085]:
+          - generic [ref=e2088]:
+            - paragraph [ref=e2089]:
+              - text: Trần Minh Anh
+              - generic [ref=e2091]:
+                - img "star" [ref=e2092]:
+                  - img [ref=e2093]
+                - img "star" [ref=e2095]:
+                  - img [ref=e2096]
+                - img "star" [ref=e2098]:
+                  - img [ref=e2099]
+            - paragraph [ref=e2101]:
+              - time [ref=e2103]: 5 tháng trước
+          - generic [ref=e2105]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e2106]:
+          - generic [ref=e2109]:
+            - paragraph [ref=e2110]:
+              - text: Trần Minh Anh
+              - generic [ref=e2112]:
+                - img "star" [ref=e2113]:
+                  - img [ref=e2114]
+                - img "star" [ref=e2116]:
+                  - img [ref=e2117]
+                - img "star" [ref=e2119]:
+                  - img [ref=e2120]
+            - paragraph [ref=e2122]:
+              - time [ref=e2124]: 5 tháng trước
+          - generic [ref=e2126]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e2127]:
+          - generic [ref=e2130]:
+            - paragraph [ref=e2131]:
+              - text: Trần Minh Anh
+              - generic [ref=e2133]:
+                - img "star" [ref=e2134]:
+                  - img [ref=e2135]
+                - img "star" [ref=e2137]:
+                  - img [ref=e2138]
+                - img "star" [ref=e2140]:
+                  - img [ref=e2141]
+            - paragraph [ref=e2143]:
+              - time [ref=e2145]: 6 tháng trước
+          - generic [ref=e2147]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e2148]:
+          - generic [ref=e2151]:
+            - paragraph [ref=e2152]:
+              - text: Trần Minh Anh
+              - generic [ref=e2154]:
+                - img "star" [ref=e2155]:
+                  - img [ref=e2156]
+                - img "star" [ref=e2158]:
+                  - img [ref=e2159]
+                - img "star" [ref=e2161]:
+                  - img [ref=e2162]
+            - paragraph [ref=e2164]:
+              - time [ref=e2166]: 6 tháng trước
+          - generic [ref=e2168]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e2169]:
+          - generic [ref=e2172]:
+            - paragraph [ref=e2173]:
+              - text: Trần Minh Anh
+              - generic [ref=e2175]:
+                - img "star" [ref=e2176]:
+                  - img [ref=e2177]
+                - img "star" [ref=e2179]:
+                  - img [ref=e2180]
+                - img "star" [ref=e2182]:
+                  - img [ref=e2183]
+            - paragraph [ref=e2185]:
+              - time [ref=e2187]: 6 tháng trước
+          - generic [ref=e2189]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e2190]:
+          - generic [ref=e2193]:
+            - paragraph [ref=e2194]:
+              - text: Trần Minh Anh
+              - generic [ref=e2196]:
+                - img "star" [ref=e2197]:
+                  - img [ref=e2198]
+                - img "star" [ref=e2200]:
+                  - img [ref=e2201]
+                - img "star" [ref=e2203]:
+                  - img [ref=e2204]
+            - paragraph [ref=e2206]:
+              - time [ref=e2208]: 6 tháng trước
+          - generic [ref=e2210]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e2214]:
+          - paragraph [ref=e2215]: test
+          - paragraph [ref=e2216]:
+            - time [ref=e2218]: 6 tháng trước
+        - generic [ref=e2219]:
+          - generic [ref=e2222]:
+            - paragraph [ref=e2223]:
+              - text: Minh
+              - generic [ref=e2225]:
+                - img "star" [ref=e2226]:
+                  - img [ref=e2227]
+                - img "star" [ref=e2229]:
+                  - img [ref=e2230]
+                - img "star" [ref=e2232]:
+                  - img [ref=e2233]
+            - paragraph [ref=e2235]:
+              - time [ref=e2237]: 6 tháng trước
+          - generic [ref=e2239]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e2240]:
+          - generic [ref=e2243]:
+            - paragraph [ref=e2244]:
+              - text: Minh
+              - generic [ref=e2246]:
+                - img "star" [ref=e2247]:
+                  - img [ref=e2248]
+                - img "star" [ref=e2250]:
+                  - img [ref=e2251]
+                - img "star" [ref=e2253]:
+                  - img [ref=e2254]
+            - paragraph [ref=e2256]:
+              - time [ref=e2258]: 6 tháng trước
+          - generic [ref=e2260]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e2261]:
+          - generic [ref=e2264]:
+            - paragraph [ref=e2265]: beba
+            - paragraph [ref=e2266]:
+              - time [ref=e2268]: 6 tháng trước
+          - generic [ref=e2270]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2271]:
+          - generic [ref=e2274]:
+            - paragraph [ref=e2275]: beba
+            - paragraph [ref=e2276]:
+              - time [ref=e2278]: 6 tháng trước
+          - generic [ref=e2280]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2281]:
+          - generic [ref=e2284]:
+            - paragraph [ref=e2285]: beba
+            - paragraph [ref=e2286]:
+              - time [ref=e2288]: 6 tháng trước
+          - generic [ref=e2290]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2291]:
+          - generic [ref=e2294]:
+            - paragraph [ref=e2295]:
+              - text: beba
+              - generic [ref=e2297]:
+                - img "star" [ref=e2298]:
+                  - img [ref=e2299]
+                - img "star" [ref=e2301]:
+                  - img [ref=e2302]
+                - img "star" [ref=e2304]:
+                  - img [ref=e2305]
+                - img "star" [ref=e2307]:
+                  - img [ref=e2308]
+            - paragraph [ref=e2310]:
+              - time [ref=e2312]: 6 tháng trước
+          - generic [ref=e2314]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2315]:
+          - generic [ref=e2318]:
+            - paragraph [ref=e2319]:
+              - text: beba
+              - generic [ref=e2321]:
+                - img "star" [ref=e2322]:
+                  - img [ref=e2323]
+                - img "star" [ref=e2325]:
+                  - img [ref=e2326]
+                - img "star" [ref=e2328]:
+                  - img [ref=e2329]
+                - img "star" [ref=e2331]:
+                  - img [ref=e2332]
+            - paragraph [ref=e2334]:
+              - time [ref=e2336]: 6 tháng trước
+          - generic [ref=e2338]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2339]:
+          - generic [ref=e2342]:
+            - paragraph [ref=e2343]:
+              - text: beba
+              - generic [ref=e2345]:
+                - img "star" [ref=e2346]:
+                  - img [ref=e2347]
+                - img "star" [ref=e2349]:
+                  - img [ref=e2350]
+                - img "star" [ref=e2352]:
+                  - img [ref=e2353]
+                - img "star" [ref=e2355]:
+                  - img [ref=e2356]
+            - paragraph [ref=e2358]:
+              - time [ref=e2360]: 6 tháng trước
+          - generic [ref=e2362]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2363]:
+          - generic [ref=e2366]:
+            - paragraph [ref=e2367]: beba
+            - paragraph [ref=e2368]:
+              - time [ref=e2370]: 6 tháng trước
+          - generic [ref=e2372]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2373]:
+          - generic [ref=e2376]:
+            - paragraph [ref=e2377]: beba
+            - paragraph [ref=e2378]:
+              - time [ref=e2380]: 6 tháng trước
+          - generic [ref=e2382]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2383]:
+          - generic [ref=e2386]:
+            - paragraph [ref=e2387]:
+              - text: beba
+              - generic [ref=e2389]:
+                - img "star" [ref=e2390]:
+                  - img [ref=e2391]
+                - img "star" [ref=e2393]:
+                  - img [ref=e2394]
+                - img "star" [ref=e2396]:
+                  - img [ref=e2397]
+                - img "star" [ref=e2399]:
+                  - img [ref=e2400]
+            - paragraph [ref=e2402]:
+              - time [ref=e2404]: 6 tháng trước
+          - generic [ref=e2406]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2407]:
+          - generic [ref=e2410]:
+            - paragraph [ref=e2411]: beba
+            - paragraph [ref=e2412]:
+              - time [ref=e2414]: 6 tháng trước
+          - generic [ref=e2416]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2417]:
+          - generic [ref=e2420]:
+            - paragraph [ref=e2421]: beba
+            - paragraph [ref=e2422]:
+              - time [ref=e2424]: 6 tháng trước
+          - generic [ref=e2426]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2427]:
+          - generic [ref=e2430]:
+            - paragraph [ref=e2431]:
+              - text: beba
+              - generic [ref=e2433]:
+                - img "star" [ref=e2434]:
+                  - img [ref=e2435]
+                - img "star" [ref=e2437]:
+                  - img [ref=e2438]
+                - img "star" [ref=e2440]:
+                  - img [ref=e2441]
+                - img "star" [ref=e2443]:
+                  - img [ref=e2444]
+            - paragraph [ref=e2446]:
+              - time [ref=e2448]: 6 tháng trước
+          - generic [ref=e2450]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2451]:
+          - generic [ref=e2454]:
+            - paragraph [ref=e2455]: beba
+            - paragraph [ref=e2456]:
+              - time [ref=e2458]: 6 tháng trước
+          - generic [ref=e2460]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2461]:
+          - generic [ref=e2464]:
+            - paragraph [ref=e2465]:
+              - text: beba
+              - generic [ref=e2467]:
+                - img "star" [ref=e2468]:
+                  - img [ref=e2469]
+                - img "star" [ref=e2471]:
+                  - img [ref=e2472]
+                - img "star" [ref=e2474]:
+                  - img [ref=e2475]
+                - img "star" [ref=e2477]:
+                  - img [ref=e2478]
+            - paragraph [ref=e2480]:
+              - time [ref=e2482]: 6 tháng trước
+          - generic [ref=e2484]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2485]:
+          - generic [ref=e2488]:
+            - paragraph [ref=e2489]: beba
+            - paragraph [ref=e2490]:
+              - time [ref=e2492]: 6 tháng trước
+          - generic [ref=e2494]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2495]:
+          - generic [ref=e2498]:
+            - paragraph [ref=e2499]:
+              - text: beba
+              - generic [ref=e2501]:
+                - img "star" [ref=e2502]:
+                  - img [ref=e2503]
+                - img "star" [ref=e2505]:
+                  - img [ref=e2506]
+                - img "star" [ref=e2508]:
+                  - img [ref=e2509]
+                - img "star" [ref=e2511]:
+                  - img [ref=e2512]
+            - paragraph [ref=e2514]:
+              - time [ref=e2516]: 6 tháng trước
+          - generic [ref=e2518]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2519]:
+          - generic [ref=e2522]:
+            - paragraph [ref=e2523]:
+              - text: Minh
+              - generic [ref=e2525]:
+                - img "star" [ref=e2526]:
+                  - img [ref=e2527]
+                - img "star" [ref=e2529]:
+                  - img [ref=e2530]
+                - img "star" [ref=e2532]:
+                  - img [ref=e2533]
+            - paragraph [ref=e2535]:
+              - time [ref=e2537]: 6 tháng trước
+          - generic [ref=e2539]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e2540]:
+          - generic [ref=e2543]:
+            - paragraph [ref=e2544]:
+              - text: Minh
+              - generic [ref=e2546]:
+                - img "star" [ref=e2547]:
+                  - img [ref=e2548]
+                - img "star" [ref=e2550]:
+                  - img [ref=e2551]
+                - img "star" [ref=e2553]:
+                  - img [ref=e2554]
+            - paragraph [ref=e2556]:
+              - time [ref=e2558]: 6 tháng trước
+          - generic [ref=e2560]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e2561]:
+          - generic [ref=e2564]:
+            - paragraph [ref=e2565]: beba
+            - paragraph [ref=e2566]:
+              - time [ref=e2568]: 6 tháng trước
+          - generic [ref=e2570]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2571]:
+          - generic [ref=e2574]:
+            - paragraph [ref=e2575]: beba
+            - paragraph [ref=e2576]:
+              - time [ref=e2578]: 6 tháng trước
+          - generic [ref=e2580]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2581]:
+          - generic [ref=e2584]:
+            - paragraph [ref=e2585]: beba
+            - paragraph [ref=e2586]:
+              - time [ref=e2588]: 6 tháng trước
+          - generic [ref=e2590]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2591]:
+          - generic [ref=e2594]:
+            - paragraph [ref=e2595]: beba
+            - paragraph [ref=e2596]:
+              - time [ref=e2598]: 6 tháng trước
+          - generic [ref=e2600]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2601]:
+          - generic [ref=e2604]:
+            - paragraph [ref=e2605]: beba
+            - paragraph [ref=e2606]:
+              - time [ref=e2608]: 6 tháng trước
+          - generic [ref=e2610]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2611]:
+          - generic [ref=e2614]:
+            - paragraph [ref=e2615]:
+              - text: beba
+              - generic [ref=e2617]:
+                - img "star" [ref=e2618]:
+                  - img [ref=e2619]
+                - img "star" [ref=e2621]:
+                  - img [ref=e2622]
+                - img "star" [ref=e2624]:
+                  - img [ref=e2625]
+                - img "star" [ref=e2627]:
+                  - img [ref=e2628]
+            - paragraph [ref=e2630]:
+              - time [ref=e2632]: 6 tháng trước
+          - generic [ref=e2634]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2635]:
+          - generic [ref=e2638]:
+            - paragraph [ref=e2639]: beba
+            - paragraph [ref=e2640]:
+              - time [ref=e2642]: 6 tháng trước
+          - generic [ref=e2644]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2645]:
+          - generic [ref=e2648]:
+            - paragraph [ref=e2649]: beba
+            - paragraph [ref=e2650]:
+              - time [ref=e2652]: 6 tháng trước
+          - generic [ref=e2654]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2655]:
+          - generic [ref=e2658]:
+            - paragraph [ref=e2659]:
+              - text: beba
+              - generic [ref=e2661]:
+                - img "star" [ref=e2662]:
+                  - img [ref=e2663]
+                - img "star" [ref=e2665]:
+                  - img [ref=e2666]
+                - img "star" [ref=e2668]:
+                  - img [ref=e2669]
+                - img "star" [ref=e2671]:
+                  - img [ref=e2672]
+            - paragraph [ref=e2674]:
+              - time [ref=e2676]: 6 tháng trước
+          - generic [ref=e2678]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2679]:
+          - generic [ref=e2682]:
+            - paragraph [ref=e2683]: beba
+            - paragraph [ref=e2684]:
+              - time [ref=e2686]: 6 tháng trước
+          - generic [ref=e2688]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2689]:
+          - generic [ref=e2692]:
+            - paragraph [ref=e2693]: beba
+            - paragraph [ref=e2694]:
+              - time [ref=e2696]: 6 tháng trước
+          - generic [ref=e2698]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2699]:
+          - generic [ref=e2702]:
+            - paragraph [ref=e2703]:
+              - text: beba
+              - generic [ref=e2705]:
+                - img "star" [ref=e2706]:
+                  - img [ref=e2707]
+                - img "star" [ref=e2709]:
+                  - img [ref=e2710]
+                - img "star" [ref=e2712]:
+                  - img [ref=e2713]
+                - img "star" [ref=e2715]:
+                  - img [ref=e2716]
+            - paragraph [ref=e2718]:
+              - time [ref=e2720]: 6 tháng trước
+          - generic [ref=e2722]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2723]:
+          - generic [ref=e2726]:
+            - paragraph [ref=e2727]: beba
+            - paragraph [ref=e2728]:
+              - time [ref=e2730]: 6 tháng trước
+          - generic [ref=e2732]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2733]:
+          - generic [ref=e2736]:
+            - paragraph [ref=e2737]:
+              - text: beba
+              - generic [ref=e2739]:
+                - img "star" [ref=e2740]:
+                  - img [ref=e2741]
+                - img "star" [ref=e2743]:
+                  - img [ref=e2744]
+                - img "star" [ref=e2746]:
+                  - img [ref=e2747]
+                - img "star" [ref=e2749]:
+                  - img [ref=e2750]
+            - paragraph [ref=e2752]:
+              - time [ref=e2754]: 6 tháng trước
+          - generic [ref=e2756]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2757]:
+          - generic [ref=e2760]:
+            - paragraph [ref=e2761]: beba
+            - paragraph [ref=e2762]:
+              - time [ref=e2764]: 6 tháng trước
+          - generic [ref=e2766]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2767]:
+          - generic [ref=e2770]:
+            - paragraph [ref=e2771]:
+              - text: beba
+              - generic [ref=e2773]:
+                - img "star" [ref=e2774]:
+                  - img [ref=e2775]
+                - img "star" [ref=e2777]:
+                  - img [ref=e2778]
+                - img "star" [ref=e2780]:
+                  - img [ref=e2781]
+                - img "star" [ref=e2783]:
+                  - img [ref=e2784]
+            - paragraph [ref=e2786]:
+              - time [ref=e2788]: 6 tháng trước
+          - generic [ref=e2790]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2791]:
+          - generic [ref=e2794]:
+            - paragraph [ref=e2795]: beba
+            - paragraph [ref=e2796]:
+              - time [ref=e2798]: 6 tháng trước
+          - generic [ref=e2800]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2801]:
+          - generic [ref=e2804]:
+            - paragraph [ref=e2805]:
+              - text: beba
+              - generic [ref=e2807]:
+                - img "star" [ref=e2808]:
+                  - img [ref=e2809]
+                - img "star" [ref=e2811]:
+                  - img [ref=e2812]
+                - img "star" [ref=e2814]:
+                  - img [ref=e2815]
+                - img "star" [ref=e2817]:
+                  - img [ref=e2818]
+            - paragraph [ref=e2820]:
+              - time [ref=e2822]: 6 tháng trước
+          - generic [ref=e2824]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2825]:
+          - generic [ref=e2828]:
+            - paragraph [ref=e2829]: beba
+            - paragraph [ref=e2830]:
+              - time [ref=e2832]: 6 tháng trước
+          - generic [ref=e2834]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2835]:
+          - generic [ref=e2838]:
+            - paragraph [ref=e2839]:
+              - text: beba
+              - generic [ref=e2841]:
+                - img "star" [ref=e2842]:
+                  - img [ref=e2843]
+                - img "star" [ref=e2845]:
+                  - img [ref=e2846]
+                - img "star" [ref=e2848]:
+                  - img [ref=e2849]
+                - img "star" [ref=e2851]:
+                  - img [ref=e2852]
+            - paragraph [ref=e2854]:
+              - time [ref=e2856]: 6 tháng trước
+          - generic [ref=e2858]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2859]:
+          - generic [ref=e2862]:
+            - paragraph [ref=e2863]:
+              - text: beba
+              - generic [ref=e2865]:
+                - img "star" [ref=e2866]:
+                  - img [ref=e2867]
+                - img "star" [ref=e2869]:
+                  - img [ref=e2870]
+                - img "star" [ref=e2872]:
+                  - img [ref=e2873]
+                - img "star" [ref=e2875]:
+                  - img [ref=e2876]
+            - paragraph [ref=e2878]:
+              - time [ref=e2880]: 6 tháng trước
+          - generic [ref=e2882]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2883]:
+          - generic [ref=e2886]:
+            - paragraph [ref=e2887]: beba
+            - paragraph [ref=e2888]:
+              - time [ref=e2890]: 6 tháng trước
+          - generic [ref=e2892]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2893]:
+          - generic [ref=e2896]:
+            - paragraph [ref=e2897]:
+              - text: beba
+              - generic [ref=e2899]:
+                - img "star" [ref=e2900]:
+                  - img [ref=e2901]
+                - img "star" [ref=e2903]:
+                  - img [ref=e2904]
+                - img "star" [ref=e2906]:
+                  - img [ref=e2907]
+                - img "star" [ref=e2909]:
+                  - img [ref=e2910]
+            - paragraph [ref=e2912]:
+              - time [ref=e2914]: 6 tháng trước
+          - generic [ref=e2916]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2917]:
+          - generic [ref=e2920]:
+            - paragraph [ref=e2921]: beba
+            - paragraph [ref=e2922]:
+              - time [ref=e2924]: 6 tháng trước
+          - generic [ref=e2926]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2927]:
+          - generic [ref=e2930]:
+            - paragraph [ref=e2931]: beba
+            - paragraph [ref=e2932]:
+              - time [ref=e2934]: 6 tháng trước
+          - generic [ref=e2936]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2937]:
+          - generic [ref=e2940]:
+            - paragraph [ref=e2941]:
+              - text: beba
+              - generic [ref=e2943]:
+                - img "star" [ref=e2944]:
+                  - img [ref=e2945]
+                - img "star" [ref=e2947]:
+                  - img [ref=e2948]
+                - img "star" [ref=e2950]:
+                  - img [ref=e2951]
+                - img "star" [ref=e2953]:
+                  - img [ref=e2954]
+            - paragraph [ref=e2956]:
+              - time [ref=e2958]: 6 tháng trước
+          - generic [ref=e2960]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2961]:
+          - generic [ref=e2964]:
+            - paragraph [ref=e2965]:
+              - text: beba
+              - generic [ref=e2967]:
+                - img "star" [ref=e2968]:
+                  - img [ref=e2969]
+                - img "star" [ref=e2971]:
+                  - img [ref=e2972]
+                - img "star" [ref=e2974]:
+                  - img [ref=e2975]
+                - img "star" [ref=e2977]:
+                  - img [ref=e2978]
+            - paragraph [ref=e2980]:
+              - time [ref=e2982]: 6 tháng trước
+          - generic [ref=e2984]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e2985]:
+          - generic [ref=e2988]:
+            - paragraph [ref=e2989]: beba
+            - paragraph [ref=e2990]:
+              - time [ref=e2992]: 6 tháng trước
+          - generic [ref=e2994]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e2995]:
+          - generic [ref=e2998]:
+            - paragraph [ref=e2999]: beba
+            - paragraph [ref=e3000]:
+              - time [ref=e3002]: 6 tháng trước
+          - generic [ref=e3004]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e3005]:
+          - generic [ref=e3008]:
+            - paragraph [ref=e3009]:
+              - text: cuong
+              - generic [ref=e3011]:
+                - img "star" [ref=e3012]:
+                  - img [ref=e3013]
+                - img "star" [ref=e3015]:
+                  - img [ref=e3016]
+                - img "star" [ref=e3018]:
+                  - img [ref=e3019]
+                - img "star" [ref=e3021]:
+                  - img [ref=e3022]
+                - img "star" [ref=e3024]:
+                  - img [ref=e3025]
+            - paragraph [ref=e3027]:
+              - time [ref=e3029]: 6 tháng trước
+          - generic [ref=e3031]: Mọi người nên đi thử
+        - generic [ref=e3032]:
+          - generic [ref=e3035]:
+            - paragraph [ref=e3036]:
+              - text: cuong
+              - generic [ref=e3038]:
+                - img "star" [ref=e3039]:
+                  - img [ref=e3040]
+                - img "star" [ref=e3042]:
+                  - img [ref=e3043]
+                - img "star" [ref=e3045]:
+                  - img [ref=e3046]
+                - img "star" [ref=e3048]:
+                  - img [ref=e3049]
+                - img "star" [ref=e3051]:
+                  - img [ref=e3052]
+            - paragraph [ref=e3054]:
+              - time [ref=e3056]: 6 tháng trước
+          - generic [ref=e3058]: phòng đẹp
+        - generic [ref=e3059]:
+          - generic [ref=e3062]:
+            - paragraph [ref=e3063]:
+              - text: Thành Phát Thạch
+              - generic [ref=e3065]:
+                - img "star" [ref=e3066]:
+                  - img [ref=e3067]
+                - img "star" [ref=e3069]:
+                  - img [ref=e3070]
+                - img "star" [ref=e3072]:
+                  - img [ref=e3073]
+            - paragraph [ref=e3075]:
+              - time [ref=e3077]: Invalid date
+          - generic [ref=e3079]: Không nhận xét.
+        - generic [ref=e3080]:
+          - generic [ref=e3083]:
+            - paragraph [ref=e3084]:
+              - text: Thành Phát Thạch
+              - generic [ref=e3086]:
+                - img "star" [ref=e3087]:
+                  - img [ref=e3088]
+                - img "star" [ref=e3090]:
+                  - img [ref=e3091]
+                - img "star" [ref=e3093]:
+                  - img [ref=e3094]
+            - paragraph [ref=e3096]:
+              - time [ref=e3098]: Invalid date
+          - generic [ref=e3100]: aaaaaaaaaaaaaaaaaaaaaaa
+        - generic [ref=e3101]:
+          - generic [ref=e3104]:
+            - paragraph [ref=e3105]:
+              - text: test
+              - img "star" [ref=e3108]:
+                - img [ref=e3109]
+            - paragraph [ref=e3111]:
+              - time [ref=e3113]: 6 tháng trước
+          - generic [ref=e3115]: Test 1234
+        - generic [ref=e3116]:
+          - generic [ref=e3119]:
+            - paragraph [ref=e3120]:
+              - text: test
+              - generic [ref=e3122]:
+                - img "star" [ref=e3123]:
+                  - img [ref=e3124]
+                - img "star" [ref=e3126]:
+                  - img [ref=e3127]
+                - img "star" [ref=e3129]:
+                  - img [ref=e3130]
+                - img "star" [ref=e3132]:
+                  - img [ref=e3133]
+                - img "star" [ref=e3135]:
+                  - img [ref=e3136]
+            - paragraph [ref=e3138]:
+              - time [ref=e3140]: 6 tháng trước
+          - generic [ref=e3142]: test 123
+        - generic [ref=e3143]:
+          - generic [ref=e3146]:
+            - paragraph [ref=e3147]:
+              - text: test
+              - generic [ref=e3149]:
+                - img "star" [ref=e3150]:
+                  - img [ref=e3151]
+                - img "star" [ref=e3153]:
+                  - img [ref=e3154]
+                - img "star" [ref=e3156]:
+                  - img [ref=e3157]
+                - img "star" [ref=e3159]:
+                  - img [ref=e3160]
+                - img "star" [ref=e3162]:
+                  - img [ref=e3163]
+            - paragraph [ref=e3165]:
+              - time [ref=e3167]: 6 tháng trước
+          - generic [ref=e3169]: test 1
+        - generic [ref=e3170]:
+          - generic [ref=e3173]:
+            - paragraph [ref=e3174]:
+              - text: test
+              - generic [ref=e3176]:
+                - img "star" [ref=e3177]:
+                  - img [ref=e3178]
+                - img "star" [ref=e3180]:
+                  - img [ref=e3181]
+                - img "star" [ref=e3183]:
+                  - img [ref=e3184]
+                - img "star" [ref=e3186]:
+                  - img [ref=e3187]
+                - img "star" [ref=e3189]:
+                  - img [ref=e3190]
+            - paragraph [ref=e3192]:
+              - time [ref=e3194]: 6 tháng trước
+          - generic [ref=e3196]: test
+        - generic [ref=e3197]:
+          - generic [ref=e3200]:
+            - paragraph [ref=e3201]:
+              - text: Thành Luân
+              - generic [ref=e3203]:
+                - img "star" [ref=e3204]:
+                  - img [ref=e3205]
+                - img "star" [ref=e3207]:
+                  - img [ref=e3208]
+                - img "star" [ref=e3210]:
+                  - img [ref=e3211]
+                - img "star" [ref=e3213]:
+                  - img [ref=e3214]
+            - paragraph [ref=e3216]:
+              - time [ref=e3218]: 7 tháng trước
+          - generic [ref=e3220]: .
+        - generic [ref=e3221]:
+          - generic [ref=e3224]:
+            - paragraph [ref=e3225]:
+              - text: tester2103
+              - generic [ref=e3227]:
+                - img "star" [ref=e3228]:
+                  - img [ref=e3229]
+                - img "star" [ref=e3231]:
+                  - img [ref=e3232]
+                - img "star" [ref=e3234]:
+                  - img [ref=e3235]
+            - paragraph [ref=e3237]:
+              - time [ref=e3239]: 7 tháng trước
+          - generic [ref=e3241]: good
+        - generic [ref=e3242]:
+          - generic [ref=e3245]:
+            - paragraph [ref=e3246]: tester2103
+            - paragraph [ref=e3247]:
+              - time [ref=e3249]: 7 tháng trước
+          - generic [ref=e3251]: good
+        - generic [ref=e3252]:
+          - generic [ref=e3255]:
+            - paragraph [ref=e3256]:
+              - text: Nguyễn Văn A
+              - generic [ref=e3258]:
+                - img "star" [ref=e3259]:
+                  - img [ref=e3260]
+                - img "star" [ref=e3262]:
+                  - img [ref=e3263]
+                - img "star" [ref=e3265]:
+                  - img [ref=e3266]
+                - img "star" [ref=e3268]:
+                  - img [ref=e3269]
+                - img "star" [ref=e3271]:
+                  - img [ref=e3272]
+            - paragraph [ref=e3274]:
+              - time [ref=e3276]: 7 tháng trước
+          - generic [ref=e3278]: Khách sạn tốt.
+        - generic [ref=e3279]:
+          - generic [ref=e3282]:
+            - paragraph [ref=e3283]: Nguyễn Văn A
+            - paragraph [ref=e3284]:
+              - time [ref=e3286]: 7 tháng trước
+          - generic [ref=e3288]: .
+        - generic [ref=e3289]:
+          - generic [ref=e3292]:
+            - paragraph [ref=e3293]:
+              - text: Nguyễn Văn A
+              - img "star" [ref=e3296]:
+                - img [ref=e3297]
+            - paragraph [ref=e3299]:
+              - time [ref=e3301]: 7 tháng trước
+          - generic [ref=e3303]: .
+        - generic [ref=e3304]:
+          - generic [ref=e3307]:
+            - paragraph [ref=e3308]:
+              - text: Nguyễn Văn A
+              - img "star" [ref=e3311]:
+                - img [ref=e3312]
+            - paragraph [ref=e3314]:
+              - time [ref=e3316]: 7 tháng trước
+          - generic [ref=e3318]: .
+        - generic [ref=e3319]:
+          - generic [ref=e3322]:
+            - paragraph [ref=e3323]:
+              - text: Nguyễn Văn A
+              - img "star" [ref=e3326]:
+                - img [ref=e3327]
+            - paragraph [ref=e3329]:
+              - time [ref=e3331]: 7 tháng trước
+          - generic [ref=e3333]: .
+        - generic [ref=e3334]:
+          - generic [ref=e3337]:
+            - paragraph [ref=e3338]:
+              - text: Nguyễn Văn A
+              - img "star" [ref=e3341]:
+                - img [ref=e3342]
+            - paragraph [ref=e3344]:
+              - time [ref=e3346]: 7 tháng trước
+          - generic [ref=e3348]: .
+        - generic [ref=e3349]:
+          - generic [ref=e3352]:
+            - paragraph [ref=e3353]:
+              - text: Nguyễn Văn A
+              - img "star" [ref=e3356]:
+                - img [ref=e3357]
+            - paragraph [ref=e3359]:
+              - time [ref=e3361]: 7 tháng trước
+          - generic [ref=e3363]: .
+        - generic [ref=e3364]:
+          - generic [ref=e3367]:
+            - paragraph [ref=e3368]:
+              - text: Nguyễn Văn A
+              - img "star" [ref=e3371]:
+                - img [ref=e3372]
+            - paragraph [ref=e3374]:
+              - time [ref=e3376]: 7 tháng trước
+          - generic [ref=e3378]: .
+        - generic [ref=e3379]:
+          - generic [ref=e3382]:
+            - paragraph [ref=e3383]:
+              - text: Nguyễn Văn A
+              - generic [ref=e3385]:
+                - img "star" [ref=e3386]:
+                  - img [ref=e3387]
+                - img "star" [ref=e3389]:
+                  - img [ref=e3390]
+                - img "star" [ref=e3392]:
+                  - img [ref=e3393]
+                - img "star" [ref=e3395]:
+                  - img [ref=e3396]
+                - img "star" [ref=e3398]:
+                  - img [ref=e3399]
+            - paragraph [ref=e3401]:
+              - time [ref=e3403]: 7 tháng trước
+          - generic [ref=e3405]: gud
+        - generic [ref=e3406]:
+          - generic [ref=e3409]:
+            - paragraph [ref=e3410]:
+              - text: Minh
+              - generic [ref=e3412]:
+                - img "star" [ref=e3413]:
+                  - img [ref=e3414]
+                - img "star" [ref=e3416]:
+                  - img [ref=e3417]
+                - img "star" [ref=e3419]:
+                  - img [ref=e3420]
+            - paragraph [ref=e3422]:
+              - time [ref=e3424]: 7 tháng trước
+          - generic [ref=e3426]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e3427]:
+          - generic [ref=e3430]:
+            - paragraph [ref=e3431]:
+              - text: Minh
+              - generic [ref=e3433]:
+                - img "star" [ref=e3434]:
+                  - img [ref=e3435]
+                - img "star" [ref=e3437]:
+                  - img [ref=e3438]
+                - img "star" [ref=e3440]:
+                  - img [ref=e3441]
+            - paragraph [ref=e3443]:
+              - time [ref=e3445]: 7 tháng trước
+          - generic [ref=e3447]: Phòng sạch sẽ, đúng mô tả.
+        - generic [ref=e3448]:
+          - generic [ref=e3451]:
+            - paragraph [ref=e3452]:
+              - text: beba
+              - generic [ref=e3454]:
+                - img "star" [ref=e3455]:
+                  - img [ref=e3456]
+                - img "star" [ref=e3458]:
+                  - img [ref=e3459]
+                - img "star" [ref=e3461]:
+                  - img [ref=e3462]
+                - img "star" [ref=e3464]:
+                  - img [ref=e3465]
+            - paragraph [ref=e3467]:
+              - time [ref=e3469]: 8 tháng trước
+          - generic [ref=e3471]: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+        - generic [ref=e3472]:
+          - generic [ref=e3475]:
+            - paragraph [ref=e3476]:
+              - text: trangiakiet
+              - generic [ref=e3478]:
+                - img "star" [ref=e3479]:
+                  - img [ref=e3480]
+                - img "star" [ref=e3482]:
+                  - img [ref=e3483]
+                - img "star" [ref=e3485]:
+                  - img [ref=e3486]
+                - img "star" [ref=e3488]:
+                  - img [ref=e3489]
+                - img "star" [ref=e3491]:
+                  - img [ref=e3492]
+            - paragraph [ref=e3494]:
+              - time [ref=e3496]: 7 tháng trước
+          - generic [ref=e3498]: jijiij
+        - generic [ref=e3499]:
+          - generic [ref=e3502]:
+            - paragraph [ref=e3503]:
+              - text: ok
+              - generic [ref=e3505]:
+                - img "star" [ref=e3506]:
+                  - img [ref=e3507]
+                - img "star" [ref=e3509]:
+                  - img [ref=e3510]
+                - img "star" [ref=e3512]:
+                  - img [ref=e3513]
+                - img "star" [ref=e3515]:
+                  - img [ref=e3516]
+                - img "star" [ref=e3518]:
+                  - img [ref=e3519]
+            - paragraph [ref=e3521]:
+              - time [ref=e3523]: 7 tháng trước
+          - generic [ref=e3525]: Phòng ổn
+        - generic [ref=e3526]:
+          - generic [ref=e3529]:
+            - paragraph [ref=e3530]:
+              - text: Phuong
+              - generic [ref=e3532]:
+                - img "star" [ref=e3533]:
+                  - img [ref=e3534]
+                - img "star" [ref=e3536]:
+                  - img [ref=e3537]
+                - img "star" [ref=e3539]:
+                  - img [ref=e3540]
+                - img "star" [ref=e3542]:
+                  - img [ref=e3543]
+            - paragraph [ref=e3545]:
+              - time [ref=e3547]: 7 tháng trước
+          - generic [ref=e3549]: "578"
+        - generic [ref=e3550]:
+          - generic [ref=e3553]:
+            - paragraph [ref=e3554]:
+              - text: Phuong
+              - generic [ref=e3556]:
+                - img "star" [ref=e3557]:
+                  - img [ref=e3558]
+                - img "star" [ref=e3560]:
+                  - img [ref=e3561]
+                - img "star" [ref=e3563]:
+                  - img [ref=e3564]
+                - img "star" [ref=e3566]:
+                  - img [ref=e3567]
+            - paragraph [ref=e3569]:
+              - time [ref=e3571]: 7 tháng trước
+          - generic [ref=e3573]: "123"
+        - generic [ref=e3574]:
+          - generic [ref=e3577]:
+            - paragraph [ref=e3578]:
+              - text: Nguyễn Thị Anh Đào
+              - generic [ref=e3580]:
+                - img "star" [ref=e3581]:
+                  - img [ref=e3582]
+                - img "star" [ref=e3584]:
+                  - img [ref=e3585]
+                - img "star" [ref=e3587]:
+                  - img [ref=e3588]
+                - img "star" [ref=e3590]:
+                  - img [ref=e3591]
+            - paragraph [ref=e3593]:
+              - time [ref=e3595]: 7 tháng trước
+          - generic [ref=e3597]: Phòng ổn
+        - generic [ref=e3598]:
+          - generic [ref=e3601]:
+            - paragraph [ref=e3602]: beba
+            - paragraph [ref=e3603]:
+              - time [ref=e3605]: 7 tháng trước
+          - generic [ref=e3607]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e3608]:
+          - generic [ref=e3611]:
+            - paragraph [ref=e3612]:
+              - text: beba
+              - generic [ref=e3614]:
+                - img "star" [ref=e3615]:
+                  - img [ref=e3616]
+                - img "star" [ref=e3618]:
+                  - img [ref=e3619]
+                - img "star" [ref=e3621]:
+                  - img [ref=e3622]
+                - img "star" [ref=e3624]:
+                  - img [ref=e3625]
+            - paragraph [ref=e3627]:
+              - time [ref=e3629]: 7 tháng trước
+          - generic [ref=e3631]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e3632]:
+          - generic [ref=e3635]:
+            - paragraph [ref=e3636]: beba
+            - paragraph [ref=e3637]:
+              - time [ref=e3639]: 7 tháng trước
+          - generic [ref=e3641]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e3642]:
+          - generic [ref=e3645]:
+            - paragraph [ref=e3646]:
+              - text: beba
+              - generic [ref=e3648]:
+                - img "star" [ref=e3649]:
+                  - img [ref=e3650]
+                - img "star" [ref=e3652]:
+                  - img [ref=e3653]
+                - img "star" [ref=e3655]:
+                  - img [ref=e3656]
+                - img "star" [ref=e3658]:
+                  - img [ref=e3659]
+            - paragraph [ref=e3661]:
+              - time [ref=e3663]: 7 tháng trước
+          - generic [ref=e3665]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e3666]:
+          - generic [ref=e3669]:
+            - paragraph [ref=e3670]: beba
+            - paragraph [ref=e3671]:
+              - time [ref=e3673]: 7 tháng trước
+          - generic [ref=e3675]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e3676]:
+          - generic [ref=e3679]:
+            - paragraph [ref=e3680]:
+              - text: beba
+              - generic [ref=e3682]:
+                - img "star" [ref=e3683]:
+                  - img [ref=e3684]
+                - img "star" [ref=e3686]:
+                  - img [ref=e3687]
+                - img "star" [ref=e3689]:
+                  - img [ref=e3690]
+                - img "star" [ref=e3692]:
+                  - img [ref=e3693]
+            - paragraph [ref=e3695]:
+              - time [ref=e3697]: 7 tháng trước
+          - generic [ref=e3699]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e3700]:
+          - generic [ref=e3703]:
+            - paragraph [ref=e3704]: beba
+            - paragraph [ref=e3705]:
+              - time [ref=e3707]: 7 tháng trước
+          - generic [ref=e3709]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e3710]:
+          - generic [ref=e3713]:
+            - paragraph [ref=e3714]:
+              - text: beba
+              - generic [ref=e3716]:
+                - img "star" [ref=e3717]:
+                  - img [ref=e3718]
+                - img "star" [ref=e3720]:
+                  - img [ref=e3721]
+                - img "star" [ref=e3723]:
+                  - img [ref=e3724]
+                - img "star" [ref=e3726]:
+                  - img [ref=e3727]
+            - paragraph [ref=e3729]:
+              - time [ref=e3731]: 7 tháng trước
+          - generic [ref=e3733]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e3734]:
+          - generic [ref=e3737]:
+            - paragraph [ref=e3738]:
+              - text: beba
+              - generic [ref=e3740]:
+                - img "star" [ref=e3741]:
+                  - img [ref=e3742]
+                - img "star" [ref=e3744]:
+                  - img [ref=e3745]
+                - img "star" [ref=e3747]:
+                  - img [ref=e3748]
+                - img "star" [ref=e3750]:
+                  - img [ref=e3751]
+            - paragraph [ref=e3753]:
+              - time [ref=e3755]: 7 tháng trước
+          - generic [ref=e3757]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e3758]:
+          - generic [ref=e3761]:
+            - paragraph [ref=e3762]: beba
+            - paragraph [ref=e3763]:
+              - time [ref=e3765]: 7 tháng trước
+          - generic [ref=e3767]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e3768]:
+          - generic [ref=e3771]:
+            - paragraph [ref=e3772]:
+              - text: beba
+              - generic [ref=e3774]:
+                - img "star" [ref=e3775]:
+                  - img [ref=e3776]
+                - img "star" [ref=e3778]:
+                  - img [ref=e3779]
+                - img "star" [ref=e3781]:
+                  - img [ref=e3782]
+                - img "star" [ref=e3784]:
+                  - img [ref=e3785]
+            - paragraph [ref=e3787]:
+              - time [ref=e3789]: 7 tháng trước
+          - generic [ref=e3791]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e3792]:
+          - generic [ref=e3795]:
+            - paragraph [ref=e3796]: beba
+            - paragraph [ref=e3797]:
+              - time [ref=e3799]: 7 tháng trước
+          - generic [ref=e3801]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e3802]:
+          - generic [ref=e3805]:
+            - paragraph [ref=e3806]:
+              - text: beba
+              - generic [ref=e3808]:
+                - img "star" [ref=e3809]:
+                  - img [ref=e3810]
+                - img "star" [ref=e3812]:
+                  - img [ref=e3813]
+                - img "star" [ref=e3815]:
+                  - img [ref=e3816]
+                - img "star" [ref=e3818]:
+                  - img [ref=e3819]
+            - paragraph [ref=e3821]:
+              - time [ref=e3823]: 7 tháng trước
+          - generic [ref=e3825]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e3826]:
+          - generic [ref=e3829]:
+            - paragraph [ref=e3830]: beba
+            - paragraph [ref=e3831]:
+              - time [ref=e3833]: 7 tháng trước
+          - generic [ref=e3835]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e3836]:
+          - generic [ref=e3839]:
+            - paragraph [ref=e3840]:
+              - text: beba
+              - generic [ref=e3842]:
+                - img "star" [ref=e3843]:
+                  - img [ref=e3844]
+                - img "star" [ref=e3846]:
+                  - img [ref=e3847]
+                - img "star" [ref=e3849]:
+                  - img [ref=e3850]
+                - img "star" [ref=e3852]:
+                  - img [ref=e3853]
+            - paragraph [ref=e3855]:
+              - time [ref=e3857]: 7 tháng trước
+          - generic [ref=e3859]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e3860]:
+          - generic [ref=e3863]:
+            - paragraph [ref=e3864]: beba
+            - paragraph [ref=e3865]:
+              - time [ref=e3867]: 7 tháng trước
+          - generic [ref=e3869]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e3870]:
+          - generic [ref=e3873]:
+            - paragraph [ref=e3874]:
+              - text: beba
+              - generic [ref=e3876]:
+                - img "star" [ref=e3877]:
+                  - img [ref=e3878]
+                - img "star" [ref=e3880]:
+                  - img [ref=e3881]
+                - img "star" [ref=e3883]:
+                  - img [ref=e3884]
+                - img "star" [ref=e3886]:
+                  - img [ref=e3887]
+            - paragraph [ref=e3889]:
+              - time [ref=e3891]: 7 tháng trước
+          - generic [ref=e3893]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e3894]:
+          - generic [ref=e3897]:
+            - paragraph [ref=e3898]: beba
+            - paragraph [ref=e3899]:
+              - time [ref=e3901]: 7 tháng trước
+          - generic [ref=e3903]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e3904]:
+          - generic [ref=e3907]:
+            - paragraph [ref=e3908]:
+              - text: beba
+              - generic [ref=e3910]:
+                - img "star" [ref=e3911]:
+                  - img [ref=e3912]
+                - img "star" [ref=e3914]:
+                  - img [ref=e3915]
+                - img "star" [ref=e3917]:
+                  - img [ref=e3918]
+                - img "star" [ref=e3920]:
+                  - img [ref=e3921]
+            - paragraph [ref=e3923]:
+              - time [ref=e3925]: 7 tháng trước
+          - generic [ref=e3927]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e3928]:
+          - generic [ref=e3931]:
+            - paragraph [ref=e3932]: beba
+            - paragraph [ref=e3933]:
+              - time [ref=e3935]: 7 tháng trước
+          - generic [ref=e3937]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e3938]:
+          - generic [ref=e3941]:
+            - paragraph [ref=e3942]:
+              - text: beba
+              - generic [ref=e3944]:
+                - img "star" [ref=e3945]:
+                  - img [ref=e3946]
+                - img "star" [ref=e3948]:
+                  - img [ref=e3949]
+                - img "star" [ref=e3951]:
+                  - img [ref=e3952]
+                - img "star" [ref=e3954]:
+                  - img [ref=e3955]
+            - paragraph [ref=e3957]:
+              - time [ref=e3959]: 7 tháng trước
+          - generic [ref=e3961]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e3962]:
+          - generic [ref=e3965]:
+            - paragraph [ref=e3966]:
+              - text: beba
+              - generic [ref=e3968]:
+                - img "star" [ref=e3969]:
+                  - img [ref=e3970]
+                - img "star" [ref=e3972]:
+                  - img [ref=e3973]
+                - img "star" [ref=e3975]:
+                  - img [ref=e3976]
+                - img "star" [ref=e3978]:
+                  - img [ref=e3979]
+            - paragraph [ref=e3981]:
+              - time [ref=e3983]: 7 tháng trước
+          - generic [ref=e3985]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e3986]:
+          - generic [ref=e3989]:
+            - paragraph [ref=e3990]: beba
+            - paragraph [ref=e3991]:
+              - time [ref=e3993]: 7 tháng trước
+          - generic [ref=e3995]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e3996]:
+          - generic [ref=e3999]:
+            - paragraph [ref=e4000]:
+              - text: beba
+              - generic [ref=e4002]:
+                - img "star" [ref=e4003]:
+                  - img [ref=e4004]
+                - img "star" [ref=e4006]:
+                  - img [ref=e4007]
+                - img "star" [ref=e4009]:
+                  - img [ref=e4010]
+                - img "star" [ref=e4012]:
+                  - img [ref=e4013]
+            - paragraph [ref=e4015]:
+              - time [ref=e4017]: 7 tháng trước
+          - generic [ref=e4019]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4020]:
+          - generic [ref=e4023]:
+            - paragraph [ref=e4024]: beba
+            - paragraph [ref=e4025]:
+              - time [ref=e4027]: 7 tháng trước
+          - generic [ref=e4029]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4030]:
+          - generic [ref=e4033]:
+            - paragraph [ref=e4034]:
+              - text: beba
+              - generic [ref=e4036]:
+                - img "star" [ref=e4037]:
+                  - img [ref=e4038]
+                - img "star" [ref=e4040]:
+                  - img [ref=e4041]
+                - img "star" [ref=e4043]:
+                  - img [ref=e4044]
+                - img "star" [ref=e4046]:
+                  - img [ref=e4047]
+            - paragraph [ref=e4049]:
+              - time [ref=e4051]: 7 tháng trước
+          - generic [ref=e4053]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4054]:
+          - generic [ref=e4057]:
+            - paragraph [ref=e4058]: beba
+            - paragraph [ref=e4059]:
+              - time [ref=e4061]: 7 tháng trước
+          - generic [ref=e4063]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4064]:
+          - generic [ref=e4067]:
+            - paragraph [ref=e4068]:
+              - text: beba
+              - generic [ref=e4070]:
+                - img "star" [ref=e4071]:
+                  - img [ref=e4072]
+                - img "star" [ref=e4074]:
+                  - img [ref=e4075]
+                - img "star" [ref=e4077]:
+                  - img [ref=e4078]
+                - img "star" [ref=e4080]:
+                  - img [ref=e4081]
+            - paragraph [ref=e4083]:
+              - time [ref=e4085]: 7 tháng trước
+          - generic [ref=e4087]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4088]:
+          - generic [ref=e4091]:
+            - paragraph [ref=e4092]: beba
+            - paragraph [ref=e4093]:
+              - time [ref=e4095]: 7 tháng trước
+          - generic [ref=e4097]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4098]:
+          - generic [ref=e4101]:
+            - paragraph [ref=e4102]: beba
+            - paragraph [ref=e4103]:
+              - time [ref=e4105]: 7 tháng trước
+          - generic [ref=e4107]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4108]:
+          - generic [ref=e4111]:
+            - paragraph [ref=e4112]:
+              - text: beba
+              - generic [ref=e4114]:
+                - img "star" [ref=e4115]:
+                  - img [ref=e4116]
+                - img "star" [ref=e4118]:
+                  - img [ref=e4119]
+                - img "star" [ref=e4121]:
+                  - img [ref=e4122]
+                - img "star" [ref=e4124]:
+                  - img [ref=e4125]
+            - paragraph [ref=e4127]:
+              - time [ref=e4129]: 7 tháng trước
+          - generic [ref=e4131]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4132]:
+          - generic [ref=e4135]:
+            - paragraph [ref=e4136]: beba
+            - paragraph [ref=e4137]:
+              - time [ref=e4139]: 7 tháng trước
+          - generic [ref=e4141]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4142]:
+          - generic [ref=e4145]:
+            - paragraph [ref=e4146]:
+              - text: beba
+              - generic [ref=e4148]:
+                - img "star" [ref=e4149]:
+                  - img [ref=e4150]
+                - img "star" [ref=e4152]:
+                  - img [ref=e4153]
+                - img "star" [ref=e4155]:
+                  - img [ref=e4156]
+                - img "star" [ref=e4158]:
+                  - img [ref=e4159]
+            - paragraph [ref=e4161]:
+              - time [ref=e4163]: 7 tháng trước
+          - generic [ref=e4165]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4166]:
+          - generic [ref=e4169]:
+            - paragraph [ref=e4170]: beba
+            - paragraph [ref=e4171]:
+              - time [ref=e4173]: 7 tháng trước
+          - generic [ref=e4175]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4176]:
+          - generic [ref=e4179]:
+            - paragraph [ref=e4180]:
+              - text: beba
+              - generic [ref=e4182]:
+                - img "star" [ref=e4183]:
+                  - img [ref=e4184]
+                - img "star" [ref=e4186]:
+                  - img [ref=e4187]
+                - img "star" [ref=e4189]:
+                  - img [ref=e4190]
+                - img "star" [ref=e4192]:
+                  - img [ref=e4193]
+            - paragraph [ref=e4195]:
+              - time [ref=e4197]: 7 tháng trước
+          - generic [ref=e4199]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4200]:
+          - generic [ref=e4203]:
+            - paragraph [ref=e4204]: beba
+            - paragraph [ref=e4205]:
+              - time [ref=e4207]: 7 tháng trước
+          - generic [ref=e4209]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4210]:
+          - generic [ref=e4213]:
+            - paragraph [ref=e4214]:
+              - text: beba
+              - generic [ref=e4216]:
+                - img "star" [ref=e4217]:
+                  - img [ref=e4218]
+                - img "star" [ref=e4220]:
+                  - img [ref=e4221]
+                - img "star" [ref=e4223]:
+                  - img [ref=e4224]
+                - img "star" [ref=e4226]:
+                  - img [ref=e4227]
+            - paragraph [ref=e4229]:
+              - time [ref=e4231]: 7 tháng trước
+          - generic [ref=e4233]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4234]:
+          - generic [ref=e4237]:
+            - paragraph [ref=e4238]: beba
+            - paragraph [ref=e4239]:
+              - time [ref=e4241]: 7 tháng trước
+          - generic [ref=e4243]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4244]:
+          - generic [ref=e4247]:
+            - paragraph [ref=e4248]:
+              - text: beba
+              - generic [ref=e4250]:
+                - img "star" [ref=e4251]:
+                  - img [ref=e4252]
+                - img "star" [ref=e4254]:
+                  - img [ref=e4255]
+                - img "star" [ref=e4257]:
+                  - img [ref=e4258]
+                - img "star" [ref=e4260]:
+                  - img [ref=e4261]
+            - paragraph [ref=e4263]:
+              - time [ref=e4265]: 7 tháng trước
+          - generic [ref=e4267]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4268]:
+          - generic [ref=e4271]:
+            - paragraph [ref=e4272]: beba
+            - paragraph [ref=e4273]:
+              - time [ref=e4275]: 7 tháng trước
+          - generic [ref=e4277]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4278]:
+          - generic [ref=e4281]:
+            - paragraph [ref=e4282]:
+              - text: beba
+              - generic [ref=e4284]:
+                - img "star" [ref=e4285]:
+                  - img [ref=e4286]
+                - img "star" [ref=e4288]:
+                  - img [ref=e4289]
+                - img "star" [ref=e4291]:
+                  - img [ref=e4292]
+                - img "star" [ref=e4294]:
+                  - img [ref=e4295]
+            - paragraph [ref=e4297]:
+              - time [ref=e4299]: 7 tháng trước
+          - generic [ref=e4301]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4302]:
+          - generic [ref=e4305]:
+            - paragraph [ref=e4306]: beba
+            - paragraph [ref=e4307]:
+              - time [ref=e4309]: 7 tháng trước
+          - generic [ref=e4311]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4312]:
+          - generic [ref=e4315]:
+            - paragraph [ref=e4316]:
+              - text: beba
+              - generic [ref=e4318]:
+                - img "star" [ref=e4319]:
+                  - img [ref=e4320]
+                - img "star" [ref=e4322]:
+                  - img [ref=e4323]
+                - img "star" [ref=e4325]:
+                  - img [ref=e4326]
+                - img "star" [ref=e4328]:
+                  - img [ref=e4329]
+            - paragraph [ref=e4331]:
+              - time [ref=e4333]: 7 tháng trước
+          - generic [ref=e4335]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4336]:
+          - generic [ref=e4339]:
+            - paragraph [ref=e4340]: beba
+            - paragraph [ref=e4341]:
+              - time [ref=e4343]: 7 tháng trước
+          - generic [ref=e4345]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4346]:
+          - generic [ref=e4349]:
+            - paragraph [ref=e4350]:
+              - text: beba
+              - generic [ref=e4352]:
+                - img "star" [ref=e4353]:
+                  - img [ref=e4354]
+                - img "star" [ref=e4356]:
+                  - img [ref=e4357]
+                - img "star" [ref=e4359]:
+                  - img [ref=e4360]
+                - img "star" [ref=e4362]:
+                  - img [ref=e4363]
+            - paragraph [ref=e4365]:
+              - time [ref=e4367]: 7 tháng trước
+          - generic [ref=e4369]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4370]:
+          - generic [ref=e4373]:
+            - paragraph [ref=e4374]: beba
+            - paragraph [ref=e4375]:
+              - time [ref=e4377]: 7 tháng trước
+          - generic [ref=e4379]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4380]:
+          - generic [ref=e4383]:
+            - paragraph [ref=e4384]:
+              - text: beba
+              - generic [ref=e4386]:
+                - img "star" [ref=e4387]:
+                  - img [ref=e4388]
+                - img "star" [ref=e4390]:
+                  - img [ref=e4391]
+                - img "star" [ref=e4393]:
+                  - img [ref=e4394]
+                - img "star" [ref=e4396]:
+                  - img [ref=e4397]
+            - paragraph [ref=e4399]:
+              - time [ref=e4401]: 7 tháng trước
+          - generic [ref=e4403]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4404]:
+          - generic [ref=e4407]:
+            - paragraph [ref=e4408]: beba
+            - paragraph [ref=e4409]:
+              - time [ref=e4411]: 7 tháng trước
+          - generic [ref=e4413]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4414]:
+          - generic [ref=e4417]:
+            - paragraph [ref=e4418]:
+              - text: beba
+              - generic [ref=e4420]:
+                - img "star" [ref=e4421]:
+                  - img [ref=e4422]
+                - img "star" [ref=e4424]:
+                  - img [ref=e4425]
+                - img "star" [ref=e4427]:
+                  - img [ref=e4428]
+                - img "star" [ref=e4430]:
+                  - img [ref=e4431]
+            - paragraph [ref=e4433]:
+              - time [ref=e4435]: 7 tháng trước
+          - generic [ref=e4437]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4438]:
+          - generic [ref=e4441]:
+            - paragraph [ref=e4442]: beba
+            - paragraph [ref=e4443]:
+              - time [ref=e4445]: 7 tháng trước
+          - generic [ref=e4447]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4448]:
+          - generic [ref=e4451]:
+            - paragraph [ref=e4452]:
+              - text: beba
+              - generic [ref=e4454]:
+                - img "star" [ref=e4455]:
+                  - img [ref=e4456]
+                - img "star" [ref=e4458]:
+                  - img [ref=e4459]
+                - img "star" [ref=e4461]:
+                  - img [ref=e4462]
+                - img "star" [ref=e4464]:
+                  - img [ref=e4465]
+            - paragraph [ref=e4467]:
+              - time [ref=e4469]: 7 tháng trước
+          - generic [ref=e4471]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4472]:
+          - generic [ref=e4475]:
+            - paragraph [ref=e4476]: beba
+            - paragraph [ref=e4477]:
+              - time [ref=e4479]: 7 tháng trước
+          - generic [ref=e4481]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4482]:
+          - generic [ref=e4485]:
+            - paragraph [ref=e4486]:
+              - text: beba
+              - generic [ref=e4488]:
+                - img "star" [ref=e4489]:
+                  - img [ref=e4490]
+                - img "star" [ref=e4492]:
+                  - img [ref=e4493]
+                - img "star" [ref=e4495]:
+                  - img [ref=e4496]
+                - img "star" [ref=e4498]:
+                  - img [ref=e4499]
+            - paragraph [ref=e4501]:
+              - time [ref=e4503]: 7 tháng trước
+          - generic [ref=e4505]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4506]:
+          - generic [ref=e4509]:
+            - paragraph [ref=e4510]: beba
+            - paragraph [ref=e4511]:
+              - time [ref=e4513]: 7 tháng trước
+          - generic [ref=e4515]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4516]:
+          - generic [ref=e4519]:
+            - paragraph [ref=e4520]:
+              - text: beba
+              - generic [ref=e4522]:
+                - img "star" [ref=e4523]:
+                  - img [ref=e4524]
+                - img "star" [ref=e4526]:
+                  - img [ref=e4527]
+                - img "star" [ref=e4529]:
+                  - img [ref=e4530]
+                - img "star" [ref=e4532]:
+                  - img [ref=e4533]
+            - paragraph [ref=e4535]:
+              - time [ref=e4537]: 7 tháng trước
+          - generic [ref=e4539]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4540]:
+          - generic [ref=e4543]:
+            - paragraph [ref=e4544]: beba
+            - paragraph [ref=e4545]:
+              - time [ref=e4547]: 7 tháng trước
+          - generic [ref=e4549]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4550]:
+          - generic [ref=e4553]:
+            - paragraph [ref=e4554]:
+              - text: beba
+              - generic [ref=e4556]:
+                - img "star" [ref=e4557]:
+                  - img [ref=e4558]
+                - img "star" [ref=e4560]:
+                  - img [ref=e4561]
+                - img "star" [ref=e4563]:
+                  - img [ref=e4564]
+                - img "star" [ref=e4566]:
+                  - img [ref=e4567]
+            - paragraph [ref=e4569]:
+              - time [ref=e4571]: 7 tháng trước
+          - generic [ref=e4573]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4574]:
+          - generic [ref=e4577]:
+            - paragraph [ref=e4578]: beba
+            - paragraph [ref=e4579]:
+              - time [ref=e4581]: 7 tháng trước
+          - generic [ref=e4583]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4584]:
+          - generic [ref=e4587]:
+            - paragraph [ref=e4588]:
+              - text: beba
+              - generic [ref=e4590]:
+                - img "star" [ref=e4591]:
+                  - img [ref=e4592]
+                - img "star" [ref=e4594]:
+                  - img [ref=e4595]
+                - img "star" [ref=e4597]:
+                  - img [ref=e4598]
+                - img "star" [ref=e4600]:
+                  - img [ref=e4601]
+            - paragraph [ref=e4603]:
+              - time [ref=e4605]: 7 tháng trước
+          - generic [ref=e4607]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4608]:
+          - generic [ref=e4611]:
+            - paragraph [ref=e4612]: beba
+            - paragraph [ref=e4613]:
+              - time [ref=e4615]: 7 tháng trước
+          - generic [ref=e4617]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4618]:
+          - generic [ref=e4621]:
+            - paragraph [ref=e4622]:
+              - text: beba
+              - generic [ref=e4624]:
+                - img "star" [ref=e4625]:
+                  - img [ref=e4626]
+                - img "star" [ref=e4628]:
+                  - img [ref=e4629]
+                - img "star" [ref=e4631]:
+                  - img [ref=e4632]
+                - img "star" [ref=e4634]:
+                  - img [ref=e4635]
+            - paragraph [ref=e4637]:
+              - time [ref=e4639]: 7 tháng trước
+          - generic [ref=e4641]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4642]:
+          - generic [ref=e4645]:
+            - paragraph [ref=e4646]: beba
+            - paragraph [ref=e4647]:
+              - time [ref=e4649]: 7 tháng trước
+          - generic [ref=e4651]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4652]:
+          - generic [ref=e4655]:
+            - paragraph [ref=e4656]:
+              - text: beba
+              - generic [ref=e4658]:
+                - img "star" [ref=e4659]:
+                  - img [ref=e4660]
+                - img "star" [ref=e4662]:
+                  - img [ref=e4663]
+                - img "star" [ref=e4665]:
+                  - img [ref=e4666]
+                - img "star" [ref=e4668]:
+                  - img [ref=e4669]
+            - paragraph [ref=e4671]:
+              - time [ref=e4673]: 7 tháng trước
+          - generic [ref=e4675]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4676]:
+          - generic [ref=e4679]:
+            - paragraph [ref=e4680]: beba
+            - paragraph [ref=e4681]:
+              - time [ref=e4683]: 7 tháng trước
+          - generic [ref=e4685]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4686]:
+          - generic [ref=e4689]:
+            - paragraph [ref=e4690]:
+              - text: beba
+              - generic [ref=e4692]:
+                - img "star" [ref=e4693]:
+                  - img [ref=e4694]
+                - img "star" [ref=e4696]:
+                  - img [ref=e4697]
+                - img "star" [ref=e4699]:
+                  - img [ref=e4700]
+                - img "star" [ref=e4702]:
+                  - img [ref=e4703]
+            - paragraph [ref=e4705]:
+              - time [ref=e4707]: 7 tháng trước
+          - generic [ref=e4709]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4710]:
+          - generic [ref=e4713]:
+            - paragraph [ref=e4714]: beba
+            - paragraph [ref=e4715]:
+              - time [ref=e4717]: 7 tháng trước
+          - generic [ref=e4719]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4720]:
+          - generic [ref=e4723]:
+            - paragraph [ref=e4724]:
+              - text: beba
+              - generic [ref=e4726]:
+                - img "star" [ref=e4727]:
+                  - img [ref=e4728]
+                - img "star" [ref=e4730]:
+                  - img [ref=e4731]
+                - img "star" [ref=e4733]:
+                  - img [ref=e4734]
+                - img "star" [ref=e4736]:
+                  - img [ref=e4737]
+            - paragraph [ref=e4739]:
+              - time [ref=e4741]: 7 tháng trước
+          - generic [ref=e4743]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4744]:
+          - generic [ref=e4747]:
+            - paragraph [ref=e4748]: beba
+            - paragraph [ref=e4749]:
+              - time [ref=e4751]: 7 tháng trước
+          - generic [ref=e4753]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4754]:
+          - generic [ref=e4757]:
+            - paragraph [ref=e4758]:
+              - text: beba
+              - generic [ref=e4760]:
+                - img "star" [ref=e4761]:
+                  - img [ref=e4762]
+                - img "star" [ref=e4764]:
+                  - img [ref=e4765]
+                - img "star" [ref=e4767]:
+                  - img [ref=e4768]
+                - img "star" [ref=e4770]:
+                  - img [ref=e4771]
+            - paragraph [ref=e4773]:
+              - time [ref=e4775]: 7 tháng trước
+          - generic [ref=e4777]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4778]:
+          - generic [ref=e4781]:
+            - paragraph [ref=e4782]: beba
+            - paragraph [ref=e4783]:
+              - time [ref=e4785]: 7 tháng trước
+          - generic [ref=e4787]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4788]:
+          - generic [ref=e4791]:
+            - paragraph [ref=e4792]:
+              - text: beba
+              - generic [ref=e4794]:
+                - img "star" [ref=e4795]:
+                  - img [ref=e4796]
+                - img "star" [ref=e4798]:
+                  - img [ref=e4799]
+                - img "star" [ref=e4801]:
+                  - img [ref=e4802]
+                - img "star" [ref=e4804]:
+                  - img [ref=e4805]
+            - paragraph [ref=e4807]:
+              - time [ref=e4809]: 7 tháng trước
+          - generic [ref=e4811]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4812]:
+          - generic [ref=e4815]:
+            - paragraph [ref=e4816]: beba
+            - paragraph [ref=e4817]:
+              - time [ref=e4819]: 7 tháng trước
+          - generic [ref=e4821]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4822]:
+          - generic [ref=e4825]:
+            - paragraph [ref=e4826]:
+              - text: beba
+              - generic [ref=e4828]:
+                - img "star" [ref=e4829]:
+                  - img [ref=e4830]
+                - img "star" [ref=e4832]:
+                  - img [ref=e4833]
+                - img "star" [ref=e4835]:
+                  - img [ref=e4836]
+                - img "star" [ref=e4838]:
+                  - img [ref=e4839]
+            - paragraph [ref=e4841]:
+              - time [ref=e4843]: 7 tháng trước
+          - generic [ref=e4845]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4846]:
+          - generic [ref=e4849]:
+            - paragraph [ref=e4850]:
+              - text: beba
+              - generic [ref=e4852]:
+                - img "star" [ref=e4853]:
+                  - img [ref=e4854]
+                - img "star" [ref=e4856]:
+                  - img [ref=e4857]
+                - img "star" [ref=e4859]:
+                  - img [ref=e4860]
+                - img "star" [ref=e4862]:
+                  - img [ref=e4863]
+            - paragraph [ref=e4865]:
+              - time [ref=e4867]: 7 tháng trước
+          - generic [ref=e4869]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4870]:
+          - generic [ref=e4873]:
+            - paragraph [ref=e4874]:
+              - text: beba
+              - generic [ref=e4876]:
+                - img "star" [ref=e4877]:
+                  - img [ref=e4878]
+                - img "star" [ref=e4880]:
+                  - img [ref=e4881]
+                - img "star" [ref=e4883]:
+                  - img [ref=e4884]
+                - img "star" [ref=e4886]:
+                  - img [ref=e4887]
+            - paragraph [ref=e4889]:
+              - time [ref=e4891]: 7 tháng trước
+          - generic [ref=e4893]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4894]:
+          - generic [ref=e4897]:
+            - paragraph [ref=e4898]: beba
+            - paragraph [ref=e4899]:
+              - time [ref=e4901]: 7 tháng trước
+          - generic [ref=e4903]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4904]:
+          - generic [ref=e4907]:
+            - paragraph [ref=e4908]:
+              - text: beba
+              - generic [ref=e4910]:
+                - img "star" [ref=e4911]:
+                  - img [ref=e4912]
+                - img "star" [ref=e4914]:
+                  - img [ref=e4915]
+                - img "star" [ref=e4917]:
+                  - img [ref=e4918]
+                - img "star" [ref=e4920]:
+                  - img [ref=e4921]
+            - paragraph [ref=e4923]:
+              - time [ref=e4925]: 7 tháng trước
+          - generic [ref=e4927]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4928]:
+          - generic [ref=e4931]:
+            - paragraph [ref=e4932]: beba
+            - paragraph [ref=e4933]:
+              - time [ref=e4935]: 7 tháng trước
+          - generic [ref=e4937]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4938]:
+          - generic [ref=e4941]:
+            - paragraph [ref=e4942]:
+              - text: beba
+              - generic [ref=e4944]:
+                - img "star" [ref=e4945]:
+                  - img [ref=e4946]
+                - img "star" [ref=e4948]:
+                  - img [ref=e4949]
+                - img "star" [ref=e4951]:
+                  - img [ref=e4952]
+                - img "star" [ref=e4954]:
+                  - img [ref=e4955]
+            - paragraph [ref=e4957]:
+              - time [ref=e4959]: 7 tháng trước
+          - generic [ref=e4961]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4962]:
+          - generic [ref=e4965]:
+            - paragraph [ref=e4966]: beba
+            - paragraph [ref=e4967]:
+              - time [ref=e4969]: 7 tháng trước
+          - generic [ref=e4971]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e4972]:
+          - generic [ref=e4975]:
+            - paragraph [ref=e4976]:
+              - text: beba
+              - generic [ref=e4978]:
+                - img "star" [ref=e4979]:
+                  - img [ref=e4980]
+                - img "star" [ref=e4982]:
+                  - img [ref=e4983]
+                - img "star" [ref=e4985]:
+                  - img [ref=e4986]
+                - img "star" [ref=e4988]:
+                  - img [ref=e4989]
+            - paragraph [ref=e4991]:
+              - time [ref=e4993]: 7 tháng trước
+          - generic [ref=e4995]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e4996]:
+          - generic [ref=e4999]:
+            - paragraph [ref=e5000]: beba
+            - paragraph [ref=e5001]:
+              - time [ref=e5003]: 7 tháng trước
+          - generic [ref=e5005]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e5006]:
+          - generic [ref=e5009]:
+            - paragraph [ref=e5010]:
+              - text: beba
+              - generic [ref=e5012]:
+                - img "star" [ref=e5013]:
+                  - img [ref=e5014]
+                - img "star" [ref=e5016]:
+                  - img [ref=e5017]
+                - img "star" [ref=e5019]:
+                  - img [ref=e5020]
+                - img "star" [ref=e5022]:
+                  - img [ref=e5023]
+            - paragraph [ref=e5025]:
+              - time [ref=e5027]: 7 tháng trước
+          - generic [ref=e5029]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e5030]:
+          - generic [ref=e5033]:
+            - paragraph [ref=e5034]: beba
+            - paragraph [ref=e5035]:
+              - time [ref=e5037]: 7 tháng trước
+          - generic [ref=e5039]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e5040]:
+          - generic [ref=e5043]:
+            - paragraph [ref=e5044]:
+              - text: beba
+              - generic [ref=e5046]:
+                - img "star" [ref=e5047]:
+                  - img [ref=e5048]
+                - img "star" [ref=e5050]:
+                  - img [ref=e5051]
+                - img "star" [ref=e5053]:
+                  - img [ref=e5054]
+                - img "star" [ref=e5056]:
+                  - img [ref=e5057]
+            - paragraph [ref=e5059]:
+              - time [ref=e5061]: 7 tháng trước
+          - generic [ref=e5063]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e5064]:
+          - generic [ref=e5067]:
+            - paragraph [ref=e5068]: beba
+            - paragraph [ref=e5069]:
+              - time [ref=e5071]: 7 tháng trước
+          - generic [ref=e5073]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e5074]:
+          - generic [ref=e5077]:
+            - paragraph [ref=e5078]:
+              - text: beba
+              - generic [ref=e5080]:
+                - img "star" [ref=e5081]:
+                  - img [ref=e5082]
+                - img "star" [ref=e5084]:
+                  - img [ref=e5085]
+                - img "star" [ref=e5087]:
+                  - img [ref=e5088]
+                - img "star" [ref=e5090]:
+                  - img [ref=e5091]
+            - paragraph [ref=e5093]:
+              - time [ref=e5095]: 7 tháng trước
+          - generic [ref=e5097]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e5098]:
+          - generic [ref=e5101]:
+            - paragraph [ref=e5102]: beba
+            - paragraph [ref=e5103]:
+              - time [ref=e5105]: 7 tháng trước
+          - generic [ref=e5107]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e5108]:
+          - generic [ref=e5111]:
+            - paragraph [ref=e5112]:
+              - text: beba
+              - generic [ref=e5114]:
+                - img "star" [ref=e5115]:
+                  - img [ref=e5116]
+                - img "star" [ref=e5118]:
+                  - img [ref=e5119]
+                - img "star" [ref=e5121]:
+                  - img [ref=e5122]
+                - img "star" [ref=e5124]:
+                  - img [ref=e5125]
+            - paragraph [ref=e5127]:
+              - time [ref=e5129]: 7 tháng trước
+          - generic [ref=e5131]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e5132]:
+          - generic [ref=e5135]:
+            - paragraph [ref=e5136]: beba
+            - paragraph [ref=e5137]:
+              - time [ref=e5139]: 7 tháng trước
+          - generic [ref=e5141]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e5142]:
+          - generic [ref=e5145]:
+            - paragraph [ref=e5146]:
+              - text: beba
+              - generic [ref=e5148]:
+                - img "star" [ref=e5149]:
+                  - img [ref=e5150]
+                - img "star" [ref=e5152]:
+                  - img [ref=e5153]
+                - img "star" [ref=e5155]:
+                  - img [ref=e5156]
+                - img "star" [ref=e5158]:
+                  - img [ref=e5159]
+            - paragraph [ref=e5161]:
+              - time [ref=e5163]: 7 tháng trước
+          - generic [ref=e5165]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e5166]:
+          - generic [ref=e5169]:
+            - paragraph [ref=e5170]: beba
+            - paragraph [ref=e5171]:
+              - time [ref=e5173]: 7 tháng trước
+          - generic [ref=e5175]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e5176]:
+          - generic [ref=e5179]:
+            - paragraph [ref=e5180]:
+              - text: beba
+              - generic [ref=e5182]:
+                - img "star" [ref=e5183]:
+                  - img [ref=e5184]
+                - img "star" [ref=e5186]:
+                  - img [ref=e5187]
+                - img "star" [ref=e5189]:
+                  - img [ref=e5190]
+                - img "star" [ref=e5192]:
+                  - img [ref=e5193]
+            - paragraph [ref=e5195]:
+              - time [ref=e5197]: 7 tháng trước
+          - generic [ref=e5199]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e5200]:
+          - generic [ref=e5203]:
+            - paragraph [ref=e5204]:
+              - text: beba
+              - generic [ref=e5206]:
+                - img "star" [ref=e5207]:
+                  - img [ref=e5208]
+                - img "star" [ref=e5210]:
+                  - img [ref=e5211]
+                - img "star" [ref=e5213]:
+                  - img [ref=e5214]
+                - img "star" [ref=e5216]:
+                  - img [ref=e5217]
+            - paragraph [ref=e5219]:
+              - time [ref=e5221]: 7 tháng trước
+          - generic [ref=e5223]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e5224]:
+          - generic [ref=e5227]:
+            - paragraph [ref=e5228]: beba
+            - paragraph [ref=e5229]:
+              - time [ref=e5231]: 7 tháng trước
+          - generic [ref=e5233]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e5234]:
+          - generic [ref=e5237]:
+            - paragraph [ref=e5238]: beba
+            - paragraph [ref=e5239]:
+              - time [ref=e5241]: 7 tháng trước
+          - generic [ref=e5243]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e5244]:
+          - generic [ref=e5247]:
+            - paragraph [ref=e5248]:
+              - text: beba
+              - generic [ref=e5250]:
+                - img "star" [ref=e5251]:
+                  - img [ref=e5252]
+                - img "star" [ref=e5254]:
+                  - img [ref=e5255]
+                - img "star" [ref=e5257]:
+                  - img [ref=e5258]
+                - img "star" [ref=e5260]:
+                  - img [ref=e5261]
+            - paragraph [ref=e5263]:
+              - time [ref=e5265]: 7 tháng trước
+          - generic [ref=e5267]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e5268]:
+          - generic [ref=e5271]:
+            - paragraph [ref=e5272]:
+              - text: beba
+              - generic [ref=e5274]:
+                - img "star" [ref=e5275]:
+                  - img [ref=e5276]
+                - img "star" [ref=e5278]:
+                  - img [ref=e5279]
+                - img "star" [ref=e5281]:
+                  - img [ref=e5282]
+                - img "star" [ref=e5284]:
+                  - img [ref=e5285]
+            - paragraph [ref=e5287]:
+              - time [ref=e5289]: 7 tháng trước
+          - generic [ref=e5291]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e5292]:
+          - generic [ref=e5295]:
+            - paragraph [ref=e5296]: beba
+            - paragraph [ref=e5297]:
+              - time [ref=e5299]: 7 tháng trước
+          - generic [ref=e5301]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e5302]:
+          - generic [ref=e5305]:
+            - paragraph [ref=e5306]:
+              - text: beba
+              - generic [ref=e5308]:
+                - img "star" [ref=e5309]:
+                  - img [ref=e5310]
+                - img "star" [ref=e5312]:
+                  - img [ref=e5313]
+                - img "star" [ref=e5315]:
+                  - img [ref=e5316]
+                - img "star" [ref=e5318]:
+                  - img [ref=e5319]
+            - paragraph [ref=e5321]:
+              - time [ref=e5323]: 7 tháng trước
+          - generic [ref=e5325]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e5326]:
+          - generic [ref=e5329]:
+            - paragraph [ref=e5330]:
+              - text: beba
+              - generic [ref=e5332]:
+                - img "star" [ref=e5333]:
+                  - img [ref=e5334]
+                - img "star" [ref=e5336]:
+                  - img [ref=e5337]
+                - img "star" [ref=e5339]:
+                  - img [ref=e5340]
+                - img "star" [ref=e5342]:
+                  - img [ref=e5343]
+            - paragraph [ref=e5345]:
+              - time [ref=e5347]: 7 tháng trước
+          - generic [ref=e5349]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e5350]:
+          - generic [ref=e5353]:
+            - paragraph [ref=e5354]: beba
+            - paragraph [ref=e5355]:
+              - time [ref=e5357]: 7 tháng trước
+          - generic [ref=e5359]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e5360]:
+          - generic [ref=e5363]:
+            - paragraph [ref=e5364]: beba
+            - paragraph [ref=e5365]:
+              - time [ref=e5367]: 7 tháng trước
+          - generic [ref=e5369]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e5370]:
+          - generic [ref=e5373]:
+            - paragraph [ref=e5374]:
+              - text: beba
+              - generic [ref=e5376]:
+                - img "star" [ref=e5377]:
+                  - img [ref=e5378]
+                - img "star" [ref=e5380]:
+                  - img [ref=e5381]
+                - img "star" [ref=e5383]:
+                  - img [ref=e5384]
+                - img "star" [ref=e5386]:
+                  - img [ref=e5387]
+            - paragraph [ref=e5389]:
+              - time [ref=e5391]: 7 tháng trước
+          - generic [ref=e5393]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e5394]:
+          - generic [ref=e5397]:
+            - paragraph [ref=e5398]: beba
+            - paragraph [ref=e5399]:
+              - time [ref=e5401]: 7 tháng trước
+          - generic [ref=e5403]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e5404]:
+          - generic [ref=e5407]:
+            - paragraph [ref=e5408]:
+              - text: beba
+              - generic [ref=e5410]:
+                - img "star" [ref=e5411]:
+                  - img [ref=e5412]
+                - img "star" [ref=e5414]:
+                  - img [ref=e5415]
+                - img "star" [ref=e5417]:
+                  - img [ref=e5418]
+                - img "star" [ref=e5420]:
+                  - img [ref=e5421]
+            - paragraph [ref=e5423]:
+              - time [ref=e5425]: 7 tháng trước
+          - generic [ref=e5427]: Phòng sạch sẽ, nhân viên thân thiện!
+        - generic [ref=e5428]:
+          - generic [ref=e5431]:
+            - paragraph [ref=e5432]:
+              - text: admin
+              - generic [ref=e5434]:
+                - img "star" [ref=e5435]:
+                  - img [ref=e5436]
+                - img "star" [ref=e5438]:
+                  - img [ref=e5439]
+                - img "star" [ref=e5441]:
+                  - img [ref=e5442]
+                - img "star" [ref=e5444]:
+                  - img [ref=e5445]
+                - img "star" [ref=e5447]:
+                  - img [ref=e5448]
+            - paragraph [ref=e5450]:
+              - time [ref=e5452]: 8 tháng trước
+          - generic [ref=e5454]: Phòng rất đẹp và sạch sẽ!
+        - generic [ref=e5455]:
+          - generic [ref=e5458]:
+            - paragraph [ref=e5459]:
+              - text: admin
+              - generic [ref=e5461]:
+                - img "star" [ref=e5462]:
+                  - img [ref=e5463]
+                - img "star" [ref=e5465]:
+                  - img [ref=e5466]
+                - img "star" [ref=e5468]:
+                  - img [ref=e5469]
+                - img "star" [ref=e5471]:
+                  - img [ref=e5472]
+                - img "star" [ref=e5474]:
+                  - img [ref=e5475]
+            - paragraph [ref=e5477]:
+              - time [ref=e5479]: 8 tháng trước
+          - generic [ref=e5481]: Phòng rất đẹp và sạch sẽ!
+        - generic [ref=e5482]:
+          - generic [ref=e5485]:
+            - paragraph [ref=e5486]: beba
+            - paragraph [ref=e5487]:
+              - time [ref=e5489]: 8 tháng trước
+          - generic [ref=e5491]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e5492]:
+          - generic [ref=e5495]:
+            - paragraph [ref=e5496]: beba
+            - paragraph [ref=e5497]:
+              - time [ref=e5499]: 8 tháng trước
+          - generic [ref=e5501]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e5502]:
+          - generic [ref=e5505]:
+            - paragraph [ref=e5506]: beba
+            - paragraph [ref=e5507]:
+              - time [ref=e5509]: 8 tháng trước
+          - generic [ref=e5511]: Phòng ổn, nhưng test này bỏ qua phần sao.
+        - generic [ref=e5512]:
+          - generic [ref=e5515]:
+            - paragraph [ref=e5516]: beba
+            - paragraph [ref=e5517]:
+              - time [ref=e5519]: 8 tháng trước
+          - generic [ref=e5521]: Phòng ổn, nhưng test này bỏ qua phần sao.
+    - generic [ref=e5522]:
+      - generic [ref=e5523]:
+        - generic [ref=e5524]:
+          - heading "Giới thiệu" [level=2] [ref=e5525]
+          - list [ref=e5526]:
+            - listitem [ref=e5527]:
+              - link "Phương thức hoạt động của Cyber" [ref=e5528] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5529]:
+              - link "Trang tin tức" [ref=e5530] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5531]:
+              - link "Nhà đầu tư" [ref=e5532] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5533]:
+              - link "Cyber Plus" [ref=e5534] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5535]:
+              - link "Cyber Luxe" [ref=e5536] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5537]:
+              - link "HotelTonight" [ref=e5538] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5539]:
+              - link "Cyber for Work" [ref=e5540] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5541]:
+              - link "Nhờ có Host, mọi điều đều có thể" [ref=e5542] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5543]:
+              - link "Cơ hội nghề nghiệp" [ref=e5544] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5545]:
+              - link "Thư của nhà sáng lập" [ref=e5546] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+        - generic [ref=e5547]:
+          - heading "Cộng đồng" [level=2] [ref=e5548]
+          - list [ref=e5549]:
+            - listitem [ref=e5550]:
+              - link "Sự đa đạng và Cảm giác thân thuộc" [ref=e5551] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5552]:
+              - link "Tiện nghi phù hợp cho người khuyết tật" [ref=e5553] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5554]:
+              - link "Đối tác liên kết Cyber" [ref=e5555] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5556]:
+              - link "Chỗ ở cho tuyến đầu" [ref=e5557] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5558]:
+              - link "Lượt giới thiệu của khách" [ref=e5559] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5560]:
+              - link "CyberSoft.edu.vn" [ref=e5561] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+        - generic [ref=e5562]:
+          - heading "Đón tiếp khách" [level=2] [ref=e5563]
+          - list [ref=e5564]:
+            - listitem [ref=e5565]:
+              - link "Cho thuê nhà" [ref=e5566] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5567]:
+              - link "Tổ chức Trải nghiệm trực tuyến" [ref=e5568] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5569]:
+              - link "Tổ chức Trải nghiệm" [ref=e5570] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5571]:
+              - link "Đón tiếp khách có trách nhiệm" [ref=e5572] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5573]:
+              - link "Trung tâm tài nguyên" [ref=e5574] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5575]:
+              - link "Trung tâm cộng đồng" [ref=e5576] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+        - generic [ref=e5577]:
+          - heading "Hỗ trợ" [level=2] [ref=e5578]
+          - list [ref=e5579]:
+            - listitem [ref=e5580]:
+              - link "Biện pháp ứng phó đại dịch COVID-19" [ref=e5581] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5582]:
+              - link "Trung tâm trợ giúp" [ref=e5583] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5584]:
+              - link "Các tùy chọn hủy" [ref=e5585] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5586]:
+              - link "Hỗ trợ khu dân cư" [ref=e5587] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e5588]:
+              - link "Tin cây và an toàn" [ref=e5589] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+      - generic [ref=e5591]:
+        - generic [ref=e5592]: © 2022 Nguyễn Nhật Sang, Inc.Quyền riêng tư.Điều khoản.Sơ đồ trang web.
+        - generic [ref=e5593]:
+          - img [ref=e5595]
+          - text: Tiếng Việt (VN)
+          - text: USD
+          - generic [ref=e5597]: Hỗ trợ tài nguyên
+  - img [ref=e5599] [cursor=pointer]
+```
+
+# Test source
+
+```ts
+  31  | 
+  32  |         const body = await apiResponse.json();
+  33  |         const room = body.content;
+  34  | 
+  35  |         // Tên phòng
+  36  |         await expect(page.locator('h2').first()).toContainText(room.tenPhong);
+  37  | 
+  38  |         // Số khách, phòng ngủ, giường, phòng tắm
+  39  |         const infoText = page.getByText(/Khách.*Phòng ngủ.*giường.*Phòng tắm/i);
+  40  |         await expect(infoText).toBeVisible();
+  41  |         await expect(infoText).toContainText(`${room.khach} Khách`);
+  42  |         await expect(infoText).toContainText(`${room.phongNgu} Phòng ngủ`);
+  43  |         await expect(infoText).toContainText(`${room.giuong} giường`);
+  44  |         await expect(infoText).toContainText(`${room.phongTam} Phòng tắm`);
+  45  | 
+  46  |         // Giá phòng
+  47  |         await expect(page.getByText(`$${room.giaTien}`, { exact: true })).toBeVisible();
+  48  | 
+  49  |         // Tiện ích: hiển thị nếu true, ẩn nếu false
+  50  |         const amenityMap: Record<string, string> = {
+  51  |             wifi: 'Wifi',
+  52  |             tivi: 'Tivi',
+  53  |             doXe: 'Bãi đỗ xe',
+  54  |             hoBoi: 'Hồ bơi',
+  55  |             banUi: 'Bàn ủi',
+  56  |             mayGiat: 'Máy giặt',
+  57  |         };
+  58  |         for (const [key, label] of Object.entries(amenityMap)) {
+  59  |             const amenity = page.getByText(label, { exact: true });
+  60  |             if (room[key]) {
+  61  |                 await expect(amenity).toBeVisible();
+  62  |             }
+  63  |         }
+  64  | 
+  65  |         // Section bình luận
+  66  |         await expect(page.getByRole('heading', { name: 'Bình luận' })).toBeVisible();
+  67  | 
+  68  |         // Section booking
+  69  |         await expect(page.getByRole('button', { name: 'Đặt phòng' })).toBeVisible();
+  70  |     });
+  71  | 
+  72  |     test('ROOM_02: Truy cập room detail bằng URL trực tiếp → hiển thị đúng', async ({ page }) => {
+  73  |         const [apiResponse] = await Promise.all([
+  74  |             page.waitForResponse(
+  75  |                 (res) => res.url().includes('/api/phong-thue/') && res.status() === 200,
+  76  |             ),
+  77  |             page.goto('/room-detail/1', { waitUntil: 'domcontentloaded', timeout: 30000 }),
+  78  |         ]);
+  79  | 
+  80  |         const body = await apiResponse.json();
+  81  |         const room = body.content;
+  82  | 
+  83  |         // Tên phòng
+  84  |         await expect(page.locator('h2').first()).toContainText(room.tenPhong);
+  85  | 
+  86  |         // Thông tin phòng
+  87  |         await expect(page.getByText(/Khách/i).first()).toBeVisible();
+  88  | 
+  89  |         // Location link
+  90  |         const locationLink = page.locator('a[href*="/rooms/"]').first();
+  91  |         await expect(locationLink).toBeVisible();
+  92  | 
+  93  |         // Ảnh
+  94  |         const images = page.locator('img[src*="airbnb"], img[src*="phong"]').first();
+  95  |         await expect(images).toBeVisible({ timeout: 10000 });
+  96  | 
+  97  |         // Mô tả
+  98  |         await expect(page.getByText('Dịch sang tiếng Anh')).toBeVisible();
+  99  | 
+  100 |         // Tiện ích
+  101 |         const amenities = page.getByRole('heading', { name: /tiện ích/i });
+  102 |         await expect(amenities).toBeVisible();
+  103 | 
+  104 |         // Booking section
+  105 |         await expect(page.getByText('/ night')).toBeVisible();
+  106 |         await expect(page.getByRole('button', { name: 'Đặt phòng' })).toBeVisible();
+  107 | 
+  108 |         // Bình luận section
+  109 |         await expect(page.getByRole('heading', { name: 'Bình luận' })).toBeVisible();
+  110 |     });
+  111 | 
+  112 |     test('ROOM_03: Click "Dịch sang tiếng Anh" → nội dung được dịch (BUG)', async ({
+  113 |         homePage,
+  114 |         page,
+  115 |     }) => {
+  116 |         // BUG: Nút dịch không thực sự dịch nội dung mô tả sang tiếng Anh
+  117 |         test.fail();
+  118 | 
+  119 |         await navigateToRoomDetail(homePage, page);
+  120 | 
+  121 |         const descParagraph = page.locator('p').filter({ hasText: /Tự nhận phòng|Chủ nhà siêu cấp/i }).first();
+  122 |         const descBefore = await descParagraph.textContent();
+  123 | 
+  124 |         const translateBtn = page.getByRole('button', { name: 'Dịch sang tiếng Anh' });
+  125 |         await translateBtn.scrollIntoViewIfNeeded();
+  126 |         await translateBtn.click();
+  127 |         await page.waitForTimeout(2000);
+  128 | 
+  129 |         // Nội dung mô tả phải thay đổi sang tiếng Anh
+  130 |         const descAfter = await descParagraph.textContent();
+> 131 |         expect(descAfter).not.toBe(descBefore);
+      |                               ^ Error: expect(received).not.toBe(expected) // Object.is equality
+  132 |     });
+  133 | 
+  134 |     test('ROOM_04: Click "Hiển thị thêm"/"Ẩn bớt" mô tả phòng (BUG)', async ({
+  135 |         homePage,
+  136 |         page,
+  137 |     }) => {
+  138 |         // BUG: Show more/Show less không hoạt động đúng
+  139 |         test.fail();
+  140 | 
+  141 |         await navigateToRoomDetail(homePage, page);
+  142 | 
+  143 |         const showMoreBtn = page.getByText(/Hiển thị thêm|Xem thêm/i);
+  144 |         await showMoreBtn.scrollIntoViewIfNeeded();
+  145 | 
+  146 |         // Lấy chiều cao mô tả trước khi expand
+  147 |         const description = page.locator('p').filter({ hasText: /Tự nhận phòng|Chủ nhà siêu cấp/i }).first();
+  148 |         const heightBefore = await description.boundingBox().then((b) => b?.height ?? 0);
+  149 | 
+  150 |         await showMoreBtn.click();
+  151 | 
+  152 |         // Mô tả phải mở rộng (chiều cao tăng)
+  153 |         const heightAfter = await description.boundingBox().then((b) => b?.height ?? 0);
+  154 |         expect(heightAfter).toBeGreaterThan(heightBefore);
+  155 | 
+  156 |         // Click "Ẩn bớt" → mô tả thu gọn lại
+  157 |         const showLessBtn = page.getByText(/Ẩn bớt|Thu gọn/i);
+  158 |         await expect(showLessBtn).toBeVisible();
+  159 |         await showLessBtn.click();
+  160 | 
+  161 |         const heightCollapsed = await description.boundingBox().then((b) => b?.height ?? 0);
+  162 |         expect(heightCollapsed).toBeLessThan(heightAfter);
+  163 |     });
+  164 | 
+  165 |     test('ROOM_05: Click ảnh → gallery mở, điều hướng next/prev, đóng gallery', async ({
+  166 |         homePage,
+  167 |         page,
+  168 |     }) => {
+  169 |         await navigateToRoomDetail(homePage, page);
+  170 | 
+  171 |         // Click vào Ant Image component để mở preview
+  172 |         await page.locator('.ant-image').first().click();
+  173 | 
+  174 |         // Ảnh preview hiển thị
+  175 |         const previewImage = page.locator('img.ant-image-preview-img');
+  176 |         await expect(previewImage).toBeVisible({ timeout: 5000 });
+  177 | 
+  178 |         // Nút next/prev
+  179 |         const nextBtn = page.locator('.ant-image-preview-switch-right');
+  180 |         if (await nextBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
+  181 |             await nextBtn.click();
+  182 |             await expect(previewImage).toBeVisible();
+  183 |         }
+  184 | 
+  185 |         // Đóng preview
+  186 |         await page.keyboard.press('Escape');
+  187 |         await expect(previewImage).toBeHidden({ timeout: 3000 });
+  188 |     });
+  189 | });
+  190 | 
+```

@@ -1,0 +1,514 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: homepage/register.spec.ts >> CyberBnB Register >> Should not register with password under 6 characters
+- Location: tests/homepage/register.spec.ts:182:9
+
+# Error details
+
+```
+Error: expect(received).not.toBe(expected) // Object.is equality
+
+Expected: not 200
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "Cyber Logo CyberSoft" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "Cyber Logo" [ref=e6]
+          - generic [ref=e7]: CyberSoft
+        - button [ref=e9] [cursor=pointer]:
+          - img [ref=e10]
+        - list [ref=e12]:
+          - listitem [ref=e13]:
+            - link "Home" [ref=e14] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e15]:
+            - link "About" [ref=e16] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e17]:
+            - link "Services" [ref=e18] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e19]:
+            - link "Pricing" [ref=e20] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e21]:
+            - link "Contact" [ref=e22] [cursor=pointer]:
+              - /url: "#"
+    - generic [ref=e24]:
+      - generic [ref=e25]: Your browser does not support the video tag.
+      - generic [ref=e29]:
+        - heading "Cyberbnb" [level=2] [ref=e32]
+        - paragraph [ref=e33]: Belong anywhere
+    - generic [ref=e35]:
+      - generic [ref=e36]:
+        - generic [ref=e37] [cursor=pointer]:
+          - paragraph [ref=e38]: Địa điểm
+          - paragraph [ref=e39]: Bạn sắp đi đâu?
+        - paragraph [ref=e43] [cursor=pointer]: 08/06/2026 – 15/06/2026
+        - generic [ref=e46] [cursor=pointer]:
+          - paragraph [ref=e47]: Thêm khách
+          - img "search" [ref=e49]:
+            - img [ref=e50]
+      - generic [ref=e52]:
+        - button "Loại nơi ở" [ref=e53] [cursor=pointer]
+        - button "Giá" [ref=e54] [cursor=pointer]
+        - button "Đặt ngay" [ref=e55] [cursor=pointer]
+        - button "Phòng và phòng ngủ" [ref=e56] [cursor=pointer]
+        - button "Bộ lọc khác" [ref=e57] [cursor=pointer]
+    - generic [ref=e59]:
+      - generic [ref=e60]:
+        - link "Hồ Chí Minh 15 phút lái xe" [ref=e61] [cursor=pointer]:
+          - /url: /rooms/ho-chi-minh
+          - generic [ref=e65]:
+            - heading "Hồ Chí Minh" [level=2] [ref=e66]
+            - paragraph [ref=e67]: 15 phút lái xe
+        - link "Cần Thơ 3 giờ lái xe" [ref=e68] [cursor=pointer]:
+          - /url: /rooms/can-tho
+          - generic [ref=e72]:
+            - heading "Cần Thơ" [level=2] [ref=e73]
+            - paragraph [ref=e74]: 3 giờ lái xe
+        - link "Nha Trang 6.5 giờ lái xe" [ref=e75] [cursor=pointer]:
+          - /url: /rooms/nha-trang
+          - generic [ref=e79]:
+            - heading "Nha Trang" [level=2] [ref=e80]
+            - paragraph [ref=e81]: 6.5 giờ lái xe
+        - link "Hà Nội 15 phút lái xe" [ref=e82] [cursor=pointer]:
+          - /url: /rooms/ha-noi
+          - generic [ref=e86]:
+            - heading "Hà Nội" [level=2] [ref=e87]
+            - paragraph [ref=e88]: 15 phút lái xe
+        - link "Phú Quốc 7.5 giờ lái xe" [ref=e89] [cursor=pointer]:
+          - /url: /rooms/phu-quoc
+          - generic [ref=e93]:
+            - heading "Phú Quốc" [level=2] [ref=e94]
+            - paragraph [ref=e95]: 7.5 giờ lái xe
+        - link "Đà Nẵng 45 phút lái xe" [ref=e96] [cursor=pointer]:
+          - /url: /rooms/da-nang
+          - generic [ref=e100]:
+            - heading "Đà Nẵng" [level=2] [ref=e101]
+            - paragraph [ref=e102]: 45 phút lái xe
+        - link "Đà Lạt 30 phút lái xe" [ref=e103] [cursor=pointer]:
+          - /url: /rooms/da-lat
+          - generic [ref=e107]:
+            - heading "Đà Lạt" [level=2] [ref=e108]
+            - paragraph [ref=e109]: 30 phút lái xe
+        - link "Phan Thiết 5 giờ lái xe" [ref=e110] [cursor=pointer]:
+          - /url: /rooms/phan-thiet
+          - generic [ref=e114]:
+            - heading "Phan Thiết" [level=2] [ref=e115]
+            - paragraph [ref=e116]: 5 giờ lái xe
+      - generic [ref=e117]:
+        - heading "Ở bất cứ đâu" [level=1] [ref=e118]
+        - generic [ref=e119]:
+          - link "Toàn bộ nhà" [ref=e120] [cursor=pointer]:
+            - /url: /rooms/ho-chi-minh
+            - generic [ref=e126]: Toàn bộ nhà
+          - link "Chỗ ở độc đáo" [ref=e127] [cursor=pointer]:
+            - /url: /rooms/nha-trang
+            - generic [ref=e133]: Chỗ ở độc đáo
+          - link "Trang trại và thiên nhiên" [ref=e134] [cursor=pointer]:
+            - /url: /rooms/da-lat
+            - generic [ref=e140]: Trang trại và thiên nhiên
+          - link "Cho phép mang theo thú cưng" [ref=e141] [cursor=pointer]:
+            - /url: /rooms/da-nang
+            - generic [ref=e147]: Cho phép mang theo thú cưng
+    - generic [ref=e148]:
+      - generic [ref=e149]:
+        - generic [ref=e150]:
+          - heading "Giới thiệu" [level=2] [ref=e151]
+          - list [ref=e152]:
+            - listitem [ref=e153]:
+              - link "Phương thức hoạt động của Cyber" [ref=e154] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e155]:
+              - link "Trang tin tức" [ref=e156] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e157]:
+              - link "Nhà đầu tư" [ref=e158] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e159]:
+              - link "Cyber Plus" [ref=e160] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e161]:
+              - link "Cyber Luxe" [ref=e162] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e163]:
+              - link "HotelTonight" [ref=e164] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e165]:
+              - link "Cyber for Work" [ref=e166] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e167]:
+              - link "Nhờ có Host, mọi điều đều có thể" [ref=e168] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e169]:
+              - link "Cơ hội nghề nghiệp" [ref=e170] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e171]:
+              - link "Thư của nhà sáng lập" [ref=e172] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+        - generic [ref=e173]:
+          - heading "Cộng đồng" [level=2] [ref=e174]
+          - list [ref=e175]:
+            - listitem [ref=e176]:
+              - link "Sự đa đạng và Cảm giác thân thuộc" [ref=e177] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e178]:
+              - link "Tiện nghi phù hợp cho người khuyết tật" [ref=e179] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e180]:
+              - link "Đối tác liên kết Cyber" [ref=e181] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e182]:
+              - link "Chỗ ở cho tuyến đầu" [ref=e183] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e184]:
+              - link "Lượt giới thiệu của khách" [ref=e185] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e186]:
+              - link "CyberSoft.edu.vn" [ref=e187] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+        - generic [ref=e188]:
+          - heading "Đón tiếp khách" [level=2] [ref=e189]
+          - list [ref=e190]:
+            - listitem [ref=e191]:
+              - link "Cho thuê nhà" [ref=e192] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e193]:
+              - link "Tổ chức Trải nghiệm trực tuyến" [ref=e194] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e195]:
+              - link "Tổ chức Trải nghiệm" [ref=e196] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e197]:
+              - link "Đón tiếp khách có trách nhiệm" [ref=e198] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e199]:
+              - link "Trung tâm tài nguyên" [ref=e200] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e201]:
+              - link "Trung tâm cộng đồng" [ref=e202] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+        - generic [ref=e203]:
+          - heading "Hỗ trợ" [level=2] [ref=e204]
+          - list [ref=e205]:
+            - listitem [ref=e206]:
+              - link "Biện pháp ứng phó đại dịch COVID-19" [ref=e207] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e208]:
+              - link "Trung tâm trợ giúp" [ref=e209] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e210]:
+              - link "Các tùy chọn hủy" [ref=e211] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e212]:
+              - link "Hỗ trợ khu dân cư" [ref=e213] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+            - listitem [ref=e214]:
+              - link "Tin cây và an toàn" [ref=e215] [cursor=pointer]:
+                - /url: https://cybersoft.edu.vn
+      - generic [ref=e217]:
+        - generic [ref=e218]: © 2022 Nguyễn Nhật Sang, Inc.Quyền riêng tư.Điều khoản.Sơ đồ trang web.
+        - generic [ref=e219]:
+          - img [ref=e221]
+          - text: Tiếng Việt (VN)
+          - text: USD
+          - generic [ref=e223]: Hỗ trợ tài nguyên
+  - generic [ref=e224]:
+    - dialog:
+      - generic [ref=e225]:
+        - button "Close" [ref=e226] [cursor=pointer]:
+          - img "close" [ref=e228]:
+            - img [ref=e229]
+        - generic [ref=e232]:
+          - heading "Đăng ký tài khoản" [level=2] [ref=e233]
+          - generic [ref=e234]:
+            - generic [ref=e236]:
+              - generic [ref=e239]: Name
+              - textbox "Name" [ref=e243]:
+                - /placeholder: Điền tên vào đây...
+                - text: Test User
+            - generic [ref=e245]:
+              - generic [ref=e248]: Email
+              - textbox "Email Email" [ref=e252]:
+                - /placeholder: Điền tên vào đây...
+                - text: test1780820683996@gmail.com
+            - generic [ref=e254]:
+              - generic [ref=e257]: Password
+              - generic [ref=e261]:
+                - textbox "Password Mật khẩu" [ref=e262]:
+                  - /placeholder: Điền mật khẩu....
+                  - text: "12345"
+                - img "eye-invisible" [ref=e264] [cursor=pointer]:
+                  - img [ref=e265]
+            - generic [ref=e269]:
+              - generic [ref=e272]: Phone number
+              - textbox "Phone number" [ref=e276]:
+                - /placeholder: Điền số điện thoại....
+                - text: "0901234567"
+            - generic [ref=e277]:
+              - generic [ref=e279]:
+                - generic [ref=e282]: Birthday
+                - generic [ref=e287]:
+                  - textbox "Birthday" [ref=e288]:
+                    - /placeholder: Chọn ngày sinh
+                    - text: 15/06/1995
+                  - generic:
+                    - img "calendar":
+                      - img
+                  - button "close-circle" [ref=e289] [cursor=pointer]:
+                    - img "close-circle" [ref=e290]:
+                      - img [ref=e291]
+              - generic [ref=e294]:
+                - generic [ref=e297]: Gender
+                - generic [ref=e301] [cursor=pointer]:
+                  - generic [ref=e302]:
+                    - combobox "Gender" [ref=e304]
+                    - generic "Nam" [ref=e305]
+                  - generic:
+                    - img:
+                      - img
+          - button "Đăng ký" [active] [ref=e307] [cursor=pointer]
+  - generic:
+    - generic:
+      - generic:
+        - dialog:
+          - generic [ref=e308]:
+            - button "Close" [ref=e309] [cursor=pointer]:
+              - img "close" [ref=e311]:
+                - img [ref=e312]
+            - generic [ref=e315]:
+              - heading "Đăng nhập" [level=2] [ref=e316]
+              - generic [ref=e317]:
+                - generic [ref=e318]: Email
+                - textbox "Vui lòng nhập tài khoản" [ref=e319]
+              - generic [ref=e320]:
+                - generic [ref=e321]: Mật khẩu
+                - textbox "Vui lòng nhập mật khẩu" [ref=e322]
+              - generic [ref=e323]:
+                - button "Đăng ký" [ref=e324] [cursor=pointer]
+                - button "Đăng nhập" [ref=e325] [cursor=pointer]
+  - generic [ref=e327]:
+    - img "check-circle" [ref=e328]:
+      - img [ref=e329]
+    - text: Đăng ký thành công
+```
+
+# Test source
+
+```ts
+  99  |         // 1. Mở dialog đăng ký
+  100 |         await homePage.navigateSignUp();
+  101 |         const dialog = page.getByRole('dialog');
+  102 |         await expect(dialog.getByRole('heading', { name: 'Đăng ký tài khoản' })).toBeVisible();
+  103 | 
+  104 |         // 2. Không nhập gì, click Đăng ký luôn
+  105 |         await dialog.getByRole('button', { name: 'Đăng ký' }).click();
+  106 | 
+  107 |         // 3. Hiển thị lỗi "Vui lòng không bỏ trống" cho Name, Email, Password, Phone
+  108 |         const emptyErrors = dialog.getByText('Vui lòng không bỏ trống');
+  109 |         await expect(emptyErrors).toHaveCount(4);
+  110 | 
+  111 |         // 4. Hiển thị lỗi riêng cho Birthday
+  112 |         await expect(dialog.getByText('Vui lòng chọn ngày sinh')).toBeVisible();
+  113 | 
+  114 |         // 5. Dialog vẫn mở, không đăng ký được
+  115 |         await expect(dialog.getByRole('heading', { name: 'Đăng ký tài khoản' })).toBeVisible();
+  116 | 
+  117 |         // 6. Không xuất hiện toast thành công
+  118 |         await expect(page.getByText('Đăng ký thành công')).toBeHidden();
+  119 |     });
+  120 | 
+  121 |     test('Should show error when only Name is filled', async ({ homePage, page }) => {
+  122 |         await homePage.navigateSignUp();
+  123 |         const dialog = page.getByRole('dialog');
+  124 | 
+  125 |         // Chỉ nhập Name, bỏ trống các field khác
+  126 |         await dialog.getByPlaceholder('Điền tên vào đây...').first().fill('Test User');
+  127 |         await dialog.getByRole('button', { name: 'Đăng ký' }).click();
+  128 | 
+  129 |         // Email, Password, Phone vẫn báo lỗi trống
+  130 |         const emptyErrors = dialog.getByText('Vui lòng không bỏ trống');
+  131 |         await expect(emptyErrors).toHaveCount(3);
+  132 | 
+  133 |         // Birthday vẫn báo lỗi
+  134 |         await expect(dialog.getByText('Vui lòng chọn ngày sinh')).toBeVisible();
+  135 | 
+  136 |         // Không đăng ký được
+  137 |         await expect(page.getByText('Đăng ký thành công')).toBeHidden();
+  138 |     });
+  139 | 
+  140 |     test('Should show error when only Email is filled', async ({ homePage, page }) => {
+  141 |         await homePage.navigateSignUp();
+  142 |         const dialog = page.getByRole('dialog');
+  143 | 
+  144 |         // Chỉ nhập Email
+  145 |         await dialog.getByPlaceholder('Điền tên vào đây...').last().fill('test@gmail.com');
+  146 |         await dialog.getByRole('button', { name: 'Đăng ký' }).click();
+  147 | 
+  148 |         // Name, Password, Phone vẫn báo lỗi trống
+  149 |         const emptyErrors = dialog.getByText('Vui lòng không bỏ trống');
+  150 |         await expect(emptyErrors).toHaveCount(3);
+  151 | 
+  152 |         // Birthday vẫn báo lỗi
+  153 |         await expect(dialog.getByText('Vui lòng chọn ngày sinh')).toBeVisible();
+  154 | 
+  155 |         await expect(page.getByText('Đăng ký thành công')).toBeHidden();
+  156 |     });
+  157 | 
+  158 |     test('Should show error when Birthday is missing', async ({ homePage, page }) => {
+  159 |         await homePage.navigateSignUp();
+  160 |         const dialog = page.getByRole('dialog');
+  161 | 
+  162 |         // Nhập đủ 4 field text, bỏ trống Birthday
+  163 |         await dialog.getByPlaceholder('Điền tên vào đây...').first().fill('Test User');
+  164 |         await dialog
+  165 |             .getByPlaceholder('Điền tên vào đây...')
+  166 |             .last()
+  167 |             .fill(`test${Date.now()}@gmail.com`);
+  168 |         await dialog.getByPlaceholder('Điền mật khẩu....').fill('Test@12345');
+  169 |         await dialog.getByPlaceholder('Điền số điện thoại....').fill('0901234567');
+  170 |         await dialog.getByRole('button', { name: 'Đăng ký' }).click();
+  171 | 
+  172 |         // Không còn lỗi "Vui lòng không bỏ trống"
+  173 |         await expect(dialog.getByText('Vui lòng không bỏ trống')).toHaveCount(0);
+  174 | 
+  175 |         // Chỉ còn lỗi Birthday
+  176 |         await expect(dialog.getByText('Vui lòng chọn ngày sinh')).toBeVisible();
+  177 | 
+  178 |         // Không đăng ký được
+  179 |         await expect(page.getByText('Đăng ký thành công')).toBeHidden();
+  180 |     });
+  181 | 
+  182 |     test('Should not register with password under 6 characters', async ({ homePage, page }) => {
+  183 |         // BUG: Web cho phép đăng ký với mật khẩu < 6 ký tự (không validate)
+  184 |         test.fail();
+  185 | 
+  186 |         await homePage.navigateSignUp();
+  187 |         const dialog = page.getByRole('dialog');
+  188 |         await expect(dialog.getByRole('heading', { name: 'Đăng ký tài khoản' })).toBeVisible();
+  189 | 
+  190 |         await fillRegistrationForm(dialog, page, { password: '12345' });
+  191 | 
+  192 |         // Bắt API response khi click đăng ký
+  193 |         const [response] = await Promise.all([
+  194 |             page.waitForResponse((res) => res.url().includes('/auth/signup')),
+  195 |             dialog.getByRole('button', { name: 'Đăng ký' }).click(),
+  196 |         ]);
+  197 | 
+  198 |         // Server phải từ chối đăng ký với mật khẩu < 6 ký tự
+> 199 |         expect(response.status()).not.toBe(200);
+      |                                       ^ Error: expect(received).not.toBe(expected) // Object.is equality
+  200 |     });
+  201 | 
+  202 |     test('Should not register with letters in phone number', async ({ homePage, page }) => {
+  203 |         await homePage.navigateSignUp();
+  204 |         const dialog = page.getByRole('dialog');
+  205 | 
+  206 |         await fillRegistrationForm(dialog, page, { phone: 'abc7658345' });
+  207 |         await dialog.getByRole('button', { name: 'Đăng ký' }).click();
+  208 | 
+  209 |         // Hiển thị lỗi "Số điện thoại không hợp lệ"
+  210 |         await expect(dialog.getByText('Số điện thoại không hợp lệ')).toBeVisible();
+  211 |         await expect(page.getByText('Đăng ký thành công')).toBeHidden();
+  212 |     });
+  213 | 
+  214 |     test('Should not register with incorrect phone number length', async ({ homePage, page }) => {
+  215 |         await homePage.navigateSignUp();
+  216 |         const dialog = page.getByRole('dialog');
+  217 | 
+  218 |         await fillRegistrationForm(dialog, page, { phone: '9864' });
+  219 |         await dialog.getByRole('button', { name: 'Đăng ký' }).click();
+  220 | 
+  221 |         // Hiển thị lỗi "Số điện thoại không hợp lệ"
+  222 |         await expect(dialog.getByText('Số điện thoại không hợp lệ')).toBeVisible();
+  223 |         await expect(page.getByText('Đăng ký thành công')).toBeHidden();
+  224 |     });
+  225 | 
+  226 |     test('Should not register with future date of birth', async ({ homePage, page }) => {
+  227 |         // BUG: Web cho phép chọn ngày sinh ở tương lai và đăng ký thành công
+  228 |         test.fail();
+  229 | 
+  230 |         await homePage.navigateSignUp();
+  231 |         const dialog = page.getByRole('dialog');
+  232 |         await expect(dialog.getByRole('heading', { name: 'Đăng ký tài khoản' })).toBeVisible();
+  233 | 
+  234 |         await fillRegistrationForm(dialog, page, { birthday: '15/06/2030' });
+  235 | 
+  236 |         // Bắt API response khi click đăng ký
+  237 |         const [response] = await Promise.all([
+  238 |             page.waitForResponse((res) => res.url().includes('/auth/signup')),
+  239 |             dialog.getByRole('button', { name: 'Đăng ký' }).click(),
+  240 |         ]);
+  241 | 
+  242 |         // Server phải từ chối đăng ký với ngày sinh tương lai
+  243 |         expect(response.status()).not.toBe(200);
+  244 |     });
+  245 | 
+  246 |     test('Should not register with invalid email format', async ({ homePage, page }) => {
+  247 |         await homePage.navigateSignUp();
+  248 |         const dialog = page.getByRole('dialog');
+  249 | 
+  250 |         await fillRegistrationForm(dialog, page, { email: 'emailsaidinhdang' });
+  251 |         await dialog.getByRole('button', { name: 'Đăng ký' }).click();
+  252 | 
+  253 |         await expect(dialog.getByText('Vui lòng nhập đúng định dạng email')).toBeVisible();
+  254 |         await expect(dialog.getByRole('heading', { name: 'Đăng ký tài khoản' })).toBeVisible();
+  255 |         await expect(page.getByText('Đăng ký thành công')).toBeHidden();
+  256 |     });
+  257 | 
+  258 |     test('Should not register with existing email', async ({ homePage, page }) => {
+  259 |         await homePage.navigateSignUp();
+  260 |         const dialog = page.getByRole('dialog');
+  261 | 
+  262 |         await fillRegistrationForm(dialog, page, { email: process.env.TEST_EMAIL! });
+  263 |         await dialog.getByRole('button', { name: 'Đăng ký' }).click();
+  264 | 
+  265 |         // Hiển thị toast lỗi email đã tồn tại
+  266 |         await expect(page.getByText('Email đã tồn tại !')).toBeVisible({ timeout: 5000 });
+  267 | 
+  268 |         // Dialog vẫn mở, không đăng ký được
+  269 |         await expect(dialog.getByRole('heading', { name: 'Đăng ký tài khoản' })).toBeVisible();
+  270 |         await expect(page.getByText('Đăng ký thành công')).toBeHidden();
+  271 |     });
+  272 | 
+  273 |     test('Should toggle password visibility with eye icon', async ({ homePage, page }) => {
+  274 |         await homePage.navigateSignUp();
+  275 |         const dialog = page.getByRole('dialog');
+  276 |         await expect(dialog.getByRole('heading', { name: 'Đăng ký tài khoản' })).toBeVisible();
+  277 | 
+  278 |         // Nhập mật khẩu
+  279 |         const passwordInput = dialog.getByPlaceholder('Điền mật khẩu....');
+  280 |         await passwordInput.fill('MySecret123');
+  281 | 
+  282 |         // 1. Mặc định: type="password" → mật khẩu bị ẩn (hiện dạng ••••)
+  283 |         await expect(passwordInput).toHaveAttribute('type', 'password');
+  284 | 
+  285 |         // 2. Click icon con mắt → type chuyển thành "text" → hiện mật khẩu
+  286 |         const eyeIcon = dialog.locator('.ant-input-password-icon');
+  287 |         await eyeIcon.click();
+  288 |         await expect(passwordInput).toHaveAttribute('type', 'text');
+  289 | 
+  290 |         // 3. Click lần nữa → type trở về "password" → ẩn mật khẩu lại
+  291 |         await eyeIcon.click();
+  292 |         await expect(passwordInput).toHaveAttribute('type', 'password');
+  293 |     });
+  294 | 
+  295 |     test('Should not create duplicate account when clicking register multiple times', async ({
+  296 |         homePage,
+  297 |         page,
+  298 |     }) => {
+  299 |         await homePage.navigateSignUp();
+```
