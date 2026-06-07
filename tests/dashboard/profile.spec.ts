@@ -3,7 +3,11 @@ import { test, expect } from '@fixtures/test_hook';
 test.describe('Dashboard - Update Profile', () => {
     test.describe.configure({ mode: 'serial' });
 
-    test('UPDATE_PROFILE_01: Should open profile editing popup', async ({ homePage, dashboardPage, page }) => {
+    test('UPDATE_PROFILE_01: Should open profile editing popup', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
 
@@ -20,7 +24,11 @@ test.describe('Dashboard - Update Profile', () => {
         expect(emailValue.length).toBeGreaterThan(0);
     });
 
-    test('UPDATE_PROFILE_02: Should close popup without saving', async ({ homePage, dashboardPage, page }) => {
+    test('UPDATE_PROFILE_02: Should close popup without saving', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
 
@@ -39,7 +47,11 @@ test.describe('Dashboard - Update Profile', () => {
         await expect(dialog2.locator('#name')).toHaveValue(oldName);
     });
 
-    test('UPDATE_PROFILE_03: Should update profile successfully', async ({ homePage, dashboardPage, page }) => {
+    test('UPDATE_PROFILE_03: Should update profile successfully', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
 
@@ -56,8 +68,8 @@ test.describe('Dashboard - Update Profile', () => {
 
         // Chờ API trả về thành công
         const [response] = await Promise.all([
-            page.waitForResponse((res) =>
-                res.url().includes('/api/users/') && res.request().method() === 'PUT'
+            page.waitForResponse(
+                (res) => res.url().includes('/api/users/') && res.request().method() === 'PUT'
             ),
             dialog.getByRole('button', { name: 'Cập nhật' }).click(),
         ]);
@@ -78,15 +90,19 @@ test.describe('Dashboard - Update Profile', () => {
         await dialog2.locator('#phone').clear();
         await dialog2.locator('#phone').fill(oldPhone);
         const [restoreRes] = await Promise.all([
-            page.waitForResponse((res) =>
-                res.url().includes('/api/users/') && res.request().method() === 'PUT'
+            page.waitForResponse(
+                (res) => res.url().includes('/api/users/') && res.request().method() === 'PUT'
             ),
             dialog2.getByRole('button', { name: 'Cập nhật' }).click(),
         ]);
         expect(restoreRes.status()).toBe(200);
     });
 
-    test('UPDATE_PROFILE_04: Should show error when email is blank', async ({ homePage, dashboardPage, page }) => {
+    test('UPDATE_PROFILE_04: Should show error when email is blank', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
 
@@ -98,7 +114,11 @@ test.describe('Dashboard - Update Profile', () => {
         await expect(dialog.getByText('Chỉnh sửa hồ sơ')).toBeVisible();
     });
 
-    test('UPDATE_PROFILE_05: Should show error for incorrect email format', async ({ homePage, dashboardPage, page }) => {
+    test('UPDATE_PROFILE_05: Should show error for incorrect email format', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
 
@@ -110,7 +130,11 @@ test.describe('Dashboard - Update Profile', () => {
         await expect(dialog.getByText(/định dạng email|email.*invalid/i)).toBeVisible();
     });
 
-    test('UPDATE_PROFILE_06: Should show error for existing email', async ({ homePage, dashboardPage, page }) => {
+    test('UPDATE_PROFILE_06: Should show error for existing email', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
 
@@ -130,7 +154,11 @@ test.describe('Dashboard - Update Profile', () => {
         await expect(dialog2.locator('#email')).toHaveValue(oldEmail);
     });
 
-    test('UPDATE_PROFILE_07: Should show error when name is blank', async ({ homePage, dashboardPage, page }) => {
+    test('UPDATE_PROFILE_07: Should show error when name is blank', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
 
@@ -141,7 +169,11 @@ test.describe('Dashboard - Update Profile', () => {
         await expect(dialog.getByText('Vui lòng nhập họ tên!')).toBeVisible();
     });
 
-    test('UPDATE_PROFILE_08: Should accept name with numbers/special chars', async ({ homePage, dashboardPage, page }) => {
+    test('UPDATE_PROFILE_08: Should accept name with numbers/special chars', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
 
@@ -155,10 +187,14 @@ test.describe('Dashboard - Update Profile', () => {
         const isSuccess = await successToast.isVisible({ timeout: 3000 }).catch(() => false);
 
         // Dù thành công hay không, form phải chấp nhận input (không crash)
-        expect(isSuccess || await dialog.isVisible()).toBeTruthy();
+        expect(isSuccess || (await dialog.isVisible())).toBeTruthy();
     });
 
-    test('UPDATE_PROFILE_09: Should show error when phone is blank', async ({ homePage, dashboardPage, page }) => {
+    test('UPDATE_PROFILE_09: Should show error when phone is blank', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
 
@@ -169,7 +205,11 @@ test.describe('Dashboard - Update Profile', () => {
         await expect(dialog.getByText('Vui lòng nhập số điện thoại!')).toBeVisible();
     });
 
-    test('UPDATE_PROFILE_10: Should show error for incorrect phone format', async ({ homePage, dashboardPage, page }) => {
+    test('UPDATE_PROFILE_10: Should show error for incorrect phone format', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
 
@@ -181,7 +221,11 @@ test.describe('Dashboard - Update Profile', () => {
         await expect(dialog.getByText('Sai định dạng số điện thoại!')).toBeVisible();
     });
 
-    test('UPDATE_PROFILE_11: Should show error for incorrect phone length', async ({ homePage, dashboardPage, page }) => {
+    test('UPDATE_PROFILE_11: Should show error for incorrect phone length', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         // BUG: Cho phép cập nhật số điện thoại sai độ dài
         test.fail();
 
@@ -196,7 +240,11 @@ test.describe('Dashboard - Update Profile', () => {
         await expect(dialog.getByText('Sai định dạng số điện thoại!')).toBeVisible();
     });
 
-    test('UPDATE_PROFILE_12: Should show error when birthday is blank', async ({ homePage, dashboardPage, page }) => {
+    test('UPDATE_PROFILE_12: Should show error when birthday is blank', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
 
@@ -214,7 +262,11 @@ test.describe('Dashboard - Update Profile', () => {
         await expect(dialog.getByText(/ngày sinh/i).last()).toBeVisible();
     });
 
-    test('UPDATE_PROFILE_13: Should show error for future date of birth', async ({ homePage, dashboardPage, page }) => {
+    test('UPDATE_PROFILE_13: Should show error for future date of birth', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         // BUG: Web cho phép cập nhật ngày sinh tương lai (server trả 200)
         test.fail();
 
@@ -237,8 +289,8 @@ test.describe('Dashboard - Update Profile', () => {
 
         // Bắt API response
         const [response] = await Promise.all([
-            page.waitForResponse((res) =>
-                res.url().includes('/api/users/') && res.request().method() === 'PUT'
+            page.waitForResponse(
+                (res) => res.url().includes('/api/users/') && res.request().method() === 'PUT'
             ),
             dialog.getByRole('button', { name: 'Cập nhật' }).click(),
         ]);
@@ -259,7 +311,11 @@ test.describe('Dashboard - Update Profile', () => {
         }
     });
 
-    test('UPDATE_PROFILE_14: Should show error when gender is not selected', async ({ homePage, dashboardPage, page }) => {
+    test('UPDATE_PROFILE_14: Should show error when gender is not selected', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         // BUG: Không hiển thị lỗi khi không chọn giới tính
         test.fail();
 
@@ -277,32 +333,45 @@ test.describe('Dashboard - Update Profile', () => {
         await expect(dialog.getByText('Vui lòng chọn giới tính')).toBeVisible();
     });
 
-    test('UPDATE_PROFILE_15: Should update successfully with no data changed', async ({ homePage, dashboardPage, page }) => {
+    test('UPDATE_PROFILE_15: Should update successfully with no data changed', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
 
         const dialog = page.getByRole('dialog');
         await dialog.getByRole('button', { name: 'Cập nhật' }).click();
 
-        await expect(page.getByText('Cập nhật thông tin thành công')).toBeVisible({ timeout: 5000 });
+        await expect(page.getByText('Cập nhật thông tin thành công')).toBeVisible({
+            timeout: 5000,
+        });
     });
 
-    test('UPDATE_PROFILE_16: Should handle multiple consecutive update clicks', async ({ homePage, dashboardPage, page }) => {
+    test('UPDATE_PROFILE_16: Should handle multiple consecutive update clicks', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
 
         const dialog = page.getByRole('dialog');
         const updateBtn = dialog.getByRole('button', { name: 'Cập nhật' });
 
-        await Promise.all([
-            updateBtn.click(),
-            updateBtn.click({ delay: 50 }),
-        ]);
+        await Promise.all([updateBtn.click(), updateBtn.click({ delay: 50 })]);
 
-        await expect(page.getByText('Cập nhật thông tin thành công')).toBeVisible({ timeout: 5000 });
+        await expect(page.getByText('Cập nhật thông tin thành công')).toBeVisible({
+            timeout: 5000,
+        });
     });
 
-    test('UPDATE_PROFILE_17: Should persist data after page refresh', async ({ homePage, dashboardPage, page }) => {
+    test('UPDATE_PROFILE_17: Should persist data after page refresh', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
 
@@ -314,8 +383,8 @@ test.describe('Dashboard - Update Profile', () => {
         await dialog.locator('#name').fill(tempName);
 
         const [updateRes] = await Promise.all([
-            page.waitForResponse((res) =>
-                res.url().includes('/api/users/') && res.request().method() === 'PUT'
+            page.waitForResponse(
+                (res) => res.url().includes('/api/users/') && res.request().method() === 'PUT'
             ),
             dialog.getByRole('button', { name: 'Cập nhật' }).click(),
         ]);
@@ -335,8 +404,8 @@ test.describe('Dashboard - Update Profile', () => {
         await dialog2.locator('#name').clear();
         await dialog2.locator('#name').fill(oldName);
         const [restoreRes] = await Promise.all([
-            page.waitForResponse((res) =>
-                res.url().includes('/api/users/') && res.request().method() === 'PUT'
+            page.waitForResponse(
+                (res) => res.url().includes('/api/users/') && res.request().method() === 'PUT'
             ),
             dialog2.getByRole('button', { name: 'Cập nhật' }).click(),
         ]);

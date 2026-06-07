@@ -20,7 +20,9 @@ test.describe('Room List', () => {
     });
 
     test('ROOM_LIST_02: Should navigate to room details on card click', async ({ page }) => {
-        const roomCard = page.locator('[class*="card"] a, a[href*="room-detail"], a[href*="detail"]').first();
+        const roomCard = page
+            .locator('[class*="card"] a, a[href*="room-detail"], a[href*="detail"]')
+            .first();
         if (await roomCard.isVisible()) {
             await roomCard.click();
             await page.waitForLoadState('domcontentloaded');
@@ -48,7 +50,9 @@ test.describe('Room List', () => {
         await homePage.selectLocation('hcm');
         await page.waitForURL('**/rooms/ho-chi-minh**', { timeout: 15000 });
 
-        const heartIcon = page.locator('svg[class*="heart"], [class*="favorite"], [class*="like"]').first();
+        const heartIcon = page
+            .locator('svg[class*="heart"], [class*="favorite"], [class*="like"]')
+            .first();
         if (await heartIcon.isVisible()) {
             await heartIcon.click();
             await page.waitForTimeout(500);
@@ -61,7 +65,9 @@ test.describe('Room List', () => {
 
     test('ROOM_LIST_04: Should show map markers for rooms', async ({ page }) => {
         // Kiểm tra bản đồ hiển thị markers
-        const map = page.locator('[class*="map"], [class*="leaflet"], [class*="google-map"], .mapboxgl-map').first();
+        const map = page
+            .locator('[class*="map"], [class*="leaflet"], [class*="google-map"], .mapboxgl-map')
+            .first();
 
         if (await map.isVisible({ timeout: 5000 }).catch(() => false)) {
             // Map phải có markers

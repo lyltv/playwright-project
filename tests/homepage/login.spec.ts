@@ -48,7 +48,10 @@ test.describe('CyberBnB Login', () => {
         await expect(userMenuButton).toBeVisible({ timeout: 10000 });
 
         // 3. Tên user hiển thị trên navbar
-        const userName = page.getByRole('navigation').locator('span', { hasText: /Quyên/i }).first();
+        const userName = page
+            .getByRole('navigation')
+            .locator('span', { hasText: /Quyên/i })
+            .first();
         await expect(userName).toBeVisible();
 
         // 4. Nút "Đăng ký" (trước login) không còn hiển thị
@@ -231,5 +234,4 @@ test.describe('CyberBnB Login', () => {
         // 5. Trạng thái đã logout
         await expect(page.locator('button.bg-main')).toBeVisible({ timeout: 10000 });
     });
-
 });

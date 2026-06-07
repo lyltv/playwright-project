@@ -27,7 +27,9 @@ export class DashboardPage {
         this.updateButton = page.getByRole('dialog').getByRole('button', { name: 'Cập nhật' });
     }
 
-    async loginAndGotoDashboard(homePage: { login: (email: string, password: string) => Promise<void> }) {
+    async loginAndGotoDashboard(homePage: {
+        login: (email: string, password: string) => Promise<void>;
+    }) {
         await homePage.login(process.env.TEST_EMAIL!, process.env.TEST_PASSWORD!);
         const userMenuButton = this.page.getByRole('button', { name: /Open user menu/i });
         await userMenuButton.waitFor({ state: 'visible', timeout: 10000 });

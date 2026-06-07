@@ -19,7 +19,11 @@ test.describe('Dashboard - Earnings', () => {
         }
     });
 
-    test('EARNINGS_02: Should restrict access for non-host user', async ({ homePage, dashboardPage, page }) => {
+    test('EARNINGS_02: Should restrict access for non-host user', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
 
         const earningsLink = page.getByText(/thu nhập|earnings/i).first();
@@ -39,7 +43,11 @@ test.describe('Dashboard - Earnings', () => {
         }
     });
 
-    test('EARNINGS_03: Should show message when host has no income', async ({ homePage, dashboardPage, page }) => {
+    test('EARNINGS_03: Should show message when host has no income', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
 
         const earningsLink = page.getByText(/thu nhập|earnings/i).first();

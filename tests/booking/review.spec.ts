@@ -3,7 +3,7 @@ import { test, expect } from '@fixtures/test_hook';
 test.describe('User Reviews', () => {
     const navigateToRoomDetail = async (
         homePage: Awaited<ReturnType<any>>,
-        page: import('@playwright/test').Page,
+        page: import('@playwright/test').Page
     ) => {
         await homePage.selectLocation('hcm');
         await page.waitForURL('**/rooms/ho-chi-minh**', { timeout: 15000 });
