@@ -2,6 +2,7 @@ export const DASHBOARD = {
     AVATAR: {
         BTN_UPLOAD: /Upload/i,
         BTN_CLOSE: 'Close',
+        BTN_UPDATE_PHOTO: 'Cập nhật ảnh',
         TOAST_SUCCESS: /thành công|success/i,
         TOAST_SELECT_ERR: /chọn|select/i,
         TOAST_FORMAT_ERR: /format|định dạng|không hợp lệ/i,
