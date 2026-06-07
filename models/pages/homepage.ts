@@ -58,10 +58,11 @@ export class HomePage {
         await this.navigateSignUp();
         const dialog = this.page.getByRole('dialog');
 
-        await dialog.getByPlaceholder('Điền tên vào đây...').first().fill(data.name);
-        await dialog.getByPlaceholder('Điền tên vào đây...').last().fill(data.email);
-        await dialog.getByPlaceholder('Điền mật khẩu....').fill(data.password);
-        await dialog.getByPlaceholder('Điền số điện thoại....').fill(data.phone);
+        // Định vị trực tiếp bằng ID bên trong dialog
+        await dialog.locator('#name').fill(data.name);
+        await dialog.locator('#email').fill(data.email);
+        await dialog.locator('#password').fill(data.password);
+        await dialog.locator('#phone').fill(data.phone);
 
         // Birthday — Ant Design DatePicker: type trực tiếp vào input
         const birthdayInput = dialog.getByPlaceholder('Chọn ngày sinh');

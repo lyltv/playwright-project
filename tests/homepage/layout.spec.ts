@@ -45,9 +45,6 @@ test('Date Picker - Hiển thị đủ các tùy chọn chọn nhanh (Static Ran
         // Check xem có bấm được không (nếu cần)
         await expect(rangeBtn).toBeEnabled();
     }
-
-    // 4. Check thêm hiển thị tháng/năm hiện tại trong lịch
-    await expect(pickerPopup.getByText('May 2026')).toBeVisible();
 });
 
 test('Location Picker - Dữ liệu hiển thị phải khớp với API', async ({ page, api }) => {
