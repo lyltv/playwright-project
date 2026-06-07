@@ -1,7 +1,10 @@
 import { test, expect } from '@fixtures/test_hook';
 
 test.describe('Prominent Location', () => {
-    test('PROMINENT_LOCATION_01: Should filter room data by location', async ({ homePage, page }) => {
+    test('PROMINENT_LOCATION_01: Should filter room data by location', async ({
+        homePage,
+        page,
+    }) => {
         // Click vào card Hồ Chí Minh
         await homePage.selectLocation('hcm');
         await page.waitForURL('**/rooms/ho-chi-minh**', { timeout: 15000 });
@@ -12,7 +15,10 @@ test.describe('Prominent Location', () => {
         await expect(roomCards.first()).toBeVisible({ timeout: 10000 });
     });
 
-    test('PROMINENT_LOCATION_02: Should navigate to room list on location click', async ({ homePage, page }) => {
+    test('PROMINENT_LOCATION_02: Should navigate to room list on location click', async ({
+        homePage,
+        page,
+    }) => {
         await homePage.selectLocation('hanoi');
         await page.waitForURL('**/rooms/ha-noi**', { timeout: 15000 });
 

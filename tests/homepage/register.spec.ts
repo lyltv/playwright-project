@@ -161,7 +161,10 @@ test.describe('CyberBnB Register', () => {
 
         // Nhập đủ 4 field text, bỏ trống Birthday
         await dialog.getByPlaceholder('Điền tên vào đây...').first().fill('Test User');
-        await dialog.getByPlaceholder('Điền tên vào đây...').last().fill(`test${Date.now()}@gmail.com`);
+        await dialog
+            .getByPlaceholder('Điền tên vào đây...')
+            .last()
+            .fill(`test${Date.now()}@gmail.com`);
         await dialog.getByPlaceholder('Điền mật khẩu....').fill('Test@12345');
         await dialog.getByPlaceholder('Điền số điện thoại....').fill('0901234567');
         await dialog.getByRole('button', { name: 'Đăng ký' }).click();

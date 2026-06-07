@@ -1,7 +1,11 @@
 import { test, expect } from '@fixtures/test_hook';
 
 test.describe('Dashboard - Booked Rooms', () => {
-    test('BOOKED_01: Should display list of rented rooms', async ({ homePage, dashboardPage, page }) => {
+    test('BOOKED_01: Should display list of rented rooms', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
 
         await page.waitForLoadState('networkidle');
@@ -9,10 +13,16 @@ test.describe('Dashboard - Booked Rooms', () => {
         const roomCards = page.locator('.ant-card, [class*="room-card"], [class*="booking"]');
         const emptyMessage = page.getByText(/chưa thuê|haven.*booked|no.*room/i);
 
-        const hasCards = await roomCards.first().isVisible({ timeout: 5000 }).catch(() => false);
+        const hasCards = await roomCards
+            .first()
+            .isVisible({ timeout: 5000 })
+            .catch(() => false);
         const hasEmpty = await emptyMessage.isVisible({ timeout: 3000 }).catch(() => false);
 
-        expect(hasCards || hasEmpty, 'Dashboard phải hiển thị danh sách phòng hoặc thông báo trống').toBeTruthy();
+        expect(
+            hasCards || hasEmpty,
+            'Dashboard phải hiển thị danh sách phòng hoặc thông báo trống'
+        ).toBeTruthy();
 
         if (hasCards) {
             const cardCount = await roomCards.count();
@@ -22,7 +32,11 @@ test.describe('Dashboard - Booked Rooms', () => {
         }
     });
 
-    test('BOOKED_02: Should show message when no rooms rented', async ({ page, homePage, dashboardPage }) => {
+    test('BOOKED_02: Should show message when no rooms rented', async ({
+        page,
+        homePage,
+        dashboardPage,
+    }) => {
         // Test với tài khoản mới đăng ký (không có phòng đã thuê)
         // Dùng tài khoản hiện tại nếu chưa có booking
         await dashboardPage.loginAndGotoDashboard(homePage);
@@ -39,7 +53,11 @@ test.describe('Dashboard - Booked Rooms', () => {
         }
     });
 
-    test('BOOKED_03: Should load multiple rooms with pagination', async ({ homePage, dashboardPage, page }) => {
+    test('BOOKED_03: Should load multiple rooms with pagination', async ({
+        homePage,
+        dashboardPage,
+        page,
+    }) => {
         // BUG: Phân trang không hoạt động khi có nhiều phòng
         test.fail();
 

@@ -3,7 +3,7 @@ import { test, expect } from '@fixtures/test_hook';
 test.describe('Room Detail', () => {
     const navigateToRoomDetail = async (
         homePage: Awaited<ReturnType<any>>,
-        page: import('@playwright/test').Page,
+        page: import('@playwright/test').Page
     ) => {
         await homePage.selectLocation('hcm');
         await page.waitForURL('**/rooms/ho-chi-minh**', { timeout: 15000 });
@@ -23,7 +23,7 @@ test.describe('Room Detail', () => {
 
         const [apiResponse] = await Promise.all([
             page.waitForResponse(
-                (res) => /\/api\/phong-thue\/\d+/.test(res.url()) && res.status() === 200,
+                (res) => /\/api\/phong-thue\/\d+/.test(res.url()) && res.status() === 200
             ),
             page.locator('a[href*="room-detail"]').first().click(),
         ]);
@@ -72,7 +72,7 @@ test.describe('Room Detail', () => {
     test('ROOM_02: Truy cập room detail bằng URL trực tiếp → hiển thị đúng', async ({ page }) => {
         const [apiResponse] = await Promise.all([
             page.waitForResponse(
-                (res) => res.url().includes('/api/phong-thue/') && res.status() === 200,
+                (res) => res.url().includes('/api/phong-thue/') && res.status() === 200
             ),
             page.goto('/room-detail/1', { waitUntil: 'domcontentloaded', timeout: 30000 }),
         ]);
@@ -118,7 +118,10 @@ test.describe('Room Detail', () => {
 
         await navigateToRoomDetail(homePage, page);
 
-        const descParagraph = page.locator('p').filter({ hasText: /Tự nhận phòng|Chủ nhà siêu cấp/i }).first();
+        const descParagraph = page
+            .locator('p')
+            .filter({ hasText: /Tự nhận phòng|Chủ nhà siêu cấp/i })
+            .first();
         const descBefore = await descParagraph.textContent();
 
         const translateBtn = page.getByRole('button', { name: 'Dịch sang tiếng Anh' });
@@ -144,7 +147,10 @@ test.describe('Room Detail', () => {
         await showMoreBtn.scrollIntoViewIfNeeded();
 
         // Lấy chiều cao mô tả trước khi expand
-        const description = page.locator('p').filter({ hasText: /Tự nhận phòng|Chủ nhà siêu cấp/i }).first();
+        const description = page
+            .locator('p')
+            .filter({ hasText: /Tự nhận phòng|Chủ nhà siêu cấp/i })
+            .first();
         const heightBefore = await description.boundingBox().then((b) => b?.height ?? 0);
 
         await showMoreBtn.click();

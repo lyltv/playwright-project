@@ -3,7 +3,7 @@ import { test, expect } from '@fixtures/test_hook';
 test.describe('Booking', () => {
     const navigateToRoomDetail = async (
         homePage: Awaited<ReturnType<any>>,
-        page: import('@playwright/test').Page,
+        page: import('@playwright/test').Page
     ) => {
         await homePage.selectLocation('hcm');
         await page.waitForURL('**/rooms/ho-chi-minh**', { timeout: 15000 });
@@ -14,7 +14,10 @@ test.describe('Booking', () => {
         await page.waitForURL('**/room-detail/**', { timeout: 15000 });
     };
 
-    test('BOOKING_01: Chưa đăng nhập bấm Đặt phòng → hiện thông báo yêu cầu đăng nhập', async ({ homePage, page }) => {
+    test('BOOKING_01: Chưa đăng nhập bấm Đặt phòng → hiện thông báo yêu cầu đăng nhập', async ({
+        homePage,
+        page,
+    }) => {
         await navigateToRoomDetail(homePage, page);
 
         const bookButton = page.getByRole('button', { name: 'Đặt phòng' });
@@ -25,7 +28,10 @@ test.describe('Booking', () => {
         await expect(notification).toBeVisible({ timeout: 5000 });
     });
 
-    test('BOOKING_02: Đăng nhập trước → đặt phòng → thành công + xuất hiện trong dashboard', async ({ homePage, page }) => {
+    test('BOOKING_02: Đăng nhập trước → đặt phòng → thành công + xuất hiện trong dashboard', async ({
+        homePage,
+        page,
+    }) => {
         await homePage.login(process.env.TEST_EMAIL!, process.env.TEST_PASSWORD!);
         const userMenu = page.getByRole('button', { name: /Open user menu/i });
         await expect(userMenu).toBeVisible({ timeout: 10000 });
@@ -131,12 +137,16 @@ test.describe('Booking', () => {
         // Language consistency: "Cleaning fee" và "Total before taxes" là EN trong UI VN
         const cleaningFee = page.getByText('Cleaning fee');
         const totalEN = page.getByText('Total before taxes');
-        const hasEnglishMix =
-            (await cleaningFee.isVisible()) || (await totalEN.isVisible());
-        expect.soft(hasEnglishMix, 'Booking modal có mix ngôn ngữ EN/VN — không nhất quán').toBeFalsy();
+        const hasEnglishMix = (await cleaningFee.isVisible()) || (await totalEN.isVisible());
+        expect
+            .soft(hasEnglishMix, 'Booking modal có mix ngôn ngữ EN/VN — không nhất quán')
+            .toBeFalsy();
     });
 
-    test('BOOKING_05: Chọn ngày quá khứ (Yesterday) → không được áp dụng vào check-in (BUG: app cho phép)', async ({ homePage, page }) => {
+    test('BOOKING_05: Chọn ngày quá khứ (Yesterday) → không được áp dụng vào check-in (BUG: app cho phép)', async ({
+        homePage,
+        page,
+    }) => {
         // BUG: Date picker cho phép chọn ngày trong quá khứ (Yesterday, Last Week, Last Month)
         test.fail();
 
@@ -165,7 +175,10 @@ test.describe('Booking', () => {
         await expect(checkinDate).toBeHidden({ timeout: 3000 });
     });
 
-    test('BOOKING_06: Tăng/giảm số khách bằng +/– → đúng giá trị, không vượt giới hạn min/max', async ({ homePage, page }) => {
+    test('BOOKING_06: Tăng/giảm số khách bằng +/– → đúng giá trị, không vượt giới hạn min/max', async ({
+        homePage,
+        page,
+    }) => {
         await navigateToRoomDetail(homePage, page);
 
         const incrementBtn = page.getByRole('button', { name: '+' });
