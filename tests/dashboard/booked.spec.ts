@@ -1,3 +1,4 @@
+import { DASHBOARD } from '@constants/dashboard.config';
 import { test, expect } from '@fixtures/test_hook';
 
 test.describe('Dashboard - Booked Rooms', () => {
@@ -11,13 +12,13 @@ test.describe('Dashboard - Booked Rooms', () => {
         // await page.waitForLoadState('networkidle');
 
         const roomCards = page.locator('.ant-card, [class*="room-card"], [class*="booking"]');
-        const emptyMessage = page.getByText(/chưa thuê|haven.*booked|no.*room/i);
+        const emptyMessage = page.getByText(DASHBOARD.BOOKED.EMPTY_MESSAGE);
         await Promise.race([
             roomCards.first().waitFor({ state: 'visible', timeout: 15000 }),
             emptyMessage.first().waitFor({ state: 'visible', timeout: 15000 }),
         ]).catch(() => {
             console.log(
-                '⚠️ Cảnh báo: Chờ UI Dashboard hiển thị bị quá hạn nhưng vẫn tiếp tục kiểm tra assertion.'
+                '⚠️ Warning: Waiting for Dashboard UI timed out but proceeding to check assertion.'
             );
         });
         const hasCards = await roomCards
@@ -28,7 +29,7 @@ test.describe('Dashboard - Booked Rooms', () => {
 
         expect(
             hasCards || hasEmpty,
-            'Dashboard phải hiển thị danh sách phòng hoặc thông báo trống'
+            'Dashboard must display either room list or empty state message'
         ).toBeTruthy();
 
         if (hasCards) {
@@ -44,18 +45,18 @@ test.describe('Dashboard - Booked Rooms', () => {
         homePage,
         dashboardPage,
     }) => {
-        // Test với tài khoản mới đăng ký (không có phòng đã thuê)
-        // Dùng tài khoản hiện tại nếu chưa có booking
+        // Test with newly registered account (no booked rooms)
+        // Use existing account if there are no bookings
         await dashboardPage.loginAndGotoDashboard(homePage);
 
-        const emptyMessage = page.getByText(/chưa thuê|haven.*booked|no.*room/i);
+        const emptyMessage = page.getByText(DASHBOARD.BOOKED.EMPTY_MESSAGE);
         const roomCards = page.locator('.ant-card, [class*="room-card"], [class*="booking"]');
 
         const cardCount = await roomCards.count();
         if (cardCount === 0) {
             await expect(emptyMessage).toBeVisible();
         } else {
-            // Tài khoản đã có phòng → skip test này
+            // Account already has bookings → skip this test
             test.skip();
         }
     });
@@ -65,7 +66,7 @@ test.describe('Dashboard - Booked Rooms', () => {
         dashboardPage,
         page,
     }) => {
-        // BUG: Phân trang không hoạt động khi có nhiều phòng
+        // BUG: Pagination does not function when there are multiple rooms
         test.fail();
 
         await dashboardPage.loginAndGotoDashboard(homePage);
@@ -76,11 +77,11 @@ test.describe('Dashboard - Booked Rooms', () => {
         await expect(roomCards.first()).toBeVisible({ timeout: 10000 });
 
         const pagination = page.locator('.ant-pagination');
-        const loadMore = page.getByRole('button', { name: /xem thêm|load more/i });
+        const loadMore = page.getByRole('button', { name: DASHBOARD.BOOKED.BTN_LOAD_MORE });
 
         const hasPagination = await pagination.isVisible().catch(() => false);
         const hasLoadMore = await loadMore.isVisible().catch(() => false);
 
-        expect(hasPagination || hasLoadMore, 'Phải có phân trang hoặc nút xem thêm').toBeTruthy();
+        expect(hasPagination || hasLoadMore, 'Must have pagination or load more button').toBeTruthy();
     });
 });

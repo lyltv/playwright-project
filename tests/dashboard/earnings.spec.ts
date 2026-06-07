@@ -1,7 +1,8 @@
+import { DASHBOARD } from '@constants/dashboard.config';
 import { test, expect } from '@fixtures/test_hook';
 
 test.describe.skip('Dashboard - Earnings', () => {
-    // Ép dọn dẹp cookie để đảm bảo tài khoản sạch sẽ trước mỗi case
+    // Clear cookies to ensure clean account state before each test case
     test.beforeEach(async ({ context }) => {
         await context.clearCookies();
     });
@@ -9,15 +10,15 @@ test.describe.skip('Dashboard - Earnings', () => {
     test('EARNINGS_01: Should access earnings page', async ({ homePage, dashboardPage, page }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
 
-        // 🟢 Chờ thông minh cho đến khi menu "Thu nhập" xuất hiện (tối đa 5s)
-        const earningsLink = page.getByText(/thu nhập|earnings/i).first();
+        // Smart wait until "Earnings" menu appears (max 5s)
+        const earningsLink = page.getByText(DASHBOARD.EARNINGS.MENU_LINK).first();
         await expect(earningsLink).toBeVisible({ timeout: 5000 });
 
         await earningsLink.click();
         await page.waitForLoadState('domcontentloaded');
 
-        // Trang earnings phải hiển thị nội dung tổng thu nhập hoặc giao dịch
-        const earningsContent = page.getByText(/tổng thu nhập|total earnings|transaction/i).first();
+        // Earnings page must display total earnings or transaction contents
+        const earningsContent = page.getByText(DASHBOARD.EARNINGS.HEADING).first();
         await expect(earningsContent).toBeVisible({ timeout: 5000 });
     });
 
@@ -28,10 +29,10 @@ test.describe.skip('Dashboard - Earnings', () => {
     }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
 
-        // Nếu là tài khoản thường, menu "Thu nhập" bắt buộc KHÔNG ĐƯỢC XUẤT HIỆN
-        const earningsLink = page.getByText(/thu nhập|earnings/i).first();
+        // For regular accounts, the "Earnings" menu must not appear
+        const earningsLink = page.getByText(DASHBOARD.EARNINGS.MENU_LINK).first();
 
-        // Cách test chuẩn: Khẳng định nó bị ẩn đi đối với user thường
+        // Standard test verification: assert that it is hidden for regular users
         await expect(earningsLink).toBeHidden({ timeout: 5000 });
     });
 
@@ -42,17 +43,15 @@ test.describe.skip('Dashboard - Earnings', () => {
     }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
 
-        // Chờ menu xuất hiện và click
-        const earningsLink = page.getByText(/thu nhập|earnings/i).first();
+        // Wait for menu to appear and click
+        const earningsLink = page.getByText(DASHBOARD.EARNINGS.MENU_LINK).first();
         await expect(earningsLink).toBeVisible({ timeout: 5000 });
 
         await earningsLink.click();
         await page.waitForLoadState('domcontentloaded');
 
-        // Ép web phải hiển thị 1 trong 2: Hoặc chữ "Chưa có thu nhập", hoặc chữ "Tổng thu nhập"
-        const noIncomeOrHasIncome = page
-            .locator('text=/chưa có thu nhập|no income|tổng thu nhập|total/i')
-            .first();
+        // Assert page displays either "No income" or "Total earnings"
+        const noIncomeOrHasIncome = page.getByText(DASHBOARD.EARNINGS.NO_INCOME_MSG).first();
         await expect(noIncomeOrHasIncome).toBeVisible({ timeout: 5000 });
     });
 });

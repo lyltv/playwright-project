@@ -1,3 +1,5 @@
+import { BOOKING } from '@constants/booking.config';
+import { HOMEPAGE } from '@constants/homePage.config';
 import { test, expect } from '@fixtures/test_hook';
 
 test.describe('Booking', () => {
@@ -14,21 +16,21 @@ test.describe('Booking', () => {
         await page.waitForURL('**/room-detail/**', { timeout: 15000 });
     };
 
-    test('BOOKING_01: Chưa đăng nhập bấm Đặt phòng → hiện thông báo yêu cầu đăng nhập', async ({
+    test('BOOKING_01: Not logged in click Book → show login request notification', async ({
         homePage,
         page,
     }) => {
         await navigateToRoomDetail(homePage, page);
 
-        const bookButton = page.getByRole('button', { name: 'Đặt phòng' });
+        const bookButton = page.getByRole('button', { name: BOOKING.ROOM_DETAIL.BTN_BOOK });
         await bookButton.scrollIntoViewIfNeeded();
         await bookButton.click();
 
-        const notification = page.getByText('Vui lòng đăng nhập để tiếp tục đặt phòng');
+        const notification = page.getByText(BOOKING.BOOKING_FLOW.LOGIN_ALERT);
         await expect(notification).toBeVisible({ timeout: 5000 });
     });
 
-    test('BOOKING_02: Đăng nhập trước → đặt phòng → thành công + xuất hiện trong dashboard', async ({
+    test('BOOKING_02: Log in first → book room → success + appears in dashboard', async ({
         homePage,
         page,
     }) => {
@@ -41,18 +43,18 @@ test.describe('Booking', () => {
 
         const roomTitle = await page.locator('h2').first().textContent();
 
-        const bookButton = page.getByRole('button', { name: 'Đặt phòng' });
+        const bookButton = page.getByRole('button', { name: BOOKING.ROOM_DETAIL.BTN_BOOK });
         await bookButton.scrollIntoViewIfNeeded();
         await bookButton.click();
 
-        const confirmButton = page.getByRole('button', { name: /xác nhận/i });
+        const confirmButton = page.getByRole('button', { name: BOOKING.BOOKING_FLOW.BTN_CONFIRM });
         await expect(confirmButton).toBeVisible({ timeout: 5000 });
         await confirmButton.click();
 
-        const successMessage = page.getByText(/thêm mới thành công/i);
+        const successMessage = page.getByText(BOOKING.BOOKING_FLOW.TOAST_SUCCESS);
         await expect(successMessage).toBeVisible({ timeout: 5000 });
 
-        // Verify booking xuất hiện trong dashboard
+        // Verify booking appears in dashboard
         await page.goto('/');
         await page.getByRole('button', { name: /Open user menu/i }).click();
         await page.locator('#user-dropdown').getByText('Dashboard').click();
@@ -62,7 +64,7 @@ test.describe('Booking', () => {
         await expect(bookedRoom).toBeVisible({ timeout: 10000 });
     });
 
-    test('BOOKING_03: Đăng nhập ngay tại trang room detail → đặt phòng → thành công + xuất hiện trong dashboard', async ({
+    test('BOOKING_03: Log in directly on room detail page → book room → success + appears in dashboard', async ({
         homePage,
         page,
     }) => {
@@ -70,28 +72,28 @@ test.describe('Booking', () => {
 
         const roomTitle = await page.locator('h2').first().textContent();
 
-        // Login từ trang room detail (avatar button là bg-main đầu tiên trong nav)
+        // Login from room detail page (avatar button is the first bg-main in nav)
         await page.locator('button.bg-main').first().click();
-        await page.locator('#user-dropdown').getByText('Đăng nhập').click();
-        await page.getByPlaceholder('Vui lòng nhập tài khoản').fill(process.env.TEST_EMAIL!);
-        await page.getByPlaceholder('Vui lòng nhập mật khẩu').fill(process.env.TEST_PASSWORD!);
-        await page.getByRole('button', { name: 'Đăng nhập' }).click();
+        await page.locator('#user-dropdown').getByText(HOMEPAGE.LOGIN.BTN_LOGIN).click();
+        await page.getByPlaceholder(HOMEPAGE.LOGIN.EMAIL_PLACEHOLDER).fill(process.env.TEST_EMAIL!);
+        await page.getByPlaceholder(HOMEPAGE.LOGIN.PASSWORD_PLACEHOLDER).fill(process.env.TEST_PASSWORD!);
+        await page.getByRole('button', { name: HOMEPAGE.LOGIN.BTN_LOGIN }).click();
 
         const userMenu = page.getByRole('button', { name: /Open user menu/i });
         await expect(userMenu).toBeVisible({ timeout: 10000 });
 
-        const bookButton = page.getByRole('button', { name: 'Đặt phòng' });
+        const bookButton = page.getByRole('button', { name: BOOKING.ROOM_DETAIL.BTN_BOOK });
         await bookButton.scrollIntoViewIfNeeded();
         await bookButton.click();
 
-        const confirmButton = page.getByRole('button', { name: /xác nhận/i });
+        const confirmButton = page.getByRole('button', { name: BOOKING.BOOKING_FLOW.BTN_CONFIRM });
         await expect(confirmButton).toBeVisible({ timeout: 5000 });
         await confirmButton.click();
 
-        const successMessage = page.getByText(/thêm mới thành công/i);
+        const successMessage = page.getByText(BOOKING.BOOKING_FLOW.TOAST_SUCCESS);
         await expect(successMessage).toBeVisible({ timeout: 5000 });
 
-        // Verify booking xuất hiện trong dashboard
+        // Verify booking appears in dashboard
         await page.goto('/');
         await page.getByRole('button', { name: /Open user menu/i }).click();
         await page.locator('#user-dropdown').getByText('Dashboard').click();
@@ -101,71 +103,71 @@ test.describe('Booking', () => {
         await expect(bookedRoom).toBeVisible({ timeout: 10000 });
     });
 
-    test('BOOKING_04: Booking modal hiển thị đủ: giá, đánh giá, ngày, khách, nút đặt, tổng tiền, ngôn ngữ nhất quán', async ({
+    test('BOOKING_04: Booking modal displays fully: price, reviews, dates, guests, book button, total price, language consistency', async ({
         homePage,
         page,
     }) => {
-        // BUG: Hiện thị không đồng nhất
+        // BUG: Inconsistent display
         test.fail();
         await navigateToRoomDetail(homePage, page);
 
-        // Giá phòng mỗi đêm ($XX / night)
-        const priceSection = page.getByText('/ night');
+        // Room price per night ($XX / night)
+        const priceSection = page.getByText(BOOKING.ROOM_DETAIL.NIGHT_LABEL);
         await priceSection.scrollIntoViewIfNeeded();
         await expect(priceSection).toBeVisible();
 
-        // Đánh giá (star + đánh giá)
+        // Rating (star + evaluation)
         const ratingSection = page.getByText(/đánh giá/i).first();
         await expect(ratingSection).toBeVisible();
 
-        // Nhận phòng / Trả phòng date fields
-        await expect(page.getByText('Nhận phòng')).toBeVisible();
-        await expect(page.getByText('Trả phòng')).toBeVisible();
+        // Checkin / Checkout date fields
+        await expect(page.getByText(HOMEPAGE.SEARCH.CHECKIN)).toBeVisible();
+        await expect(page.getByText(HOMEPAGE.SEARCH.CHECKOUT)).toBeVisible();
 
-        // Khách section với +/- buttons
+        // Guest section with +/- buttons
         await expect(page.getByText('Khách').first()).toBeVisible();
         await expect(page.getByRole('button', { name: '–' })).toBeVisible();
         await expect(page.getByRole('button', { name: '+' })).toBeVisible();
 
-        // Nút Đặt phòng
-        await expect(page.getByRole('button', { name: 'Đặt phòng' })).toBeVisible();
+        // Book button
+        await expect(page.getByRole('button', { name: BOOKING.ROOM_DETAIL.BTN_BOOK })).toBeVisible();
 
-        // Thông báo chưa trừ tiền
-        await expect(page.getByText('Bạn vẫn chưa bị trừ tiền')).toBeVisible();
+        // Not charged message
+        await expect(page.getByText(BOOKING.BOOKING_FLOW.NOT_CHARGED_YET)).toBeVisible();
 
-        // Tổng tiền
-        await expect(page.getByText('Total before taxes')).toBeVisible();
+        // Total before taxes
+        await expect(page.getByText(BOOKING.BOOKING_FLOW.TOTAL_LABEL)).toBeVisible();
 
-        // Language consistency: "Cleaning fee" và "Total before taxes" là EN trong UI VN
-        const cleaningFee = page.getByText('Cleaning fee');
-        const totalEN = page.getByText('Total before taxes');
+        // Language consistency: "Cleaning fee" and "Total before taxes" are EN in VN UI
+        const cleaningFee = page.getByText(BOOKING.BOOKING_FLOW.CLEANING_FEE);
+        const totalEN = page.getByText(BOOKING.BOOKING_FLOW.TOTAL_LABEL);
         const hasEnglishMix = (await cleaningFee.isVisible()) || (await totalEN.isVisible());
         expect
-            .soft(hasEnglishMix, 'Booking modal có mix ngôn ngữ EN/VN — không nhất quán')
+            .soft(hasEnglishMix, 'Booking modal has mixed EN/VN language - inconsistent')
             .toBeFalsy();
     });
 
-    test('BOOKING_05: Chọn ngày quá khứ (Yesterday) → không được áp dụng vào check-in (BUG: app cho phép)', async ({
+    test('BOOKING_05: Select past date (Yesterday) → must not apply to check-in (BUG: app allows)', async ({
         homePage,
         page,
     }) => {
-        // BUG: Date picker cho phép chọn ngày trong quá khứ (Yesterday, Last Week, Last Month)
+        // BUG: Date picker allows selecting past dates (Yesterday, Last Week, Last Month)
         test.fail();
 
         await navigateToRoomDetail(homePage, page);
 
-        const checkinField = page.getByText('Nhận phòng').locator('..');
+        const checkinField = page.getByText(HOMEPAGE.SEARCH.CHECKIN).locator('..');
         await checkinField.scrollIntoViewIfNeeded();
         await checkinField.click();
 
         const picker = page.locator('.rdrDateRangePickerWrapper');
         await expect(picker).toBeVisible({ timeout: 5000 });
 
-        // Chọn "Yesterday" → date picker không nên cho phép ngày quá khứ
+        // Select "Yesterday" → date picker should not allow past dates
         await picker.getByText('Yesterday').click();
         await page.getByText('Close').click();
 
-        // Ngày quá khứ không được áp dụng vào check-in
+        // Past dates should not be applied to check-in
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
         const dd = String(yesterday.getDate()).padStart(2, '0');
@@ -177,7 +179,7 @@ test.describe('Booking', () => {
         await expect(checkinDate).toBeHidden({ timeout: 3000 });
     });
 
-    test('BOOKING_06: Tăng/giảm số khách bằng +/– → đúng giá trị, không vượt giới hạn min/max', async ({
+    test('BOOKING_06: Increase/decrease guest count using +/– → correct values, within min/max limits', async ({
         homePage,
         page,
     }) => {
@@ -185,23 +187,23 @@ test.describe('Booking', () => {
 
         const incrementBtn = page.getByRole('button', { name: '+' });
         const decrementBtn = page.getByRole('button', { name: '–' });
-        const guestCount = page.getByText(/\d+ khách/).first();
+        const guestCount = page.getByText(new RegExp(`\\d+ ${HOMEPAGE.SEARCH.GUEST_SUFFIX}`)).first();
 
         await incrementBtn.scrollIntoViewIfNeeded();
 
-        // Lấy số khách ban đầu
+        // Get initial guest count
         const initialText = await guestCount.textContent();
         const initialCount = parseInt(initialText?.replace(/\D/g, '') || '1');
 
-        // Click + để tăng
+        // Click + to increase
         await incrementBtn.click();
-        await expect(guestCount).toHaveText(`${initialCount + 1} khách`, { timeout: 3000 });
+        await expect(guestCount).toHaveText(`${initialCount + 1} ${HOMEPAGE.SEARCH.GUEST_SUFFIX}`, { timeout: 3000 });
 
-        // Click – để giảm về ban đầu
+        // Click – to decrease back to initial
         await decrementBtn.click();
-        await expect(guestCount).toHaveText(`${initialCount} khách`, { timeout: 3000 });
+        await expect(guestCount).toHaveText(`${initialCount} ${HOMEPAGE.SEARCH.GUEST_SUFFIX}`, { timeout: 3000 });
 
-        // Test giới hạn dưới: click – cho đến khi về tối thiểu
+        // Test lower limit: click – until minimum
         for (let i = 0; i < initialCount; i++) {
             await decrementBtn.click();
         }
@@ -209,12 +211,12 @@ test.describe('Booking', () => {
         const minCount = parseInt(minText?.replace(/\D/g, '') || '0');
         expect(minCount).toBeGreaterThanOrEqual(1);
 
-        // Lấy max khách từ mô tả phòng (VD: "3 Khách • Phòng Studio")
+        // Get max guests from room description (e.g. "3 Khách • Phòng Studio")
         const roomInfo = page.getByText(/\d+ Khách/i).first();
         const roomInfoText = await roomInfo.textContent();
         const maxGuest = parseInt(roomInfoText?.match(/(\d+)\s*Khách/i)?.[1] || '10');
 
-        // Test giới hạn trên: click + nhiều lần vượt max
+        // Test upper limit: click + multiple times past max
         for (let i = minCount; i <= maxGuest + 1; i++) {
             await incrementBtn.click();
         }
@@ -223,16 +225,16 @@ test.describe('Booking', () => {
         expect(afterMaxCount).toBeLessThanOrEqual(maxGuest);
     });
 
-    test('BOOKING_07: Click Nhận phòng → mở date picker, chọn ngày → hiển thị đúng trên modal', async ({
+    test('BOOKING_07: Click Check-in → opens date picker, select dates → displays correctly on modal', async ({
         homePage,
         page,
     }) => {
         await navigateToRoomDetail(homePage, page);
 
-        // Click vào ô Nhận phòng (scope chính xác bằng class cursor-pointer)
+        // Click on Check-in field (scoped precisely using cursor-pointer class)
         const checkinField = page
             .locator('div.cursor-pointer')
-            .filter({ hasText: 'Nhận phòng' })
+            .filter({ hasText: HOMEPAGE.SEARCH.CHECKIN })
             .first();
         await checkinField.scrollIntoViewIfNeeded();
         await checkinField.click();
@@ -240,20 +242,20 @@ test.describe('Booking', () => {
         const picker = page.locator('.rdrDateRangePickerWrapper');
         await expect(picker).toBeVisible({ timeout: 5000 });
 
-        // Chọn "This Week" để set ngày
+        // Select "This Week" to set dates
         await picker.getByText('This Week').click();
 
-        // Đóng picker
+        // Close picker
         await page.getByText('Close').click();
         await expect(picker).toBeHidden({ timeout: 3000 });
 
-        // Ngày checkin và checkout phải hiển thị trên booking modal (format DD-MM-YYYY)
+        // Checkin and checkout dates must display on booking modal (format DD-MM-YYYY)
         const checkinDate = checkinField.getByText(/\d{2}-\d{2}-\d{4}/);
         await expect(checkinDate).toBeVisible();
 
         const checkoutField = page
             .locator('div.cursor-pointer')
-            .filter({ hasText: 'Trả phòng' })
+            .filter({ hasText: HOMEPAGE.SEARCH.CHECKOUT })
             .first();
         const checkoutDate = checkoutField.getByText(/\d{2}-\d{2}-\d{4}/);
         await expect(checkoutDate).toBeVisible();

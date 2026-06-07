@@ -1,3 +1,4 @@
+import { DASHBOARD } from '@constants/dashboard.config';
 import { test, expect } from '@fixtures/test_hook';
 
 test.describe('Dashboard - Update Profile', () => {
@@ -12,14 +13,14 @@ test.describe('Dashboard - Update Profile', () => {
         await dashboardPage.openProfileDialog();
 
         const dialog = page.getByRole('dialog');
-        await expect(dialog.getByText('Chỉnh sửa hồ sơ')).toBeVisible();
+        await expect(dialog.getByText(DASHBOARD.PROFILE.HEADING_EDIT)).toBeVisible();
         await expect(dialog.locator('#email')).toBeVisible();
         await expect(dialog.locator('#name')).toBeVisible();
         await expect(dialog.locator('#phone')).toBeVisible();
-        await expect(dialog.getByRole('button', { name: 'Cập nhật' })).toBeVisible();
+        await expect(dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE })).toBeVisible();
         await expect(dialog.locator('button.ant-modal-close')).toBeVisible();
 
-        // Data phải được preload từ server
+        // Data must be preloaded from server
         const emailValue = await dialog.locator('#email').inputValue();
         expect(emailValue.length).toBeGreaterThan(0);
     });
@@ -35,13 +36,13 @@ test.describe('Dashboard - Update Profile', () => {
         const dialog = page.getByRole('dialog');
         const oldName = await dialog.locator('#name').inputValue();
 
-        // Sửa name rồi đóng bằng X
+        // Edit name then close with X
         await dialog.locator('#name').clear();
         await dialog.locator('#name').fill('Tên Tạm Thời');
         await dialog.locator('button.ant-modal-close').click();
         await expect(dialog).toBeHidden();
 
-        // Mở lại → dữ liệu phải vẫn như cũ
+        // Reopen → data must remain the same as old one
         await dashboardPage.openProfileDialog();
         const dialog2 = page.getByRole('dialog');
         await expect(dialog2.locator('#name')).toHaveValue(oldName);
@@ -66,19 +67,19 @@ test.describe('Dashboard - Update Profile', () => {
         await dialog.locator('#phone').clear();
         await dialog.locator('#phone').fill(newPhone);
 
-        // Chờ API trả về thành công
+        // Wait for successful API response
         const [response] = await Promise.all([
             page.waitForResponse(
                 (res) => res.url().includes('/api/users/') && res.request().method() === 'PUT'
             ),
-            dialog.getByRole('button', { name: 'Cập nhật' }).click(),
+            dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE }).click(),
         ]);
         expect(response.status()).toBe(200);
 
-        // Dialog tự đóng sau khi update thành công
+        // Dialog automatically closes after successful update
         await expect(dialog).toBeHidden({ timeout: 5000 });
 
-        // Mở lại xác nhận dữ liệu mới
+        // Reopen and confirm new data
         await dashboardPage.openProfileDialog();
         const dialog2 = page.getByRole('dialog');
         await expect(dialog2.locator('#name')).toHaveValue(newName);
@@ -93,7 +94,7 @@ test.describe('Dashboard - Update Profile', () => {
             page.waitForResponse(
                 (res) => res.url().includes('/api/users/') && res.request().method() === 'PUT'
             ),
-            dialog2.getByRole('button', { name: 'Cập nhật' }).click(),
+            dialog2.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE }).click(),
         ]);
         expect(restoreRes.status()).toBe(200);
     });
@@ -108,10 +109,10 @@ test.describe('Dashboard - Update Profile', () => {
 
         const dialog = page.getByRole('dialog');
         await dialog.locator('#email').clear();
-        await dialog.getByRole('button', { name: 'Cập nhật' }).click();
+        await dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE }).click();
 
-        await expect(dialog.getByText('Vui lòng nhập email!')).toBeVisible();
-        await expect(dialog.getByText('Chỉnh sửa hồ sơ')).toBeVisible();
+        await expect(dialog.getByText(DASHBOARD.PROFILE.ERR_EMAIL_EMPTY)).toBeVisible();
+        await expect(dialog.getByText(DASHBOARD.PROFILE.HEADING_EDIT)).toBeVisible();
     });
 
     test('UPDATE_PROFILE_05: Should show error for incorrect email format', async ({
@@ -125,9 +126,9 @@ test.describe('Dashboard - Update Profile', () => {
         const dialog = page.getByRole('dialog');
         await dialog.locator('#email').clear();
         await dialog.locator('#email').fill('emailkhonghople');
-        await dialog.getByRole('button', { name: 'Cập nhật' }).click();
+        await dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE }).click();
 
-        await expect(dialog.getByText(/hợp lệ|invalid/i)).toBeVisible();
+        await expect(dialog.getByText(DASHBOARD.PROFILE.ERR_EMAIL_INVALID)).toBeVisible();
     });
 
     test('UPDATE_PROFILE_06: Should show error for existing email', async ({
@@ -143,10 +144,10 @@ test.describe('Dashboard - Update Profile', () => {
 
         await dialog.locator('#email').clear();
         await dialog.locator('#email').fill('diemquyen2596dhcn1b@gmail.com');
-        await dialog.getByRole('button', { name: 'Cập nhật' }).click();
+        await dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE }).click();
         await page.waitForTimeout(1500);
 
-        // Đóng dialog rồi mở lại xác nhận email vẫn giữ nguyên
+        // Close dialog then reopen to verify email remains unchanged
         await dialog.locator('button.ant-modal-close').click();
         await expect(dialog).toBeHidden();
         await dashboardPage.openProfileDialog();
@@ -164,9 +165,9 @@ test.describe('Dashboard - Update Profile', () => {
 
         const dialog = page.getByRole('dialog');
         await dialog.locator('#name').clear();
-        await dialog.getByRole('button', { name: 'Cập nhật' }).click();
+        await dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE }).click();
 
-        await expect(dialog.getByText('Vui lòng nhập họ tên!')).toBeVisible();
+        await expect(dialog.getByText(DASHBOARD.PROFILE.ERR_NAME_EMPTY)).toBeVisible();
     });
 
     test('UPDATE_PROFILE_08: Should accept name with numbers/special chars', async ({
@@ -180,13 +181,13 @@ test.describe('Dashboard - Update Profile', () => {
         const dialog = page.getByRole('dialog');
         await dialog.locator('#name').clear();
         await dialog.locator('#name').fill('Test@User#123');
-        await dialog.getByRole('button', { name: 'Cập nhật' }).click();
+        await dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE }).click();
 
-        // Nếu update thành công → toast hiện, nếu không → dialog vẫn mở
-        const successToast = page.getByText(/cập nhật thành công/i);
+        // If update succeeds → toast appears, otherwise → dialog remains open
+        const successToast = page.getByText(DASHBOARD.PROFILE.TOAST_SUCCESS);
         const isSuccess = await successToast.isVisible({ timeout: 3000 }).catch(() => false);
 
-        // Dù thành công hay không, form phải chấp nhận input (không crash)
+        // Whether success or not, the form should accept input (no crash)
         expect(isSuccess || (await dialog.isVisible())).toBeTruthy();
     });
 
@@ -200,9 +201,9 @@ test.describe('Dashboard - Update Profile', () => {
 
         const dialog = page.getByRole('dialog');
         await dialog.locator('#phone').clear();
-        await dialog.getByRole('button', { name: 'Cập nhật' }).click();
+        await dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE }).click();
 
-        await expect(dialog.getByText('Vui lòng nhập số điện thoại!')).toBeVisible();
+        await expect(dialog.getByText(DASHBOARD.PROFILE.ERR_PHONE_EMPTY)).toBeVisible();
     });
 
     test('UPDATE_PROFILE_10: Should show error for incorrect phone format', async ({
@@ -216,9 +217,9 @@ test.describe('Dashboard - Update Profile', () => {
         const dialog = page.getByRole('dialog');
         await dialog.locator('#phone').clear();
         await dialog.locator('#phone').fill('abc1234567');
-        await dialog.getByRole('button', { name: 'Cập nhật' }).click();
+        await dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE }).click();
 
-        await expect(dialog.getByText('Sai định dạng số điện thoại!')).toBeVisible();
+        await expect(dialog.getByText(DASHBOARD.PROFILE.ERR_PHONE_INVALID)).toBeVisible();
     });
 
     test('UPDATE_PROFILE_11: Should show error for incorrect phone length', async ({
@@ -226,7 +227,7 @@ test.describe('Dashboard - Update Profile', () => {
         dashboardPage,
         page,
     }) => {
-        // BUG: Cho phép cập nhật số điện thoại sai độ dài
+        // BUG: Allows updating phone with invalid length
         test.fail();
 
         await dashboardPage.loginAndGotoDashboard(homePage);
@@ -235,9 +236,9 @@ test.describe('Dashboard - Update Profile', () => {
         const dialog = page.getByRole('dialog');
         await dialog.locator('#phone').clear();
         await dialog.locator('#phone').fill('0123');
-        await dialog.getByRole('button', { name: 'Cập nhật' }).click();
+        await dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE }).click();
 
-        await expect(dialog.getByText('Sai định dạng số điện thoại!')).toBeVisible();
+        await expect(dialog.getByText(DASHBOARD.PROFILE.ERR_PHONE_INVALID)).toBeVisible();
     });
 
     test('UPDATE_PROFILE_12: Should show error when birthday is blank', async ({
@@ -254,12 +255,12 @@ test.describe('Dashboard - Update Profile', () => {
         await birthdayInput.click();
         await page.keyboard.press('Meta+a');
         await page.keyboard.press('Backspace');
-        // Đóng picker bằng click vào tiêu đề dialog
-        await dialog.getByText('Chỉnh sửa hồ sơ').click();
+        // Close picker by clicking dialog heading
+        await dialog.getByText(DASHBOARD.PROFILE.HEADING_EDIT).click();
         await page.waitForTimeout(300);
-        await dialog.getByRole('button', { name: 'Cập nhật' }).click();
+        await dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE }).click();
 
-        await expect(dialog.getByText(/ngày sinh/i).last()).toBeVisible();
+        await expect(dialog.getByText(DASHBOARD.PROFILE.ERR_BIRTHDAY_EMPTY).last()).toBeVisible();
     });
 
     test('UPDATE_PROFILE_13: Should show error for future date of birth', async ({
@@ -267,7 +268,7 @@ test.describe('Dashboard - Update Profile', () => {
         dashboardPage,
         page,
     }) => {
-        // BUG: Web cho phép cập nhật ngày sinh tương lai (server trả 200)
+        // BUG: Web allows future birthday update (server returns 200)
         test.fail();
 
         await dashboardPage.loginAndGotoDashboard(homePage);
@@ -275,38 +276,38 @@ test.describe('Dashboard - Update Profile', () => {
 
         const dialog = page.getByRole('dialog');
 
-        // Lưu ngày sinh cũ để restore
+        // Save old birthday to restore
         const birthdayInput = dialog.locator('#birthday');
         const oldBirthday = await birthdayInput.inputValue();
 
-        // Nhập ngày sinh tương lai
+        // Type future birthday
         await birthdayInput.click();
         await page.keyboard.press('Meta+a');
         await page.keyboard.type('15/06/2030');
         await page.keyboard.press('Enter');
-        await dialog.getByText('Chỉnh sửa hồ sơ').click();
+        await dialog.getByText(DASHBOARD.PROFILE.HEADING_EDIT).click();
         await page.waitForTimeout(300);
 
-        // Bắt API response
+        // Capture API response
         const [response] = await Promise.all([
             page.waitForResponse(
                 (res) => res.url().includes('/api/users/') && res.request().method() === 'PUT'
             ),
-            dialog.getByRole('button', { name: 'Cập nhật' }).click(),
+            dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE }).click(),
         ]);
 
-        // Server phải từ chối ngày sinh tương lai (status !== 200)
+        // Server must reject future birthday (status !== 200)
         expect(response.status()).not.toBe(200);
 
-        // Restore ngày sinh cũ nếu server chấp nhận (bug case)
+        // Restore old birthday if server accepts it (bug case)
         if (response.status() === 200 && oldBirthday) {
             await birthdayInput.click();
             await page.keyboard.press('Meta+a');
             await page.keyboard.type(oldBirthday);
             await page.keyboard.press('Enter');
-            await dialog.getByText('Chỉnh sửa hồ sơ').click();
+            await dialog.getByText(DASHBOARD.PROFILE.HEADING_EDIT).click();
             await page.waitForTimeout(300);
-            await dialog.getByRole('button', { name: 'Cập nhật' }).click();
+            await dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE }).click();
             await page.waitForTimeout(1000);
         }
     });
@@ -316,21 +317,21 @@ test.describe('Dashboard - Update Profile', () => {
         dashboardPage,
         page,
     }) => {
-        // BUG: Không hiển thị lỗi khi không chọn giới tính
+        // BUG: No error message displayed when gender is not selected
         test.fail();
 
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
 
         const dialog = page.getByRole('dialog');
-        // Thử clear gender nếu có thể
+        // Clear gender selection if possible
         const genderSelect = dialog.locator('.ant-select-clear');
         if (await genderSelect.isVisible()) {
             await genderSelect.click();
         }
-        await dialog.getByRole('button', { name: 'Cập nhật' }).click();
+        await dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE }).click();
 
-        await expect(dialog.getByText('Vui lòng chọn giới tính')).toBeVisible();
+        await expect(dialog.getByText(DASHBOARD.PROFILE.ERR_GENDER_EMPTY)).toBeVisible();
     });
 
     test('UPDATE_PROFILE_15: Should update successfully with no data changed', async ({
@@ -342,9 +343,9 @@ test.describe('Dashboard - Update Profile', () => {
         await dashboardPage.openProfileDialog();
 
         const dialog = page.getByRole('dialog');
-        await dialog.getByRole('button', { name: 'Cập nhật' }).click();
+        await dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE }).click();
 
-        await expect(page.getByText('Cập nhật thông tin thành công')).toBeVisible({
+        await expect(page.getByText(DASHBOARD.PROFILE.TOAST_SUCCESS)).toBeVisible({
             timeout: 5000,
         });
     });
@@ -358,11 +359,11 @@ test.describe('Dashboard - Update Profile', () => {
         await dashboardPage.openProfileDialog();
 
         const dialog = page.getByRole('dialog');
-        const updateBtn = dialog.getByRole('button', { name: 'Cập nhật' });
+        const updateBtn = dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE });
 
         await Promise.all([updateBtn.click(), updateBtn.click({ delay: 50 })]);
 
-        await expect(page.getByText('Cập nhật thông tin thành công')).toBeVisible({
+        await expect(page.getByText(DASHBOARD.PROFILE.TOAST_SUCCESS)).toBeVisible({
             timeout: 5000,
         });
     });
@@ -386,7 +387,7 @@ test.describe('Dashboard - Update Profile', () => {
             page.waitForResponse(
                 (res) => res.url().includes('/api/users/') && res.request().method() === 'PUT'
             ),
-            dialog.getByRole('button', { name: 'Cập nhật' }).click(),
+            dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE }).click(),
         ]);
         expect(updateRes.status()).toBe(200);
 
@@ -407,7 +408,7 @@ test.describe('Dashboard - Update Profile', () => {
             page.waitForResponse(
                 (res) => res.url().includes('/api/users/') && res.request().method() === 'PUT'
             ),
-            dialog2.getByRole('button', { name: 'Cập nhật' }).click(),
+            dialog2.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE }).click(),
         ]);
         expect(restoreRes.status()).toBe(200);
     });
