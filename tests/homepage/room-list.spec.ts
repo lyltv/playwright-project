@@ -27,10 +27,10 @@ test.describe('Room List', () => {
             await roomCard.click();
             await page.waitForLoadState('domcontentloaded');
 
-            // URL phải chuyển sang trang chi tiết phòng
+            // URL must redirect to room detail page
             expect(page.url()).toMatch(/detail|room/i);
         } else {
-            // Click card trực tiếp
+            // Click card directly
             const card = page.locator('[class*="card"], [class*="room"]').first();
             await card.click();
             await page.waitForLoadState('domcontentloaded');
@@ -43,7 +43,7 @@ test.describe('Room List', () => {
         const userMenuButton = page.getByRole('button', { name: /Open user menu/i });
         await expect(userMenuButton).toBeVisible({ timeout: 10000 });
 
-        // Quay lại trang rooms
+        // Go back to rooms page
         await homePage.selectLocation('hcm');
         await page.waitForURL('**/rooms/ho-chi-minh**', { timeout: 15000 });
 
@@ -54,20 +54,20 @@ test.describe('Room List', () => {
             await heartIcon.click();
             await page.waitForTimeout(500);
 
-            // Click lại để bỏ yêu thích
+            // Click again to unfavorite
             await heartIcon.click();
             await page.waitForTimeout(500);
         }
     });
 
     test('ROOM_LIST_04: Should show map markers for rooms', async ({ page }) => {
-        // Kiểm tra bản đồ hiển thị markers
+        // Check if the map displays markers
         const map = page
             .locator('[class*="map"], [class*="leaflet"], [class*="google-map"], .mapboxgl-map')
             .first();
 
         if (await map.isVisible({ timeout: 5000 }).catch(() => false)) {
-            // Map phải có markers
+            // Map must contain markers
             const markers = page.locator('[class*="marker"], .leaflet-marker-icon, [class*="pin"]');
             const markerCount = await markers.count();
             expect(markerCount).toBeGreaterThan(0);
@@ -82,7 +82,7 @@ test.describe('Room List', () => {
             await roomCard.click();
             await page.waitForTimeout(500);
 
-            // Map nên zoom/focus vào marker tương ứng
+            // Map should zoom/focus on the corresponding marker
             await expect(map).toBeVisible();
         }
     });
@@ -91,11 +91,11 @@ test.describe('Room List', () => {
         const map = page.locator('[class*="map"], [class*="leaflet"], .mapboxgl-map').first();
 
         if (await map.isVisible({ timeout: 5000 }).catch(() => false)) {
-            // Lấy số markers trước khi zoom
+            // Get markers count before zooming
             const markers = page.locator('[class*="marker"], .leaflet-marker-icon');
             const countBefore = await markers.count();
 
-            // Zoom in bằng double click
+            // Zoom in via double click
             await map.dblclick();
             await page.waitForTimeout(1000);
 

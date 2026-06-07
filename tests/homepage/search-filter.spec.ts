@@ -1,3 +1,4 @@
+import { HOMEPAGE } from '@constants/homePage.config';
 import { test, expect } from '@fixtures/test_hook';
 import { getSearchDateRangeRegex } from 'utils/dateHelper';
 
@@ -5,10 +6,10 @@ test.describe('Search Filter', () => {
     test('SEARCH_FILTER_01: Should show all locations when location is blank', async ({ page }) => {
         await page.goto('/');
 
-        // Click vào khu vực location trên search bar
-        await page.getByText('Địa điểm').click();
+        // Click on location section in search bar
+        await page.getByText(HOMEPAGE.SEARCH_BAR.LOCATION_LABEL).click();
         const popup = page.locator('div.absolute').filter({
-            has: page.getByRole('heading', { name: 'Tìm kiếm địa điểm' }),
+            has: page.getByRole('heading', { name: HOMEPAGE.LOCATION_PICKER.TITLE }),
         });
         await expect(popup).toBeVisible();
     });
@@ -28,7 +29,7 @@ test.describe('Search Filter', () => {
         const picker = page.locator('.rdrDateRangePickerWrapper');
         await expect(picker).toBeVisible();
 
-        // Kiểm tra có thể chọn "This Week"
+        // Check if "This Week" can be selected
         const thisWeek = picker.locator('button.rdrStaticRange').filter({ hasText: 'This Week' });
         await expect(thisWeek).toBeVisible();
     });
@@ -41,7 +42,7 @@ test.describe('Search Filter', () => {
         const picker = page.locator('.rdrDateRangePickerWrapper');
         await expect(picker).toBeVisible();
 
-        // Chọn ngày bắt đầu ở cuối tháng
+        // Select start date near the end of the month
         const days = picker.locator('.rdrDay:not(.rdrDayPassive):not(.rdrDayDisabled)');
         const dayCount = await days.count();
         if (dayCount > 10) {
@@ -60,7 +61,7 @@ test.describe('Search Filter', () => {
         const picker = page.locator('.rdrDateRangePickerWrapper');
         await expect(picker).toBeVisible();
 
-        // Các ngày quá khứ phải bị disabled hoặc passive
+        // Past dates should be disabled or passive
         const disabledDays = picker.locator('.rdrDayDisabled, .rdrDayPassive');
         const count = await disabledDays.count();
         expect(count).toBeGreaterThan(0);
@@ -69,7 +70,7 @@ test.describe('Search Filter', () => {
     test('SEARCH_FILTER_06: Should filter rooms by guest count', async ({ page }) => {
         await page.goto('/');
 
-        await page.getByText('Thêm khách').click();
+        await page.getByText(HOMEPAGE.SEARCH_BAR.GUEST_LABEL).click();
         await page.waitForTimeout(500);
 
         const addBtn = page.locator('button').filter({ hasText: '+' }).first();
@@ -77,7 +78,7 @@ test.describe('Search Filter', () => {
             await addBtn.click();
             await addBtn.click();
 
-            const guestDisplay = page.getByText('khách').first();
+            const guestDisplay = page.getByText(HOMEPAGE.SEARCH.GUEST_SUFFIX).first();
             await expect(guestDisplay).toBeVisible({ timeout: 3000 });
         }
     });
@@ -85,7 +86,7 @@ test.describe('Search Filter', () => {
     test.skip('SEARCH_FILTER_07: Should handle excessive guest count', async ({ page }) => {
         await page.goto('/');
 
-        await page.getByText('Thêm khách').click();
+        await page.getByText(HOMEPAGE.SEARCH_BAR.GUEST_LABEL).click();
         await page.waitForTimeout(500);
 
         const addBtn = page.locator('button').filter({ hasText: '+' }).first();
@@ -94,7 +95,7 @@ test.describe('Search Filter', () => {
                 await addBtn.click();
             }
 
-            const guestDisplay = page.getByText(/(\d+) khách/i).first();
+            const guestDisplay = page.getByText(new RegExp(`(\\d+) ${HOMEPAGE.SEARCH.GUEST_SUFFIX}`, 'i')).first();
             await expect(guestDisplay).toBeVisible();
             const text = await guestDisplay.textContent();
             const count = parseInt(text?.match(/(\d+)/)?.[1] || '0');
@@ -106,9 +107,9 @@ test.describe('Search Filter', () => {
     test('SEARCH_FILTER_08: Should search by clicking magnifying glass icon', async ({ page }) => {
         await page.goto('/');
 
-        await page.getByText('Bạn sắp đi đâu?').click();
+        await page.getByText(HOMEPAGE.LOCATION_PICKER.PLACEHOLDER).click();
         const popup = page.locator('div.absolute').filter({
-            has: page.getByRole('heading', { name: 'Tìm kiếm địa điểm' }),
+            has: page.getByRole('heading', { name: HOMEPAGE.LOCATION_PICKER.TITLE }),
         });
         await expect(popup).toBeVisible();
         await popup.getByText('Hồ Chí Minh').click();
@@ -120,14 +121,14 @@ test.describe('Search Filter', () => {
     });
 
     test('SEARCH_FILTER_09: Should search by pressing Enter', async ({ page }) => {
-        // BUG: Nhấn Enter không kích hoạt tìm kiếm
+        // BUG: Pressing Enter does not trigger search
         test.fail();
 
         await page.goto('/');
 
-        await page.getByText('Bạn sắp đi đâu?').click();
+        await page.getByText(HOMEPAGE.LOCATION_PICKER.PLACEHOLDER).click();
         const popup = page.locator('div.absolute').filter({
-            has: page.getByRole('heading', { name: 'Tìm kiếm địa điểm' }),
+            has: page.getByRole('heading', { name: HOMEPAGE.LOCATION_PICKER.TITLE }),
         });
         await expect(popup).toBeVisible();
         await popup.getByText('Hồ Chí Minh').click();

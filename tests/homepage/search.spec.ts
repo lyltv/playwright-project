@@ -1,41 +1,42 @@
+import { HOMEPAGE } from '@constants/homePage.config';
 import { test, expect } from '@fixtures/test_hook';
 import { getSearchDateRangeRegex } from 'utils/dateHelper';
 
 test.describe('Search', () => {
-    test('SEARCH_01: Tìm kiếm theo địa điểm từ trang chủ → hiển thị kết quả đúng location', async ({
+    test('SEARCH_01: Search by location from homepage → display results for correct location', async ({
         homePage,
         page,
     }) => {
         await homePage.selectLocation('hcm');
         await page.waitForURL('**/rooms/ho-chi-minh**', { timeout: 15000 });
 
-        // URL chứa location đúng
+        // URL contains correct location
         expect(page.url()).toContain('ho-chi-minh');
 
-        // Trang kết quả hiển thị danh sách phòng
+        // Results page displays room list
         const roomCards = page.locator('[class*="card"]').first();
         await expect(roomCards).toBeVisible({ timeout: 10000 });
     });
 
-    test('SEARCH_02: Tìm kiếm theo địa điểm khác từ trang kết quả → chuyển sang location mới', async ({
+    test('SEARCH_02: Search by another location from results page → switch to new location', async ({
         homePage,
         page,
     }) => {
-        // Vào trang kết quả HCM trước
+        // Go to HCM results page first
         await homePage.selectLocation('hcm');
         await page.waitForURL('**/rooms/ho-chi-minh**', { timeout: 15000 });
 
-        // Từ trang kết quả, click location picker trên search bar
-        await page.getByText('Bạn sắp đi đâu?').click();
+        // From results page, click location picker in search bar
+        await page.getByText(HOMEPAGE.LOCATION_PICKER.PLACEHOLDER).click();
         const popup = page.locator('div.absolute').filter({
-            has: page.getByRole('heading', { name: 'Tìm kiếm địa điểm' }),
+            has: page.getByRole('heading', { name: HOMEPAGE.LOCATION_PICKER.TITLE }),
         });
         await expect(popup).toBeVisible();
 
-        // Chọn location khác (Hà Nội) → picker fill input
+        // Choose another location (Ha Noi) → picker fills input
         await popup.getByText('Hà Nội').click();
 
-        // Click nút search (icon kính lúp trong search bar)
+        // Click search button (magnifying glass icon in search bar)
         await page.locator('.anticon-search').click();
         await page.waitForURL('**/rooms/ha-noi**', { timeout: 15000 });
 
@@ -44,19 +45,19 @@ test.describe('Search', () => {
         await expect(roomCards).toBeVisible({ timeout: 10000 });
     });
 
-    test('SEARCH_03: Mở location picker → hiển thị đầy đủ tất cả địa điểm từ API', async ({
+    test('SEARCH_03: Open location picker → display all locations from API', async ({
         page,
         api,
     }) => {
         await page.goto('/');
 
-        await page.getByText('Bạn sắp đi đâu?').click();
+        await page.getByText(HOMEPAGE.LOCATION_PICKER.PLACEHOLDER).click();
         const popup = page.locator('div.absolute').filter({
-            has: page.getByRole('heading', { name: 'Tìm kiếm địa điểm' }),
+            has: page.getByRole('heading', { name: HOMEPAGE.LOCATION_PICKER.TITLE }),
         });
         await expect(popup).toBeVisible();
 
-        // Hiển thị các địa điểm có sẵn từ API
+        // Display available locations from API
         const locations = await api.location.getPopularLocations();
         for (const loc of locations) {
             const cityCard = popup.locator('div.cursor-pointer').filter({
@@ -66,29 +67,29 @@ test.describe('Search', () => {
         }
     });
 
-    test('SEARCH_04: Chọn ngày trên trang chủ → search bar cập nhật đúng ngày đã chọn', async ({
+    test('SEARCH_04: Select dates on homepage → search bar updates with correct selected dates', async ({
         page,
     }) => {
         await page.goto('/');
 
-        // Lấy text ngày mặc định trước khi chọn
+        // Get default date text before selection
         const dateTrigger = page.getByText(getSearchDateRangeRegex(1, 7));
         await dateTrigger.click();
 
         const picker = page.locator('.rdrDateRangePickerWrapper');
         await expect(picker).toBeVisible();
 
-        // Chọn "This Week"
+        // Choose "This Week"
         await picker.locator('button.rdrStaticRange').filter({ hasText: 'This Week' }).click();
 
-        // Date picker vẫn hiển thị sau khi chọn range
+        // Date picker is still visible after selecting range
         await expect(picker).toBeVisible();
 
-        // Click ra ngoài picker để đóng
+        // Click outside the picker to close
         await page.locator('body').click({ position: { x: 10, y: 10 }, force: true });
 
-        // Ngày trên search bar phải cập nhật (có thể giống hoặc khác tùy tuần)
-        // Chỉ cần search bar vẫn hiển thị đúng format ngày DD/MM/YYYY
+        // Date on search bar must update (can be same or different depending on the week)
+        // Just verify search bar still displays correct format DD/MM/YYYY
         const dateSection = page
             .locator('div')
             .filter({ hasText: /\d{2}\/\d{2}\/\d{4}/ })
@@ -96,27 +97,27 @@ test.describe('Search', () => {
         await expect(dateSection).toBeVisible();
     });
 
-    test('SEARCH_05: Chọn ngày trên trang kết quả → date picker hoạt động bình thường', async ({
+    test('SEARCH_05: Select dates on results page → date picker works normally', async ({
         homePage,
         page,
     }) => {
-        // Vào trang kết quả trước
+        // Go to results page first
         await homePage.selectLocation('hcm');
         await page.waitForURL('**/rooms/ho-chi-minh**', { timeout: 15000 });
 
-        // Mở date picker trên trang kết quả
+        // Open date picker on results page
         const dateTrigger = page.getByText(getSearchDateRangeRegex(1, 7));
         await dateTrigger.click();
 
         const picker = page.locator('.rdrDateRangePickerWrapper');
         await expect(picker).toBeVisible();
 
-        // Chọn "This Week"
+        // Choose "This Week"
         await picker.locator('button.rdrStaticRange').filter({ hasText: 'This Week' }).click();
         await expect(picker).toBeVisible();
     });
 
-    test('SEARCH_06: Vào room detail → booking modal giữ lại ngày, số khách đã chọn trước đó', async ({
+    test('SEARCH_06: Navigate to room detail → booking modal retains previously selected dates and guest count', async ({
         homePage,
         page,
     }) => {
@@ -128,101 +129,101 @@ test.describe('Search', () => {
         await roomCard.click();
         await page.waitForURL('**/room-detail/**', { timeout: 15000 });
 
-        // Ngày checkin được pre-fill (format DD-MM-YYYY)
+        // Checkin date is pre-filled (format DD-MM-YYYY)
         const checkinField = page
             .locator('div.cursor-pointer')
-            .filter({ hasText: 'Nhận phòng' })
+            .filter({ hasText: HOMEPAGE.SEARCH.CHECKIN })
             .first();
         await expect(checkinField.getByText(/\d{2}-\d{2}-\d{4}/)).toBeVisible();
 
-        // Ngày checkout được pre-fill
+        // Checkout date is pre-filled
         const checkoutField = page
             .locator('div.cursor-pointer')
-            .filter({ hasText: 'Trả phòng' })
+            .filter({ hasText: HOMEPAGE.SEARCH.CHECKOUT })
             .first();
         await expect(checkoutField.getByText(/\d{2}-\d{2}-\d{4}/)).toBeVisible();
 
-        // Guest count được pre-fill
-        await expect(page.getByText(/\d+ khách/)).toBeVisible();
+        // Guest count is pre-filled
+        await expect(page.getByText(new RegExp(`\\d+ ${HOMEPAGE.SEARCH.GUEST_SUFFIX}`))).toBeVisible();
 
-        // Nút đặt phòng hiển thị
-        await expect(page.getByRole('button', { name: 'Đặt phòng' })).toBeVisible();
+        // Book button is visible
+        await expect(page.getByRole('button', { name: HOMEPAGE.SEARCH.BTN_BOOK })).toBeVisible();
     });
 
-    test('SEARCH_07: Click vào search bar → mở rộng, click ra ngoài → thu gọn (BUG)', async ({
+    test('SEARCH_07: Click on search bar → expands, click outside → collapses (BUG)', async ({
         page,
     }) => {
-        // BUG: Search bar không collapse khi click ra ngoài
+        // BUG: Search bar does not collapse when clicking outside
         test.fail();
 
         await page.goto('/');
 
-        // Click vào location field → search bar mở rộng
-        await page.getByText('Địa điểm').click();
+        // Click on location field → search bar expands
+        await page.getByText(HOMEPAGE.SEARCH_BAR.LOCATION_LABEL).click();
         const popup = page.locator('div.absolute').filter({
-            has: page.getByRole('heading', { name: 'Tìm kiếm địa điểm' }),
+            has: page.getByRole('heading', { name: HOMEPAGE.LOCATION_PICKER.TITLE }),
         });
         await expect(popup).toBeVisible();
 
-        // Click ra ngoài → search bar phải thu gọn
+        // Click outside → search bar should collapse
         await page.locator('body').click({ position: { x: 10, y: 10 } });
         await expect(popup).toBeHidden({ timeout: 3000 });
     });
 
-    test('SEARCH_08: Áp dụng filter giá → kết quả thay đổi theo filter (BUG)', async ({
+    test('SEARCH_08: Apply price filter → results change according to filter (BUG)', async ({
         homePage,
         page,
     }) => {
-        // BUG: Filters không hoạt động đúng trên trang kết quả
+        // BUG: Filters do not work correctly on the results page
         test.fail();
 
-        // Vào trang kết quả
+        // Go to results page
         await homePage.selectLocation('hcm');
         await page.waitForURL('**/rooms/ho-chi-minh**', { timeout: 15000 });
 
-        // Lấy số phòng trước khi lọc
+        // Get room count before filtering
         const roomCards = page.locator('[class*="card"]');
         await roomCards.first().waitFor({ state: 'visible', timeout: 10000 });
         const countBefore = await roomCards.count();
 
-        // Click filter "Giá"
-        const priceFilter = page.getByRole('button', { name: 'Giá' });
+        // Click "Price" filter
+        const priceFilter = page.getByRole('button', { name: HOMEPAGE.FILTER_BAR[1] });
         if (await priceFilter.isVisible()) {
             await priceFilter.click();
             await page.waitForTimeout(500);
 
-            // Chọn range giá nếu có slider/option
+            // Select price range if slider/option is available
             const applyBtn = page.getByRole('button', { name: /áp dụng|apply/i });
             if (await applyBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
                 await applyBtn.click();
             }
         }
 
-        // Sau khi lọc, kết quả phải thay đổi hoặc vẫn hiển thị đúng
+        // After filtering, results should change or display correctly
         const countAfter = await roomCards.count();
         expect(countAfter).toBeGreaterThanOrEqual(0);
         expect(countAfter).not.toBe(countBefore);
     });
 
-    test('SEARCH_09: Trang kết quả hiển thị đủ: banner location, search bar, filters, danh sách phòng', async ({
+    test('SEARCH_09: Results page displays full layout: location banner, search bar, filters, room list', async ({
         homePage,
         page,
     }) => {
         await homePage.selectLocation('hcm');
         await page.waitForURL('**/rooms/ho-chi-minh**', { timeout: 15000 });
 
-        // Banner hiển thị tên location
+        // Banner displays location name
         await expect(page.getByText(/hồ chí minh|ho chi minh/i).first()).toBeVisible({
             timeout: 10000,
         });
 
-        // Search bar vẫn hiển thị trên trang kết quả
-        await expect(page.getByText('Bạn sắp đi đâu?')).toBeVisible();
+        // Search bar is still displayed on results page
+        await expect(page.getByText(HOMEPAGE.LOCATION_PICKER.PLACEHOLDER)).toBeVisible();
 
-        // Filter buttons hiển thị
-        await expect(page.getByRole('button', { name: 'Loại nơi ở' })).toBeVisible();
+        // Filter buttons are displayed
+        await expect(page.getByRole('button', { name: HOMEPAGE.FILTER_BAR[0] })).toBeVisible();
 
-        // Danh sách phòng hiển thị
+        // Room list is displayed
         const roomCards = page.locator('[class*="card"]').first();
         await expect(roomCards).toBeVisible({ timeout: 10000 });
     });
