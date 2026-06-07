@@ -38,9 +38,6 @@ test.describe('Room List', () => {
     });
 
     test('ROOM_LIST_03: Should toggle favorite icon', async ({ homePage, page }) => {
-        // BUG: Chức năng yêu thích không hoạt động
-        test.fail();
-
         await page.goto('/');
         await homePage.login(process.env.TEST_EMAIL!, process.env.TEST_PASSWORD!);
         const userMenuButton = page.getByRole('button', { name: /Open user menu/i });

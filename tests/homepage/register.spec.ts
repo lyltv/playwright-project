@@ -87,9 +87,7 @@ test.describe('CyberBnB Register', () => {
         await homePage.navigateSignUp();
         const dialog = page.getByRole('dialog');
         await expect(dialog.getByRole('heading', { name: 'Đăng ký' })).toBeVisible();
-
-        // Click bên ngoài dialog (vùng overlay)
-        await page.mouse.click(10, 10);
+        await page.locator('.ant-modal-wrap').click({ position: { x: 10, y: 10 } });
 
         // Dialog phải đóng lại
         await expect(dialog).toBeHidden();
