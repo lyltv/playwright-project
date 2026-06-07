@@ -1,3 +1,5 @@
+import { DASHBOARD } from '@constants/dashboard.config';
+import { HOMEPAGE } from '@constants/homePage.config';
 import { Page, Locator } from '@playwright/test';
 
 export class DashboardPage {
@@ -15,8 +17,8 @@ export class DashboardPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.editProfileButton = page.getByRole('button', { name: 'Chỉnh sửa hồ sơ' });
-        this.updatePhotoButton = page.getByRole('button', { name: 'Cập nhật ảnh' });
+        this.editProfileButton = page.getByRole('button', { name: DASHBOARD.PROFILE.HEADING_EDIT });
+        this.updatePhotoButton = page.getByRole('button', { name: DASHBOARD.AVATAR.BTN_UPDATE_PHOTO });
         this.profileDialog = page.getByRole('dialog');
         this.avatarDialog = page.getByRole('dialog');
         this.emailInput = page.getByRole('dialog').locator('#email');
@@ -24,7 +26,7 @@ export class DashboardPage {
         this.phoneInput = page.getByRole('dialog').locator('#phone');
         this.birthdayInput = page.getByRole('dialog').locator('#birthday');
         this.genderSelect = page.getByRole('dialog').locator('.ant-select');
-        this.updateButton = page.getByRole('dialog').getByRole('button', { name: 'Cập nhật' });
+        this.updateButton = page.getByRole('dialog').getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE });
     }
 
     async loginAndGotoDashboard(homePage: {
@@ -34,7 +36,7 @@ export class DashboardPage {
         const userMenuButton = this.page.getByRole('button', { name: /Open user menu/i });
         await userMenuButton.waitFor({ state: 'visible', timeout: 10000 });
         await userMenuButton.click();
-        const dropdown = this.page.locator('#user-dropdown').filter({ hasNotText: 'Đăng nhập' });
+        const dropdown = this.page.locator('#user-dropdown').filter({ hasNotText: HOMEPAGE.LOGIN.BTN_LOGIN });
         await dropdown.waitFor({ state: 'visible' });
         await dropdown.getByText('Dashboard').click();
         await this.page.waitForLoadState('domcontentloaded');

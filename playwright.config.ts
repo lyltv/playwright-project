@@ -15,9 +15,9 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-    timeout: process.env.CI ? 60000 : 30000,
+    timeout: process.env.CI ? 30000 : 30000,
     expect: {
-        timeout: 10000,
+        timeout: 5000,
     },
     reporter: [['allure-playwright', { outputFolder: 'allure-results' }]],
     testDir: './tests',
@@ -26,7 +26,7 @@ export default defineConfig({
     /* Fail the build on CI if you accidentally left test.only in the source code. */
     forbidOnly: !!process.env.CI,
     /* Retry on CI only */
-    retries: process.env.CI ? 2 : 0,
+    retries: process.env.CI ? 1 : 0,
     /* Opt out of parallel tests on CI. */
     workers: process.env.CI ? 1 : 1,
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
@@ -42,8 +42,8 @@ export default defineConfig({
         ignoreHTTPSErrors: true,
         screenshot: 'only-on-failure',
         viewport: { width: 1440, height: 900 },
-        navigationTimeout: process.env.CI ? 50000 : 30000,
-        actionTimeout: process.env.CI ? 15000 : 10000,
+        navigationTimeout: process.env.CI ? 20000 : 30000,
+        actionTimeout: process.env.CI ? 10000 : 10000,
         // proxy: {
         //   server: 'http://127.0.0.1:7890',
         // },
