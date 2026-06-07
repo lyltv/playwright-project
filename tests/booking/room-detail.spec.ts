@@ -1,3 +1,4 @@
+import { BOOKING } from '@constants/booking.config';
 import { test, expect } from '@fixtures/test_hook';
 
 test.describe('Room Detail', () => {
@@ -14,7 +15,7 @@ test.describe('Room Detail', () => {
         await page.waitForURL('**/room-detail/**', { timeout: 15000 });
     };
 
-    test('ROOM_01: Room detail hiển thị đúng theo API response (tên, host, tiện ích, giá, bình luận)', async ({
+    test('ROOM_01: Room detail displays correctly according to API response (name, host, amenities, price, reviews)', async ({
         homePage,
         page,
     }) => {
@@ -32,10 +33,10 @@ test.describe('Room Detail', () => {
         const body = await apiResponse.json();
         const room = body.content;
 
-        // Tên phòng
+        // Room name
         await expect(page.locator('h2').first()).toContainText(room.tenPhong);
 
-        // Số khách, phòng ngủ, giường, phòng tắm
+        // Guest count, bedrooms, beds, bathrooms
         const infoText = page.getByText(/Khách.*Phòng ngủ.*giường.*Phòng tắm/i);
         await expect(infoText).toBeVisible();
         await expect(infoText).toContainText(`${room.khach} Khách`);
@@ -43,10 +44,10 @@ test.describe('Room Detail', () => {
         await expect(infoText).toContainText(`${room.giuong} giường`);
         await expect(infoText).toContainText(`${room.phongTam} Phòng tắm`);
 
-        // Giá phòng
+        // Room price
         await expect(page.getByText(`$${room.giaTien}`, { exact: true })).toBeVisible();
 
-        // Tiện ích: hiển thị nếu true, ẩn nếu false
+        // Amenities: visible if true, hidden if false
         const amenityMap: Record<string, string> = {
             wifi: 'Wifi',
             tivi: 'Tivi',
@@ -62,14 +63,14 @@ test.describe('Room Detail', () => {
             }
         }
 
-        // Section bình luận
-        await expect(page.getByRole('heading', { name: 'Bình luận' })).toBeVisible();
+        // Review section
+        await expect(page.getByRole('heading', { name: BOOKING.ROOM_DETAIL.COMMENTS_HEADING })).toBeVisible();
 
-        // Section booking
-        await expect(page.getByRole('button', { name: 'Đặt phòng' })).toBeVisible();
+        // Booking section
+        await expect(page.getByRole('button', { name: BOOKING.ROOM_DETAIL.BTN_BOOK })).toBeVisible();
     });
 
-    test('ROOM_02: Truy cập room detail bằng URL trực tiếp → hiển thị đúng', async ({ page }) => {
+    test('ROOM_02: Access room detail via direct URL → displays correctly', async ({ page }) => {
         const [apiResponse] = await Promise.all([
             page.waitForResponse(
                 (res) => res.url().includes('/api/phong-thue/') && res.status() === 200
@@ -80,40 +81,40 @@ test.describe('Room Detail', () => {
         const body = await apiResponse.json();
         const room = body.content;
 
-        // Tên phòng
+        // Room name
         await expect(page.locator('h2').first()).toContainText(room.tenPhong);
 
-        // Thông tin phòng
+        // Room information
         await expect(page.getByText(/Khách/i).first()).toBeVisible();
 
         // Location link
         const locationLink = page.locator('a[href*="/rooms/"]').first();
         await expect(locationLink).toBeVisible();
 
-        // Ảnh
+        // Image
         const images = page.locator('img[src*="airbnb"], img[src*="phong"]').first();
         await expect(images).toBeVisible({ timeout: 10000 });
 
-        // Mô tả
-        await expect(page.getByText('Dịch sang tiếng Anh')).toBeVisible();
+        // Description
+        await expect(page.getByText(BOOKING.ROOM_DETAIL.TRANSLATE_BTN)).toBeVisible();
 
-        // Tiện ích
-        const amenities = page.getByRole('heading', { name: /tiện ích/i });
+        // Amenities
+        const amenities = page.getByRole('heading', { name: BOOKING.ROOM_DETAIL.AMENITIES_HEADING });
         await expect(amenities).toBeVisible();
 
         // Booking section
-        await expect(page.getByText('/ night')).toBeVisible();
-        await expect(page.getByRole('button', { name: 'Đặt phòng' })).toBeVisible();
+        await expect(page.getByText(BOOKING.ROOM_DETAIL.NIGHT_LABEL)).toBeVisible();
+        await expect(page.getByRole('button', { name: BOOKING.ROOM_DETAIL.BTN_BOOK })).toBeVisible();
 
-        // Bình luận section
-        await expect(page.getByRole('heading', { name: 'Bình luận' })).toBeVisible();
+        // Review section
+        await expect(page.getByRole('heading', { name: BOOKING.ROOM_DETAIL.COMMENTS_HEADING })).toBeVisible();
     });
 
-    test('ROOM_03: Click "Dịch sang tiếng Anh" → nội dung được dịch (BUG)', async ({
+    test('ROOM_03: Click "Dịch sang tiếng Anh" → content is translated (BUG)', async ({
         homePage,
         page,
     }) => {
-        // BUG: Nút dịch không thực sự dịch nội dung mô tả sang tiếng Anh
+        // BUG: Translate button does not actually translate the description content into English
         test.fail();
 
         await navigateToRoomDetail(homePage, page);
@@ -124,29 +125,29 @@ test.describe('Room Detail', () => {
             .first();
         const descBefore = await descParagraph.textContent();
 
-        const translateBtn = page.getByRole('button', { name: 'Dịch sang tiếng Anh' });
+        const translateBtn = page.getByRole('button', { name: BOOKING.ROOM_DETAIL.TRANSLATE_BTN });
         await translateBtn.scrollIntoViewIfNeeded();
         await translateBtn.click();
         await page.waitForTimeout(2000);
 
-        // Nội dung mô tả phải thay đổi sang tiếng Anh
+        // Description content must change to English
         const descAfter = await descParagraph.textContent();
         expect(descAfter).not.toBe(descBefore);
     });
 
-    test('ROOM_04: Click "Hiển thị thêm"/"Ẩn bớt" mô tả phòng (BUG)', async ({
+    test('ROOM_04: Click "Hiển thị thêm"/"Ẩn bớt" description (BUG)', async ({
         homePage,
         page,
     }) => {
-        // BUG: Show more/Show less không hoạt động đúng
+        // BUG: Show more/Show less does not function correctly
         test.fail();
 
         await navigateToRoomDetail(homePage, page);
 
-        const showMoreBtn = page.getByText(/Hiển thị thêm|Xem thêm/i);
+        const showMoreBtn = page.getByText(BOOKING.ROOM_DETAIL.SHOW_MORE_BTN);
         await showMoreBtn.scrollIntoViewIfNeeded();
 
-        // Lấy chiều cao mô tả trước khi expand
+        // Get description height before expanding
         const description = page
             .locator('p')
             .filter({ hasText: /Tự nhận phòng|Chủ nhà siêu cấp/i })
@@ -155,12 +156,12 @@ test.describe('Room Detail', () => {
 
         await showMoreBtn.click();
 
-        // Mô tả phải mở rộng (chiều cao tăng)
+        // Description must expand (height increases)
         const heightAfter = await description.boundingBox().then((b) => b?.height ?? 0);
         expect(heightAfter).toBeGreaterThan(heightBefore);
 
-        // Click "Ẩn bớt" → mô tả thu gọn lại
-        const showLessBtn = page.getByText(/Ẩn bớt|Thu gọn/i);
+        // Click "Ẩn bớt" → description collapses again
+        const showLessBtn = page.getByText(BOOKING.ROOM_DETAIL.SHOW_LESS_BTN);
         await expect(showLessBtn).toBeVisible();
         await showLessBtn.click();
 
@@ -168,27 +169,27 @@ test.describe('Room Detail', () => {
         expect(heightCollapsed).toBeLessThan(heightAfter);
     });
 
-    test('ROOM_05: Click ảnh → gallery mở, điều hướng next/prev, đóng gallery', async ({
+    test('ROOM_05: Click image → gallery opens, navigate next/prev, close gallery', async ({
         homePage,
         page,
     }) => {
         await navigateToRoomDetail(homePage, page);
 
-        // Click vào Ant Image component để mở preview
+        // Click on Ant Image component to open preview
         await page.locator('.ant-image').first().click();
 
-        // Ảnh preview hiển thị
+        // Preview image displays
         const previewImage = page.locator('img.ant-image-preview-img');
         await expect(previewImage).toBeVisible({ timeout: 5000 });
 
-        // Nút next/prev
+        // Next/prev button
         const nextBtn = page.locator('.ant-image-preview-switch-right');
         if (await nextBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
             await nextBtn.click();
             await expect(previewImage).toBeVisible();
         }
 
-        // Đóng preview
+        // Close preview
         await page.keyboard.press('Escape');
         await expect(previewImage).toBeHidden({ timeout: 3000 });
     });

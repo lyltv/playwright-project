@@ -1,3 +1,4 @@
+import { DASHBOARD } from '@constants/dashboard.config';
 import { test, expect } from '@fixtures/test_hook';
 import path from 'path';
 
@@ -14,11 +15,11 @@ test.describe('Dashboard - Update Avatar', () => {
         const dialog = page.getByRole('dialog');
         await expect(dialog).toBeVisible();
 
-        // Popup có nút chọn file và nút upload
+        // Popup has file selection input and upload button
         const fileInput = dialog.locator('input[type="file"]');
         await expect(fileInput).toBeAttached();
-        await expect(dialog.getByRole('button', { name: /Upload/i })).toBeVisible();
-        await expect(dialog.getByRole('button', { name: 'Close' })).toBeVisible();
+        await expect(dialog.getByRole('button', { name: DASHBOARD.AVATAR.BTN_UPLOAD })).toBeVisible();
+        await expect(dialog.getByRole('button', { name: DASHBOARD.AVATAR.BTN_CLOSE })).toBeVisible();
     });
 
     test('UPDATE_AVATAR_02: Should close photo update popup', async ({
@@ -32,7 +33,7 @@ test.describe('Dashboard - Update Avatar', () => {
         const dialog = page.getByRole('dialog');
         await expect(dialog).toBeVisible();
 
-        await dialog.getByRole('button', { name: 'Close' }).click();
+        await dialog.getByRole('button', { name: DASHBOARD.AVATAR.BTN_CLOSE }).click();
         await expect(dialog).toBeHidden();
     });
 
@@ -47,12 +48,12 @@ test.describe('Dashboard - Update Avatar', () => {
         const dialog = page.getByRole('dialog');
         const fileInput = dialog.locator('input[type="file"]');
 
-        // Upload ảnh JPG hợp lệ
+        // Upload valid JPG image
         const testImagePath = path.resolve(__dirname, '../../test-data/valid-avatar.jpg');
         await fileInput.setInputFiles(testImagePath);
-        await dialog.getByRole('button', { name: /Upload/i }).click();
+        await dialog.getByRole('button', { name: DASHBOARD.AVATAR.BTN_UPLOAD }).click();
 
-        await expect(page.getByText(/thành công|success/i)).toBeVisible({ timeout: 10000 });
+        await expect(page.getByText(DASHBOARD.AVATAR.TOAST_SUCCESS)).toBeVisible({ timeout: 10000 });
     });
 
     test('UPDATE_AVATAR_04: Should show error when no image selected', async ({
@@ -64,9 +65,9 @@ test.describe('Dashboard - Update Avatar', () => {
         await dashboardPage.openAvatarDialog();
 
         const dialog = page.getByRole('dialog');
-        await dialog.getByRole('button', { name: /Upload/i }).click();
+        await dialog.getByRole('button', { name: DASHBOARD.AVATAR.BTN_UPLOAD }).click();
 
-        await expect(page.getByText(/chọn|select/i)).toBeVisible({ timeout: 5000 });
+        await expect(page.getByText(DASHBOARD.AVATAR.TOAST_SELECT_ERR)).toBeVisible({ timeout: 5000 });
     });
 
     test.skip('UPDATE_AVATAR_05: Should reject non-image file format', async ({
@@ -80,9 +81,9 @@ test.describe('Dashboard - Update Avatar', () => {
         const fileInput = dialog.locator('input[type="file"]');
         const testFilePath = path.resolve(__dirname, '../../test-data/invalid-file.pdf');
         await fileInput.setInputFiles(testFilePath);
-        await dialog.getByRole('button', { name: /Upload/i }).click();
+        await dialog.getByRole('button', { name: DASHBOARD.AVATAR.BTN_UPLOAD }).click();
 
-        await expect(page.getByText(/format|định dạng|không hợp lệ/i)).toBeVisible({
+        await expect(page.getByText(DASHBOARD.AVATAR.TOAST_FORMAT_ERR)).toBeVisible({
             timeout: 5000,
         });
     });
@@ -100,9 +101,9 @@ test.describe('Dashboard - Update Avatar', () => {
 
         const testImagePath = path.resolve(__dirname, '../../test-data/large-image.jpg');
         await fileInput.setInputFiles(testImagePath);
-        await dialog.getByRole('button', { name: /Upload/i }).click();
+        await dialog.getByRole('button', { name: DASHBOARD.AVATAR.BTN_UPLOAD }).click();
 
-        await expect(page.getByText(/size|kích thước|dung lượng/i)).toBeVisible({ timeout: 5000 });
+        await expect(page.getByText(DASHBOARD.AVATAR.TOAST_SIZE_ERR)).toBeVisible({ timeout: 5000 });
     });
 
     test('UPDATE_AVATAR_07: Should handle rectangular image upload', async ({
@@ -118,11 +119,11 @@ test.describe('Dashboard - Update Avatar', () => {
 
         const testImagePath = path.resolve(__dirname, '../../test-data/rectangular-image.jpg');
         await fileInput.setInputFiles(testImagePath);
-        await dialog.getByRole('button', { name: /Upload/i }).click();
+        await dialog.getByRole('button', { name: DASHBOARD.AVATAR.BTN_UPLOAD }).click();
 
-        await expect(page.getByText(/thành công|success/i)).toBeVisible({ timeout: 10000 });
+        await expect(page.getByText(DASHBOARD.AVATAR.TOAST_SUCCESS)).toBeVisible({ timeout: 10000 });
 
-        // Avatar không bị overflow
+        // Avatar does not overflow
         const avatar = page
             .locator('img[alt*="avatar"], img[alt*="Avatar"], .ant-avatar img')
             .first();
@@ -149,11 +150,11 @@ test.describe('Dashboard - Update Avatar', () => {
         const testImagePath = path.resolve(__dirname, '../../test-data/valid-avatar.jpg');
         await fileInput.setInputFiles(testImagePath);
 
-        const uploadBtn = dialog.getByRole('button', { name: /Upload/i });
+        const uploadBtn = dialog.getByRole('button', { name: DASHBOARD.AVATAR.BTN_UPLOAD });
         await Promise.all([uploadBtn.click(), uploadBtn.click({ delay: 50 })]);
 
         await page.waitForTimeout(3000);
-        const successToasts = page.getByText(/thành công|success/i);
+        const successToasts = page.getByText(DASHBOARD.AVATAR.TOAST_SUCCESS);
         const count = await successToasts.count();
         expect(count).toBeLessThanOrEqual(1);
     });
@@ -165,7 +166,7 @@ test.describe('Dashboard - Update Avatar', () => {
     }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
 
-        // Lấy src avatar hiện tại — tìm ảnh trên trang dashboard
+        // Get current avatar src — search for image on dashboard page
         const avatar = page.locator('img').first();
         await avatar.getAttribute('src');
 
@@ -175,7 +176,7 @@ test.describe('Dashboard - Update Avatar', () => {
         const avatarAfter = page.locator('img').first();
         const srcAfter = await avatarAfter.getAttribute('src');
 
-        // Avatar phải giữ nguyên sau refresh
+        // Avatar must remain the same after refresh
         expect(srcAfter).toBeTruthy();
     });
 });
