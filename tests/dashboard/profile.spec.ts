@@ -17,7 +17,9 @@ test.describe('Dashboard - Update Profile', () => {
         await expect(dialog.locator('#email')).toBeVisible();
         await expect(dialog.locator('#name')).toBeVisible();
         await expect(dialog.locator('#phone')).toBeVisible();
-        await expect(dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE })).toBeVisible();
+        await expect(
+            dialog.getByRole('button', { name: DASHBOARD.PROFILE.BTN_UPDATE })
+        ).toBeVisible();
         await expect(dialog.locator('button.ant-modal-close')).toBeVisible();
 
         // Data must be preloaded from server
@@ -228,7 +230,7 @@ test.describe('Dashboard - Update Profile', () => {
         page,
     }) => {
         // BUG: Allows updating phone with invalid length
-        test.fail();
+        // test.fail();
 
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
@@ -318,7 +320,7 @@ test.describe('Dashboard - Update Profile', () => {
         page,
     }) => {
         // BUG: No error message displayed when gender is not selected
-        test.fail();
+        // test.fail();
 
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openProfileDialog();
