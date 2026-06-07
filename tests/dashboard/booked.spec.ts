@@ -8,11 +8,18 @@ test.describe('Dashboard - Booked Rooms', () => {
     }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
 
-        await page.waitForLoadState('networkidle');
+        // await page.waitForLoadState('networkidle');
 
         const roomCards = page.locator('.ant-card, [class*="room-card"], [class*="booking"]');
         const emptyMessage = page.getByText(/chưa thuê|haven.*booked|no.*room/i);
-
+        await Promise.race([
+            roomCards.first().waitFor({ state: 'visible', timeout: 15000 }),
+            emptyMessage.first().waitFor({ state: 'visible', timeout: 15000 }),
+        ]).catch(() => {
+            console.log(
+                '⚠️ Cảnh báo: Chờ UI Dashboard hiển thị bị quá hạn nhưng vẫn tiếp tục kiểm tra assertion.'
+            );
+        });
         const hasCards = await roomCards
             .first()
             .isVisible({ timeout: 5000 })
@@ -63,7 +70,7 @@ test.describe('Dashboard - Booked Rooms', () => {
 
         await dashboardPage.loginAndGotoDashboard(homePage);
 
-        await page.waitForLoadState('networkidle');
+        // await page.waitForLoadState('networkidle');
 
         const roomCards = page.locator('.ant-card, [class*="room-card"], [class*="booking"]');
         await expect(roomCards.first()).toBeVisible({ timeout: 10000 });

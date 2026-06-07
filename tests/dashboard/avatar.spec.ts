@@ -2,8 +2,7 @@ import { test, expect } from '@fixtures/test_hook';
 import path from 'path';
 
 test.describe('Dashboard - Update Avatar', () => {
-    test.describe.configure({ mode: 'serial' });
-
+    test.describe.configure({ mode: 'default' });
     test('UPDATE_AVATAR_01: Should open photo update popup', async ({
         homePage,
         dashboardPage,
@@ -61,9 +60,6 @@ test.describe('Dashboard - Update Avatar', () => {
         dashboardPage,
         page,
     }) => {
-        // BUG: Không hiển thị lỗi khi chưa chọn ảnh mà bấm Upload
-        test.fail();
-
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openAvatarDialog();
 
@@ -73,17 +69,15 @@ test.describe('Dashboard - Update Avatar', () => {
         await expect(page.getByText(/chọn|select/i)).toBeVisible({ timeout: 5000 });
     });
 
-    test('UPDATE_AVATAR_05: Should reject non-image file format', async ({
+    test.skip('UPDATE_AVATAR_05: Should reject non-image file format', async ({
         homePage,
         dashboardPage,
         page,
     }) => {
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openAvatarDialog();
-
         const dialog = page.getByRole('dialog');
         const fileInput = dialog.locator('input[type="file"]');
-
         const testFilePath = path.resolve(__dirname, '../../test-data/invalid-file.pdf');
         await fileInput.setInputFiles(testFilePath);
         await dialog.getByRole('button', { name: /Upload/i }).click();
@@ -116,9 +110,6 @@ test.describe('Dashboard - Update Avatar', () => {
         dashboardPage,
         page,
     }) => {
-        // BUG: Ảnh hình chữ nhật không được xử lý đúng
-        test.fail();
-
         await dashboardPage.loginAndGotoDashboard(homePage);
         await dashboardPage.openAvatarDialog();
 

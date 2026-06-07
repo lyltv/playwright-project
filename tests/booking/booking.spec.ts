@@ -105,6 +105,8 @@ test.describe('Booking', () => {
         homePage,
         page,
     }) => {
+        // BUG: Hiện thị không đồng nhất
+        test.fail();
         await navigateToRoomDetail(homePage, page);
 
         // Giá phòng mỗi đêm ($XX / night)

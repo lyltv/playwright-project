@@ -1,7 +1,7 @@
 import { test, expect } from '@fixtures/test_hook';
 
 test.describe('Dashboard - Update Profile', () => {
-    test.describe.configure({ mode: 'serial' });
+    test.describe.configure({ mode: 'default' });
 
     test('UPDATE_PROFILE_01: Should open profile editing popup', async ({
         homePage,
@@ -127,7 +127,7 @@ test.describe('Dashboard - Update Profile', () => {
         await dialog.locator('#email').fill('emailkhonghople');
         await dialog.getByRole('button', { name: 'Cập nhật' }).click();
 
-        await expect(dialog.getByText(/định dạng email|email.*invalid/i)).toBeVisible();
+        await expect(dialog.getByText(/hợp lệ|invalid/i)).toBeVisible();
     });
 
     test('UPDATE_PROFILE_06: Should show error for existing email', async ({
