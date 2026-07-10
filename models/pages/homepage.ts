@@ -31,6 +31,9 @@ export class HomePage {
     // Mobile Locators
     readonly mobileMenuToggle: Locator;
 
+    // Room & Location Cards
+    readonly roomCards: Locator;
+
     constructor(page: Page) {
         this.page = page;
         // 1. Locate the button containing the avatar image (used to open the dropdown menu)
@@ -69,6 +72,9 @@ export class HomePage {
 
         // Mobile
         this.mobileMenuToggle = page.locator('button[data-collapse-toggle="navbar-user"]');
+
+        // Room Cards
+        this.roomCards = page.locator('[class*="card"], [class*="room"], [class*="listing"]');
     }
 
     async goto() {
@@ -137,6 +143,17 @@ export class HomePage {
         } else {
             await this.hanoiCard.first().click();
         }
+    }
+
+    async getLocationCard(city: 'hcm' | 'hanoi'): Promise<Locator> {
+        return city === 'hcm' ? this.hcmCard.first() : this.hanoiCard.first();
+    }
+
+    async getComputedStyleString(locator: Locator): Promise<string> {
+        return await locator.evaluate((el) => {
+            const s = window.getComputedStyle(el);
+            return `${s.boxShadow}|${s.transform}|${s.opacity}|${s.filter}`;
+        });
     }
 
     // High-level Business Actions & Assertions

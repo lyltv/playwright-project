@@ -11,8 +11,7 @@ test.describe('Prominent Location', () => {
 
         // Only show rooms in HCM
         expect(page.url()).toContain('ho-chi-minh');
-        const roomCards = page.locator('[class*="card"], [class*="room"], [class*="listing"]');
-        await expect(roomCards.first()).toBeVisible({ timeout: 10000 });
+        await expect(homePage.roomCards.first()).toBeVisible({ timeout: 10000 });
     });
 
     test('PROMINENT_LOCATION_02: Should navigate to room list on location click', async ({
@@ -32,7 +31,7 @@ test.describe('Prominent Location', () => {
         expect(page.url()).toContain('ho-chi-minh');
 
         // Go back to Homepage
-        await page.goto('/');
+        await homePage.goto();
         await page.waitForLoadState('domcontentloaded');
 
         // Select Hanoi
@@ -41,31 +40,25 @@ test.describe('Prominent Location', () => {
         expect(page.url()).toContain('ha-noi');
     });
 
-    test('PROMINENT_LOCATION_04: Should show hover effect on location cards', async ({ page }) => {
-        await page.goto('/');
+    test('PROMINENT_LOCATION_04: Should show hover effect on location cards', async ({ homePage }) => {
+        await homePage.goto();
 
-        const locationCard = page.locator('a[href*="ho-chi-minh"]').first();
+        const locationCard = await homePage.getLocationCard('hcm');
         await locationCard.scrollIntoViewIfNeeded();
         await expect(locationCard).toBeVisible();
 
         // Get style before hover
-        const styleBefore = await locationCard.evaluate((el) => {
-            const s = window.getComputedStyle(el);
-            return `${s.boxShadow}|${s.transform}|${s.opacity}|${s.filter}`;
-        });
+        const styleBefore = await homePage.getComputedStyleString(locationCard);
 
         // Hover over card
         await locationCard.hover();
-        await page.waitForTimeout(300);
+        await homePage.page.waitForTimeout(300);
 
         // Get style after hover — check if changed
-        const styleAfter = await locationCard.evaluate((el) => {
-            const s = window.getComputedStyle(el);
-            return `${s.boxShadow}|${s.transform}|${s.opacity}|${s.filter}`;
-        });
+        const styleAfter = await homePage.getComputedStyleString(locationCard);
 
         // If style changed → hover effect is present
         // If not changed → card must still be visible (hover does not crash)
-        expect(locationCard).toBeVisible();
+        await expect(locationCard).toBeVisible();
     });
 });
