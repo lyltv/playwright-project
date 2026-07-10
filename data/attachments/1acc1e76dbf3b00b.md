@@ -1,0 +1,1068 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: dashboard/avatar.spec.ts >> Dashboard - Update Avatar >> UPDATE_AVATAR_03: Should upload image in correct format
+- Location: tests/dashboard/avatar.spec.ts:40:9
+
+# Error details
+
+```
+Error: expect(locator).toBeVisible() failed
+
+Locator: getByText(/thành công|success/i)
+Expected: visible
+Timeout: 10000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeVisible" with timeout 10000ms
+  - waiting for getByText(/thành công|success/i)
+
+```
+
+```yaml
+- navigation:
+  - link "Cyber Logo CyberSoft":
+    - /url: /
+    - img "Cyber Logo"
+    - text: CyberSoft
+  - button "Open user menu Quyên Cập Nhật":
+    - text: Open user menu
+    - img
+    - text: Quyên Cập Nhật
+  - list:
+    - listitem:
+      - link "Home":
+        - /url: /
+    - listitem:
+      - link "About":
+        - /url: /info-user
+    - listitem:
+      - link "Services":
+        - /url: /info-user
+    - listitem:
+      - link "Pricing":
+        - /url: "#"
+    - listitem:
+      - link "Contact":
+        - /url: "#"
+- paragraph: Thông tin người dùng Quyên Cập Nhật
+- button "Cập nhật ảnh"
+- paragraph: Xác minh danh tính
+- paragraph: Xác minh danh tính của bạn với huy hiệu xác minh danh tính.
+- button "Nhận huy hiệu"
+- paragraph: Quyên Cập Nhật đã xác nhận
+- paragraph: Địa chỉ email
+- paragraph: Xin chào, tôi là Quyên Cập Nhật
+- paragraph: Bắt đầu tham gia vào 2023
+- button "Chỉnh sửa hồ sơ"
+- heading "Phòng đã thuê" [level=1]
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh Phòng sang trọng với ban công tại D.1 - 200m đến Bitexco 2 khách • 1 phòng ngủ • 1 giường • 1 phòng tắm Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 17 / đêm":
+  - /url: /room-detail/3
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: Phòng sang trọng với ban công tại D.1 - 200m đến Bitexco
+  - paragraph: 2 khách • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 17 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- link "prev next Guest favorite Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh NewApt D1 - Cozy studio - NU apt - 500m Bui Vien! 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi $ 28 / đêm":
+  - /url: /room-detail/1
+  - text: prev next
+  - button "Guest favorite"
+  - button
+  - paragraph: Toàn bộ căn hộ dịch vụ tại Hồ Chí Minh
+  - paragraph: NewApt D1 - Cozy studio - NU apt - 500m Bui Vien!
+  - paragraph: 3 khách • Phòng studio • 1 phòng ngủ • 1 giường • 1 phòng tắm
+  - paragraph: Wifi • Máy giặt • Tivi • Đỗ xe • Hồ bơi
+  - text: $ 28 / đêm
+- heading "Giới thiệu" [level=2]
+- list:
+  - listitem:
+    - link "Phương thức hoạt động của Cyber":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Trang tin tức":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Nhà đầu tư":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Cyber Plus":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Cyber Luxe":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "HotelTonight":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Cyber for Work":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Nhờ có Host, mọi điều đều có thể":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Cơ hội nghề nghiệp":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Thư của nhà sáng lập":
+      - /url: https://cybersoft.edu.vn
+- heading "Cộng đồng" [level=2]
+- list:
+  - listitem:
+    - link "Sự đa đạng và Cảm giác thân thuộc":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Tiện nghi phù hợp cho người khuyết tật":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Đối tác liên kết Cyber":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Chỗ ở cho tuyến đầu":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Lượt giới thiệu của khách":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "CyberSoft.edu.vn":
+      - /url: https://cybersoft.edu.vn
+- heading "Đón tiếp khách" [level=2]
+- list:
+  - listitem:
+    - link "Cho thuê nhà":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Tổ chức Trải nghiệm trực tuyến":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Tổ chức Trải nghiệm":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Đón tiếp khách có trách nhiệm":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Trung tâm tài nguyên":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Trung tâm cộng đồng":
+      - /url: https://cybersoft.edu.vn
+- heading "Hỗ trợ" [level=2]
+- list:
+  - listitem:
+    - link "Biện pháp ứng phó đại dịch COVID-19":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Trung tâm trợ giúp":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Các tùy chọn hủy":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Hỗ trợ khu dân cư":
+      - /url: https://cybersoft.edu.vn
+  - listitem:
+    - link "Tin cây và an toàn":
+      - /url: https://cybersoft.edu.vn
+- text: © 2022 Nguyễn Nhật Sang, Inc.Quyền riêng tư.Điều khoản.Sơ đồ trang web. Tiếng Việt (VN)USDHỗ trợ tài nguyên
+- img
+```
+
+# Test source
+
+```ts
+  1   | import { DASHBOARD } from '@constants/dashboard.config';
+  2   | import { test, expect } from '@fixtures/test_hook';
+  3   | import path from 'path';
+  4   | 
+  5   | test.describe('Dashboard - Update Avatar', () => {
+  6   |     test.describe.configure({ mode: 'default' });
+  7   |     test('UPDATE_AVATAR_01: Should open photo update popup', async ({
+  8   |         homePage,
+  9   |         dashboardPage,
+  10  |         page,
+  11  |     }) => {
+  12  |         await dashboardPage.loginAndGotoDashboard(homePage);
+  13  |         await dashboardPage.openAvatarDialog();
+  14  | 
+  15  |         const dialog = page.getByRole('dialog');
+  16  |         await expect(dialog).toBeVisible();
+  17  | 
+  18  |         // Popup has file selection input and upload button
+  19  |         const fileInput = dialog.locator('input[type="file"]');
+  20  |         await expect(fileInput).toBeAttached();
+  21  |         await expect(dialog.getByRole('button', { name: DASHBOARD.AVATAR.BTN_UPLOAD })).toBeVisible();
+  22  |         await expect(dialog.getByRole('button', { name: DASHBOARD.AVATAR.BTN_CLOSE })).toBeVisible();
+  23  |     });
+  24  | 
+  25  |     test('UPDATE_AVATAR_02: Should close photo update popup', async ({
+  26  |         homePage,
+  27  |         dashboardPage,
+  28  |         page,
+  29  |     }) => {
+  30  |         await dashboardPage.loginAndGotoDashboard(homePage);
+  31  |         await dashboardPage.openAvatarDialog();
+  32  | 
+  33  |         const dialog = page.getByRole('dialog');
+  34  |         await expect(dialog).toBeVisible();
+  35  | 
+  36  |         await dialog.getByRole('button', { name: DASHBOARD.AVATAR.BTN_CLOSE }).click();
+  37  |         await expect(dialog).toBeHidden();
+  38  |     });
+  39  | 
+  40  |     test('UPDATE_AVATAR_03: Should upload image in correct format', async ({
+  41  |         homePage,
+  42  |         dashboardPage,
+  43  |         page,
+  44  |     }) => {
+  45  |         await dashboardPage.loginAndGotoDashboard(homePage);
+  46  |         await dashboardPage.openAvatarDialog();
+  47  | 
+  48  |         const dialog = page.getByRole('dialog');
+  49  |         const fileInput = dialog.locator('input[type="file"]');
+  50  | 
+  51  |         // Upload valid JPG image
+  52  |         const testImagePath = path.resolve(__dirname, '../../test-data/valid-avatar.jpg');
+  53  |         await fileInput.setInputFiles(testImagePath);
+  54  |         await dialog.getByRole('button', { name: DASHBOARD.AVATAR.BTN_UPLOAD }).click();
+  55  | 
+> 56  |         await expect(page.getByText(DASHBOARD.AVATAR.TOAST_SUCCESS)).toBeVisible({ timeout: 10000 });
+      |                                                                      ^ Error: expect(locator).toBeVisible() failed
+  57  |     });
+  58  | 
+  59  |     test('UPDATE_AVATAR_04: Should show error when no image selected', async ({
+  60  |         homePage,
+  61  |         dashboardPage,
+  62  |         page,
+  63  |     }) => {
+  64  |         await dashboardPage.loginAndGotoDashboard(homePage);
+  65  |         await dashboardPage.openAvatarDialog();
+  66  | 
+  67  |         const dialog = page.getByRole('dialog');
+  68  |         await dialog.getByRole('button', { name: DASHBOARD.AVATAR.BTN_UPLOAD }).click();
+  69  | 
+  70  |         await expect(page.getByText(DASHBOARD.AVATAR.TOAST_SELECT_ERR)).toBeVisible({ timeout: 5000 });
+  71  |     });
+  72  | 
+  73  |     test.skip('UPDATE_AVATAR_05: Should reject non-image file format', async ({
+  74  |         homePage,
+  75  |         dashboardPage,
+  76  |         page,
+  77  |     }) => {
+  78  |         await dashboardPage.loginAndGotoDashboard(homePage);
+  79  |         await dashboardPage.openAvatarDialog();
+  80  |         const dialog = page.getByRole('dialog');
+  81  |         const fileInput = dialog.locator('input[type="file"]');
+  82  |         const testFilePath = path.resolve(__dirname, '../../test-data/invalid-file.pdf');
+  83  |         await fileInput.setInputFiles(testFilePath);
+  84  |         await dialog.getByRole('button', { name: DASHBOARD.AVATAR.BTN_UPLOAD }).click();
+  85  | 
+  86  |         await expect(page.getByText(DASHBOARD.AVATAR.TOAST_FORMAT_ERR)).toBeVisible({
+  87  |             timeout: 5000,
+  88  |         });
+  89  |     });
+  90  | 
+  91  |     test('UPDATE_AVATAR_06: Should reject image exceeding file size limit', async ({
+  92  |         homePage,
+  93  |         dashboardPage,
+  94  |         page,
+  95  |     }) => {
+  96  |         await dashboardPage.loginAndGotoDashboard(homePage);
+  97  |         await dashboardPage.openAvatarDialog();
+  98  | 
+  99  |         const dialog = page.getByRole('dialog');
+  100 |         const fileInput = dialog.locator('input[type="file"]');
+  101 | 
+  102 |         const testImagePath = path.resolve(__dirname, '../../test-data/large-image.jpg');
+  103 |         await fileInput.setInputFiles(testImagePath);
+  104 |         await dialog.getByRole('button', { name: DASHBOARD.AVATAR.BTN_UPLOAD }).click();
+  105 | 
+  106 |         await expect(page.getByText(DASHBOARD.AVATAR.TOAST_SIZE_ERR)).toBeVisible({ timeout: 5000 });
+  107 |     });
+  108 | 
+  109 |     test('UPDATE_AVATAR_07: Should handle rectangular image upload', async ({
+  110 |         homePage,
+  111 |         dashboardPage,
+  112 |         page,
+  113 |     }) => {
+  114 |         await dashboardPage.loginAndGotoDashboard(homePage);
+  115 |         await dashboardPage.openAvatarDialog();
+  116 | 
+  117 |         const dialog = page.getByRole('dialog');
+  118 |         const fileInput = dialog.locator('input[type="file"]');
+  119 | 
+  120 |         const testImagePath = path.resolve(__dirname, '../../test-data/rectangular-image.jpg');
+  121 |         await fileInput.setInputFiles(testImagePath);
+  122 |         await dialog.getByRole('button', { name: DASHBOARD.AVATAR.BTN_UPLOAD }).click();
+  123 | 
+  124 |         await expect(page.getByText(DASHBOARD.AVATAR.TOAST_SUCCESS)).toBeVisible({ timeout: 10000 });
+  125 | 
+  126 |         // Avatar does not overflow
+  127 |         const avatar = page
+  128 |             .locator('img[alt*="avatar"], img[alt*="Avatar"], .ant-avatar img')
+  129 |             .first();
+  130 |         if (await avatar.isVisible()) {
+  131 |             const box = await avatar.boundingBox();
+  132 |             if (box) {
+  133 |                 expect(box.width).toBeGreaterThan(0);
+  134 |                 expect(box.height).toBeGreaterThan(0);
+  135 |             }
+  136 |         }
+  137 |     });
+  138 | 
+  139 |     test('UPDATE_AVATAR_08: Should handle multiple upload clicks', async ({
+  140 |         homePage,
+  141 |         dashboardPage,
+  142 |         page,
+  143 |     }) => {
+  144 |         await dashboardPage.loginAndGotoDashboard(homePage);
+  145 |         await dashboardPage.openAvatarDialog();
+  146 | 
+  147 |         const dialog = page.getByRole('dialog');
+  148 |         const fileInput = dialog.locator('input[type="file"]');
+  149 | 
+  150 |         const testImagePath = path.resolve(__dirname, '../../test-data/valid-avatar.jpg');
+  151 |         await fileInput.setInputFiles(testImagePath);
+  152 | 
+  153 |         const uploadBtn = dialog.getByRole('button', { name: DASHBOARD.AVATAR.BTN_UPLOAD });
+  154 |         await Promise.all([uploadBtn.click(), uploadBtn.click({ delay: 50 })]);
+  155 | 
+  156 |         await page.waitForTimeout(3000);
+```
